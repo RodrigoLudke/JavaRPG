@@ -140,6 +140,17 @@ Onde,
 - T é o tesouro, o número de moedas de ouro. Se T for omitido o monstro não provê tesouro
 - P é a provisão, a quantidade de provisões. Se P for omitido o monstro não provê provisões
 - I é um item. Se I for omitido o monstro não provê item
+  - O elemento I é definido por 5 atributos:
+    ```
+    nome;tipo;combate;FA;dano
+    ```
+    Onde
+    - nome é o nome do item, por exemplo, Espada larga;
+    - tipo é o tipo de item. Pode ser: c para item comum, r para armadura e w para arma;
+    - combate se pode ser usado em combate. Pode ser: 1 se pode ser usado em combate ou 0 se não pode
+    - FA é o bônus positivo ou negativo da força de ataque. Se for uma armadura refere-se ao FA do oponente e se for uma arma FA refere-se ao atacante.
+    - Dano é um bônus positivo ou negativo aplicado ao dano. Se for uma armadura é quanto de dano é reduzido do dano e se for uma arma refere-se quanto de dano aumenta-se o ataque contra o oponente.
+
 - 12;13 o primeiro número é a próxima cena em caso de sucesso (monstro derrotado) e o segundo número a
 próxima cena em caso de derrota (monstro não derrotado)
 
