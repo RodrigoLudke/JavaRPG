@@ -47,4 +47,6 @@ combate. Uma provisão recupera sempre 4 pontos de vida.
 ## FLUXO DO JOGO:
 >Na tela inicial o Jogador pode tomar duas atitudes:
 - Começar um novo jogo:
-  
+  - Deve ser carregada a tela do Inventario onde serão definidos os valores de HABILIDADE, ENERGIA E SORTE
+  - Ainda na tela inventario pode ser visto com o que o personagem está equipado, que equipamentos extras possui e o quais tesouros/magias possui.
+  - Depois de verificado o inventário o jogador passa para tela de jogo onde é apresentada o historia do jogo (tela padrão do jogo);
