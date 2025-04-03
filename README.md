@@ -50,3 +50,11 @@ combate. Uma provisão recupera sempre 4 pontos de vida.
   - Deve ser carregada a tela do Inventario onde serão definidos os valores de HABILIDADE, ENERGIA E SORTE
   - Ainda na tela inventario pode ser visto com o que o personagem está equipado, que equipamentos extras possui e o quais tesouros/magias possui.
   - Depois de verificado o inventário o jogador passa para tela de jogo onde é apresentada o historia do jogo (tela padrão do jogo);
+- Carregar Jogo:
+  - Deve ser buscado em um arquivo as informações do inventário, do personagem e do progresso do jogo;
+  - Apresentar o inventário para o Jogador;
+  - Ir para tela de narrativa no ponto onde o Jogador salvou seu jogo (tela padrão do jogo).
+
+>Na tela padrão do jogo:
+- É apresentado o texto principal da cena e as possibilidades de decisão para o jogador.
+- Cada cena deve ser armazenada em um arquivo separado. Vide seção Formato do Arquivo de Cena.
