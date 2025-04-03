@@ -1,4 +1,4 @@
-# JavaRPG
+## JavaRPG
 
 # OBJETIVO
 - O objetivo desta atividade é integrar os conhecimentos avançados de programação e orientação a objetos. É uma atividade que requer dedicação e estudo, mas certamente é um desafio que irá incrementar suas habilidades de programador!
