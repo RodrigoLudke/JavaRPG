@@ -65,4 +65,7 @@ tela estarão as definições do inimigo como características e pontos de vida.
 ações padrões de fugir, atacar, usar item e usar magia (se a história tem magia). Quando um monstro é
 derrotado verifica-se se este possui provisões, itens e/ou tesouros. Caso possua, transfere-se estes elementos
 para o inventário do personagem.
+>O combate é feito da seguinte forma:
+- 1. É gerado um número aleatório de 1 à 10 e somado a habilidade do monstro;
+- 2. A mesma coisa é feita para o personagem;
 
