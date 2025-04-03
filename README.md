@@ -23,3 +23,7 @@
 - A ENERGIA terá o valor mínimo igual a 12 e valor máximo igual a 24;
 - A SORTE terá o valor mínimo igual a 6 e valor máximo igual a 12;
 
+## USO DA SORTE
+- Nos combates ou em certas situações de jogo o jogador pode optar ou ser solicitado a Testar Sorte. É sorteado um valor aleatório e comparado com valor da sorte do personagem. Esse resultado define se ouve falha ou sucesso no teste. Quando usar sorte em combate o usuário pode ampliar o dano causado ao inimigo
+ou reduzir o dano causado pelo inimigo no personagem. Cada vez que a sorte for usada deve ser decrementado em um o valor atual de SORTE.
+
