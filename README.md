@@ -14,3 +14,10 @@
 - c) Tela padrão do jogo: Nessa tela é apresentado o texto da aventura e são disponibilizadas as possibilidades de decisão do jogador.
 
 - d) Tela de batalha: Tela em que deve ser apresentado o inimigo bem como sua Energia. Também é nessa tela que o jogador pode escolher qual opção irá usar: Atacar, Usar Magia (dependendo de quais magias tem em seu inventario, ou se algum item no inventário o permite usar alguma) ou Fugir;
+
+>CRIAÇÃO DE PERSONAGEM
+  >Os desenvolvedores decidem como o jogador poderá atribuir os pontos de HABILIDADE, ENERGIA e SORTE. O jogador terá 12 pontos disponíveis para distribuir entre os atributos.
+- A HABILIDADE terá o valor mínimo igual a 6 e valor máximo igual a 12;
+- A ENERGIA terá o valor mínimo igual a 12 e valor máximo igual a 24;
+- A SORTE terá o valor mínimo igual a 6 e valor máximo igual a 12;
+
