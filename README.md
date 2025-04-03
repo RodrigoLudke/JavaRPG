@@ -105,12 +105,12 @@ I: chave;c;0;0;0
 #4: Integer a nisl lectus
 }
 ```
-  - Estes números não são apresentados para o jogador são usados somente pelo programador como
+Estes números não são apresentados para o jogador são usados somente pelo programador como
 localizador dos arquivos de cena. No exemplo acima é apresentada a cena 1 com três opções, conforme a
 escolha são carregadas as cenas 2.txt, 3.txt ou 4.txt. No caso de I a cena oferece um item para o personagem.
 Veja abaixo a descrição de um item.
 
->Quando a cena é um monstro o arquivo é formatado da seguinte maneira:
+- Quando a cena é um monstro o arquivo é formatado da seguinte maneira:
 
 >Monstro
 ```
