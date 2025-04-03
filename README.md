@@ -76,5 +76,34 @@ tomar a partir de possibilidades disponibilizadas pelo programador. Essas decis�
 diretamente o fluxo do jogo. Exemplos de decisões que podem ser tomadas são: i. que caminho seguir, ii.
 tentar arrombar uma porta ou não iii. enfrentar ou fugir/esconder-se de um monstro etc.. O jogo deve conter
 um fluxo de no mínimo 10 turnos (possibilidades de escolhas) para o Jogador sendo que essas decisões podem
-possibilitar terminar a aventura mais rapidamente ou impedir/dificultar o jogador a finalizar a aventura. 
+possibilitar terminar a aventura mais rapidamente ou impedir/dificultar o jogador a finalizar a aventura.
+
+## SALVAR/CARREGAR
+- Sempre que uma nova cena é carregada o jogo é salvo automaticamente. Deve armazenar os dados do
+personagem, o inventário completo, a cena atual e todas as cenas que já visualizou. Assim que a opção de
+carregar um jogo salvo é efetuada deve ser feita a leitura do arquivo e restaurados os dados do personagem, o
+inventário, as cenas que já foram visualizadas e posiciona o jogador na cena que foi salva a partida.
+
+## FORMATO DOS ARQUIVOS DE CENA
+- Cada cena é armazenada em um arquivo de texto. O nome de cada arquivo é um número sequencial –
+1.txt, 2.txt, 3.txt. Cada arquivo está definido no seguinte formato:
+
+>1
+
+```javascript
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque faucibus, lorem a dignissim
+tristique, lorem magna vulputate sem, et tincidunt lectus nulla ut velit. Ut tempor quam tincidunt odio
+vehicula in mollis metus varius. Etiam dapibus, mi quis consequat ullamcorper, sem arcu aliquet tortor,
+id semper nulla turpis et quam. Praesent vitae felis mi, aliquet fringilla sapien. Praesent molestie
+vestibulum mattis. Integer a nisl lectus. Nulla ut urna lacus, vel fermentum metus. Aliquam eros quam,
+fringilla id
+I: chave;c;0;0;0
+#2: Lorem ipsum dolor
+#3: Praesent molestie
+#4: Integer a nisl lectus
+}
+```
+
+
+
 
