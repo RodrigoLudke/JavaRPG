@@ -44,7 +44,7 @@ equipado.
 - **Provisões:** Alimentos que permitem ao personagem recuperar Energia. Só podem ser usadas fora de
 combate. Uma provisão recupera sempre 4 pontos de vida.
 
-## FLUXO DO JOGO
+## FLUXO DO JOGO:
 >Na tela inicial o Jogador pode tomar duas atitudes:
 - Começar um novo jogo:
   
