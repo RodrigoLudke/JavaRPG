@@ -27,3 +27,19 @@
 - Nos combates ou em certas situações de jogo o jogador pode optar ou ser solicitado a Testar Sorte. É sorteado um valor aleatório e comparado com valor da sorte do personagem. Esse resultado define se ouve falha ou sucesso no teste. Quando usar sorte em combate o usuário pode ampliar o dano causado ao inimigo
 ou reduzir o dano causado pelo inimigo no personagem. Cada vez que a sorte for usada deve ser decrementado em um o valor atual de SORTE.
 
+## RESUMO DO CONTROLE DOS ATRIBUTOS DO PERSONAGEM/INVENTÁRIO
+- **Habilidade:** Representa a destreza em combate. O valor influência diretamente nos resultados dos
+combates.
+- **Energia:** Representa sua constituição, ou seja, pontos de vida.
+- **Sorte:** Como descrito sua sorte pode ser testada em determinados eventos e também pode mudar
+valores do dano recebido ou causado. 
+- **Magias:** Se o personagem for mago terá um numero de magias no inicio do jogo e no decorrer do
+mesmo deve/pode adquirir outras, que influenciaram direto nos seus combates. Já personagens não magos
+podem utilizar algumas magias desde que de posse de algum item magico.
+- **Equipamentos:** No inicio do jogo o personagem deve possuir alguns itens básicos, além desses o
+programador pode definir onde e quando o personagem pode adquirir novos itens, que vão para inventário do
+mesmo. Quando quiser o jogador pode acessar a tela de inventário e modificar o que o personagem está
+equipado.
+- **Tesouro:** Materiais valiosos que o personagem adquire no decorrer da aventura.
+- **Provisões:** Alimentos que permitem ao personagem recuperar Energia. Só podem ser usadas fora de
+combate. Uma provisão recupera sempre 4 pontos de vida.
