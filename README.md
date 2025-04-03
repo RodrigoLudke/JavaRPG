@@ -90,7 +90,7 @@ inventário, as cenas que já foram visualizadas e posiciona o jogador na cena q
 
 >1
 
-```javascript
+```
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque faucibus, lorem a dignissim
 tristique, lorem magna vulputate sem, et tincidunt lectus nulla ut velit. Ut tempor quam tincidunt odio
 vehicula in mollis metus varius. Etiam dapibus, mi quis consequat ullamcorper, sem arcu aliquet tortor,
