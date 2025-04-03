@@ -154,5 +154,12 @@ Onde,
 - 12;13 o primeiro número é a próxima cena em caso de sucesso (monstro derrotado) e o segundo número a
 próxima cena em caso de derrota (monstro não derrotado)
 
+## REQUISITOS
+➢ A temática das histórias é livre, exceto pornografia, racismo, qualquer tipo de discriminação
+ou temas ilegais;
+➢ Deve ser implementado em Java;
+➢ Uma solução orientada a objetos e organizada modularmente em diversos arquivos;
+➢ Se forem utilizar vetores, esses deverão ser alocados dinamicamente e de forma eficiente,
+ou seja, que não consuma grande tempo de processamento.
 
 
