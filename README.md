@@ -131,7 +131,7 @@ P: 1
 I: chave;c;0;0;0
 12;13
 ```
->Onde,
+Onde,
 - "Monstro" indica que a cena é um monstro
 - N é o nome do monstro
 - H é a habilidade
