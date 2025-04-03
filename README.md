@@ -58,3 +58,10 @@ combate. Uma provisão recupera sempre 4 pontos de vida.
 >Na tela padrão do jogo:
 - É apresentado o texto principal da cena e as possibilidades de decisão para o jogador.
 - Cada cena deve ser armazenada em um arquivo separado. Vide seção Formato do Arquivo de Cena.
+  Existe ainda uma tela extra que pode ser chamada tela de combate, batalha ou encontros do
+personagem. As decisões do personagem podem colocá-lo em perigo ou levá-lo a enfrentar inimigos, nessa
+tela estarão as definições do inimigo como características e pontos de vida. Nesta tela estão disponíveis as
+ações padrões de fugir, atacar, usar item e usar magia (se a história tem magia). Quando um monstro é
+derrotado verifica-se se este possui provisões, itens e/ou tesouros. Caso possua, transfere-se estes elementos
+para o inventário do personagem.
+
