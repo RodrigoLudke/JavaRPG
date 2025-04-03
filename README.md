@@ -69,3 +69,12 @@ para o inventário do personagem.
 - 1. É gerado um número aleatório de 1 à 10 e somado a habilidade do monstro;
 - 2. A mesma coisa é feita para o personagem;
 
+Isso define a Força de Ataque (FA) dos combatentes. Quem tiver o maior FA é o vencedor e tira 2 pontos de energia do oponente. Se der empate ninguém acertou
+
+Com o jogo iniciado/reiniciado o jogador deve ir seguindo a história do jogo e decidir quais as ações
+tomar a partir de possibilidades disponibilizadas pelo programador. Essas decisões devem influenciar
+diretamente o fluxo do jogo. Exemplos de decisões que podem ser tomadas são: i. que caminho seguir, ii.
+tentar arrombar uma porta ou não iii. enfrentar ou fugir/esconder-se de um monstro etc.. O jogo deve conter
+um fluxo de no mínimo 10 turnos (possibilidades de escolhas) para o Jogador sendo que essas decisões podem
+possibilitar terminar a aventura mais rapidamente ou impedir/dificultar o jogador a finalizar a aventura. 
+
