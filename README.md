@@ -88,7 +88,7 @@ inventário, as cenas que já foram visualizadas e posiciona o jogador na cena q
 - Cada cena é armazenada em um arquivo de texto. O nome de cada arquivo é um número sequencial –
 1.txt, 2.txt, 3.txt. Cada arquivo está definido no seguinte formato:
 
->1
+>Cena 1
 
 ```
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque faucibus, lorem a dignissim
@@ -105,7 +105,43 @@ I: chave;c;0;0;0
 #4: Integer a nisl lectus
 }
 ```
+  - Estes números não são apresentados para o jogador são usados somente pelo programador como
+localizador dos arquivos de cena. No exemplo acima é apresentada a cena 1 com três opções, conforme a
+escolha são carregadas as cenas 2.txt, 3.txt ou 4.txt. No caso de I a cena oferece um item para o personagem.
+Veja abaixo a descrição de um item.
 
+>Quando a cena é um monstro o arquivo é formatado da seguinte maneira:
+
+>Monstro
+```
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque faucibus, lorem a dignissim
+tristique, lorem magna vulputate sem, et tincidunt lectus nulla ut velit. Ut tempor quam tincidunt odio
+vehicula in mollis metus varius. Etiam dapibus, mi quis consequat ullamcorper, sem arcu aliquet tortor,
+id semper nulla turpis et quam. Praesent vitae felis mi, aliquet fringilla sapien. Praesent molestie
+vestibulum mattis. Integer a nisl lectus. Nulla ut urna lacus, vel fermentum metus. Aliquam eros quam,
+fringilla id
+
+N: Orc
+M: S
+H: 12
+S: 10
+E: 12
+T: 1000
+P: 1
+I: chave;c;0;0;0
+12;13
+```
+>Onde,
+- "Monstro" indica que a cena é um monstro
+- N é o nome do monstro
+- H é a habilidade
+- S é a sorte
+- E é a energia
+- T é o tesouro, o número de moedas de ouro. Se T for omitido o monstro não provê tesouro
+- P é a provisão, a quantidade de provisões. Se P for omitido o monstro não provê provisões
+- I é um item. Se I for omitido o monstro não provê item
+- 12;13 o primeiro número é a próxima cena em caso de sucesso (monstro derrotado) e o segundo número a
+próxima cena em caso de derrota (monstro não derrotado)
 
 
 
