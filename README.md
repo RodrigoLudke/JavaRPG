@@ -155,11 +155,40 @@ Onde,
 próxima cena em caso de derrota (monstro não derrotado)
 
 ## REQUISITOS
-- ➢ A temática das histórias é livre, exceto pornografia, racismo, qualquer tipo de discriminação
+- ➢  A temática das histórias é livre, exceto pornografia, racismo, qualquer tipo de discriminação
 ou temas ilegais;
-- ➢ Deve ser implementado em Java;
-- ➢ Uma solução orientada a objetos e organizada modularmente em diversos arquivos;
-- ➢ Se forem utilizar vetores, esses deverão ser alocados dinamicamente e de forma eficiente,
+- ➢  Deve ser implementado em Java;
+- ➢  Uma solução orientada a objetos e organizada modularmente em diversos arquivos;
+- ➢  Se forem utilizar vetores, esses deverão ser alocados dinamicamente e de forma eficiente,
 ou seja, que não consuma grande tempo de processamento.
+
+##  BONUS – REQUISITOS ADICIONAIS
+**Abaixo estão listados alguns requisitos adicionais que serão avaliados como bônus, ou seja, pode
+incrementar a avaliação. Quem não implementar estes requisitos não irão sofrer nenhuma penalidade
+quanto avaliação.**
+- ➢ Dar a opção de salvar e carregar mais de uma partida;
+- ➢ Implementar a funcionalidade de não permitir a fuga para certos monstros. O jogador tenta fugir,
+mas não consegue;
+- ➢ Implementar um sistema de magia que influencie os personagens, monstros e itens do jogo;
+- ➢ Oferecer dois modos de criação de personagem. Além do modo de distribuição de pontos, oferecer
+um modo aleatório;
+- ➢ Só permitir ir para uma cena se o personagem possuir determinado item no inventário;
+- ➢ Apresentar o jogo no modo gráfico. Pode ser usada qualquer biblioteca gráfica a escolha;
+- ➢ Pode ser exibido no modo janela ou em full screen.
+
+## CRITÉRIOS DE AVALIAÇÃO
+**Deve ser funcional! Programa que não executa não é programa. Deve ser compilável e executável.
+Aplicativos que não executarem serão desconsiderados e será atribuída nota zero para os aprendizes.**
+- ➢ Projeto adequado orientado a objetos;
+- ➢ Código estruturado, identado e comentado;
+- ➢ Respeitar TODOS os requisitos descritos anteriormente.
+- ➢ Fidelidade as regras do jogo e descrição da aplicação. É para ser implementado exatamente o que
+está sendo pedido. Não tente simplificar o que está sendo solicitado.
+
+## INSTRUÇÕES PARA ENTREGA
+**A entrega será realizada SOMENTE via moodle, até ANTES do início da aula do dia 29/04, ou seja, a
+tarefa irá fechar as 19h30min do dia 29/04. Se programem para entregar dentro do prazo. Trabalhos não
+entregues no prazo não serão aceitos**
+
 
 
