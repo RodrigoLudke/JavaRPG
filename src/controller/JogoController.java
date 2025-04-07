@@ -6,7 +6,7 @@ import view.*;
 public class JogoController {
     private Personagem personagem;
 
-    public void iniciarJogo() {
+    public void iniciarJogo() throws InterruptedException {
         TelaInicial.mostrarMenu();
     }
 
