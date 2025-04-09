@@ -15,7 +15,14 @@ public class JogoController {
         TelaInventario.configurarPersonagem(personagem, this);
     }
 
+    public void acessarInventario() throws InterruptedException {
+        TelaInventario.abrirInventario(personagem, this); // só visualização
+    }
+
     public void jogoPadrao() throws InterruptedException {
-        TelaPadrao.IntroducaoInicial(personagem);
+        TelaPadrao.IntroducaoInicial(personagem, this);
+    }
+    public void jogoBase() throws InterruptedException {
+        TelaPadrao.Base(personagem, this);
     }
 }

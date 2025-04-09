@@ -5,9 +5,15 @@ import view.utils.TextoAnimado;
 import controller.JogoController;
 import java.util.Scanner;
 
+import static view.TelaInicial.mostrarMenu;
+import static view.utils.Cores.RESET;
+import static view.utils.Cores.VERMELHO;
+
 public class TelaInventario {
     public static void configurarPersonagem(Personagem p, JogoController jogo) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
+
+
         // Aqui você implementa a lógica de distribuir pontos de HABILIDADE, ENERGIA, SORTE
         System.out.println("Distribua 12 pontos entre Habilidade (min 6), Energia (min 12), e Sorte (min 6):");
         int pontos = 12;
@@ -17,10 +23,11 @@ public class TelaInventario {
         System.out.println("Habilidades:");
         int HabilidadeBase = 6;
         int valorH = sc.nextInt();
-        while (valorH > pontos || valorH < 0){
+        while (valorH > pontos || valorH < 0) {
             System.out.println("Valor inválido! Deve ser no mínimo 6 e no máximo " + pontos + ".");
             valorH = sc.nextInt();
-        };
+        }
+        ;
         pontos -= valorH;
         HabilidadeBase += valorH;
 
@@ -55,5 +62,51 @@ public class TelaInventario {
         System.out.println();
 
         jogo.jogoPadrao();
+
+        }
+    // Aqui você pode implementar a lógica para abrir o inventário in game
+
+    public static void abrirInventario(Personagem personagem, JogoController jogo) throws InterruptedException {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Inventário:");
+        System.out.println("Habilidade: " + personagem.getHabilidade());
+        System.out.println("Energia: " + personagem.getEnergia());
+        System.out.println("Sorte: " + personagem.getSorte());
+
+        System.out.println();
+
+        System.out.println("1 - Voltar para o Jogo");
+        System.out.println("2 - Salvar Jogo");
+        System.out.println("3 - Sair para o Menu Principal");
+        System.out.println("4 - Sair do Jogo");
+        int opcao = sc.nextInt();
+
+        while (opcao != 4) {
+            switch (opcao) {
+                case 1:
+                    System.out.println("Voltando para o jogo...");
+                    jogo.jogoBase();
+                    return;
+
+                case 2:
+                    System.out.println("Salvando jogo...");
+                    // Aqui você implementa a lógica de salvar o jogo
+                    return;
+
+                case 3:
+                    System.out.println("Voltando para o Menu Principal...");
+                    mostrarMenu();
+                    return;
+
+                default:
+                    System.out.println(VERMELHO + "Opção inválida, tente novamente!" + RESET);
+                    return;
+            }
+
+        }
+        sc.close();
     }
 }
+
+

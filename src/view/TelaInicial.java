@@ -29,7 +29,7 @@ public class TelaInicial {
                     Personagem p = new Personagem(nome);
 
                     jogo.novoJogo(nome);
-                    mostrarMenu();
+                    //mostrarMenu();
                     return;
                 case 2:
                     System.out.println("Carregando jogo...");
