@@ -1,13 +1,18 @@
 package view;
 
 import java.util.concurrent.TimeUnit;
-
 import model.Personagem;
 import view.utils.TextoAnimado;
 import controller.JogoController;
 import java.util.Scanner;
 
+
 public class TelaInicial {
+    public static final String RESET = "\u001B[0m";
+    public static final String AMARELO = "\u001B[33m";
+    public static final String VERMELHO = "\u001B[31m";
+    public static final String VERDE = "\u001B[32m";
+
 
     public static void mostrarMenu() throws InterruptedException {
         Scanner sc = new Scanner(System.in);
@@ -17,14 +22,48 @@ public class TelaInicial {
         System.out.println("4 - Sair");
         int opcao = sc.nextInt();
 
-        JogoController jogo = new JogoController();
-        if (opcao == 1) {
 
-            System.out.println("Digite o nome do personagem:");
-            String nome = sc.next();
-            Personagem p = new Personagem(nome);
 
-            jogo.novoJogo(nome);
+        while (opcao != 4) {
+            switch (opcao) {
+                case 1:
+                    JogoController jogo = new JogoController();
+                    System.out.println("Digite o nome do personagem:");
+                    String nome = sc.next();
+                    Personagem p = new Personagem(nome);
+
+                    jogo.novoJogo(nome);
+                    mostrarMenu();
+                    return;
+                case 2:
+                    System.out.println("Carregando jogo...");
+
+                    mostrarMenu();
+                    return;
+
+                case 3:
+                    System.out.println(VERDE + "--- Créditos ---");
+                    System.out.println("Desenvolvedores:");
+                    System.out.println( " - Ana Julia Teixeira de Melo");
+                    System.out.println( " - Rodrigo Ludke");
+                    System.out.println( "----------------" + RESET);
+                    mostrarMenu();
+                    return;
+
+                default:
+                    System.out.println(VERMELHO + "Opção inválida, tente novamente!" + RESET);
+                    mostrarMenu();
+                    return;
+            }
+
         }
+        sc.close();
+        System.out.println(AMARELO + "Saindo...");
+
+
     }
+
 }
+
+
+
