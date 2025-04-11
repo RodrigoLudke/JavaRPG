@@ -2,8 +2,10 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
-public class Personagem {
+public class Personagem implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String nome;
     private int habilidade;
     private int energia;

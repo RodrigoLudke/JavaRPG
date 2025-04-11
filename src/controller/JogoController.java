@@ -3,6 +3,8 @@ package controller;
 import model.Personagem;
 import view.*;
 
+import java.io.*;
+
 public class JogoController {
     private Personagem personagem;
 
@@ -24,5 +26,21 @@ public class JogoController {
     }
     public void jogoBase() throws InterruptedException {
         TelaPadrao.Base(personagem, this);
+    }
+    public void salvarJogo() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("savegame.dat"))) {
+            oos.writeObject(personagem);
+            System.out.println("Jogo salvo com sucesso!");
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar o jogo: " + e.getMessage());
+        }
+    }
+    public void carregarJogo() {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("savegame.dat"))) {
+            personagem = (Personagem) ois.readObject();
+            System.out.println("Jogo carregado com sucesso!");
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Erro ao carregar o jogo: " + e.getMessage());
+        }
     }
 }

@@ -6,8 +6,7 @@ import controller.JogoController;
 import java.util.Scanner;
 
 import static view.TelaInicial.mostrarMenu;
-import static view.utils.Cores.RESET;
-import static view.utils.Cores.VERMELHO;
+import static view.utils.Cores.*;
 
 public class TelaInventario {
     public static void configurarPersonagem(Personagem p, JogoController jogo) throws InterruptedException {
@@ -70,9 +69,9 @@ public class TelaInventario {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Inventário:");
-        System.out.println("Habilidade: " + personagem.getHabilidade());
-        System.out.println("Energia: " + personagem.getEnergia());
-        System.out.println("Sorte: " + personagem.getSorte());
+        System.out.println(ROXO + "Habilidade: " + personagem.getHabilidade() + RESET);
+        System.out.println(CIANO +"Energia: " + personagem.getEnergia() + RESET);
+        System.out.println(AZUL + "Sorte: " + personagem.getSorte() + RESET);
 
         System.out.println();
 
@@ -91,7 +90,9 @@ public class TelaInventario {
 
                 case 2:
                     System.out.println("Salvando jogo...");
-                    // Aqui você implementa a lógica de salvar o jogo
+                    jogo.salvarJogo();
+                    jogo.acessarInventario();
+
                     return;
 
                 case 3:

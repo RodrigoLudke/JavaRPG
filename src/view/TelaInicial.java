@@ -17,24 +17,22 @@ public class TelaInicial {
         System.out.println("3 - Créditos");
         System.out.println("4 - Sair");
         int opcao = sc.nextInt();
-
+        JogoController jogo = new JogoController();
 
 
         while (opcao != 4) {
             switch (opcao) {
                 case 1:
-                    JogoController jogo = new JogoController();
                     System.out.println("Digite o nome do personagem:");
                     String nome = sc.next();
                     Personagem p = new Personagem(nome);
 
                     jogo.novoJogo(nome);
-                    //mostrarMenu();
                     return;
                 case 2:
                     System.out.println("Carregando jogo...");
-
-                    mostrarMenu();
+                    jogo.carregarJogo();
+                    jogo.acessarInventario();
                     return;
 
                 case 3:
