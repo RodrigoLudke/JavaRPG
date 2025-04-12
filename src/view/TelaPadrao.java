@@ -48,7 +48,9 @@ public class TelaPadrao {
 
                 default:
                     System.out.println(VERMELHO + "Opção inválida, tente novamente!" + RESET);
+                    Base(personagem, jogo);
                     return;
+
             }
 
         }
