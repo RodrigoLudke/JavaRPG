@@ -57,7 +57,7 @@ public class TelaPadrao {
         sc.close();
     }
 
-    private static void missaoUm(Personagem pes, JogoController jogo) throws InterruptedException {
+    private static void missaoUm(Personagem personagem, JogoController jogo) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
         String missao = "\033[1mMissão: Dentes de Ouro\033[0m" ;
         TextoAnimado.escrever(missao);
@@ -71,10 +71,10 @@ public class TelaPadrao {
         TextoAnimado.escrever(recompensa);
         String resumo = "\033[1mResumo da Missão\033[0m";
         TextoAnimado.escrever(resumo);
-        String missaoResumo1 = "Você deve transportar um container selado por Night City — de Japantown até um ponto de entrega em Pacifica.";
+        String missaoResumo1 = "Você deve transportar um container selado por Night City — de Japantown até um ponto de entrega em Pacifica. O conteúdo é misterioso e valioso. Mas um velho nome do submundo descobre a movimentação… e quer a carga para si.";
         TextoAnimado.escrever(missaoResumo1);
-        String missaoResumo2 = "O conteúdo é misterioso e valioso. Mas um velho nome do submundo descobre a movimentação… e quer a carga para si.";
-        TextoAnimado.escrever(missaoResumo2);
+        //String missaoResumo2 = "O conteúdo é misterioso e valioso. Mas um velho nome do submundo descobre a movimentação… e quer a carga para si.";
+        //TextoAnimado.escrever(missaoResumo2);
         System.out.println();
         String pontos = "\033[1m...\033[0m\n";
         TextoAnimado.escrever(pontos);
@@ -82,7 +82,7 @@ public class TelaPadrao {
         String novoElemento = VERMELHO + "\033[1mNovo Elemento!\033[0m"+ RESET;;
         TextoAnimado.escrever(novoElemento);
         System.out.println();
-        String fala = "-Você nem sabe o que tá carregando, "+ pes.getNome() + " Mas eu sei. E eu vim buscar o que é meu...\033[1mcom juros.\033[0m\n";
+        String fala = "-Você nem sabe o que tá carregando, "+ personagem.getNome() + ",  Mas eu sei. E eu vim buscar o que é meu...\033[1mcom juros.\033[0m\n";
         TextoAnimado.escrever(fala);
         System.out.println();
         String monstro = VERMELHO + "\033[1mVilão – Chromejaw\033[0m"+ RESET;;
