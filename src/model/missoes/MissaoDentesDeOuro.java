@@ -1,17 +1,21 @@
-package view.utils;
+package model.missoes;
 
 import controller.JogoController;
 import model.Personagem;
+import view.utils.TextoAnimado;
 
 import java.util.Scanner;
 
 import static view.utils.Cores.RESET;
 import static view.utils.Cores.VERMELHO;
+public class MissaoDentesDeOuro extends Missoes {
+    public MissaoDentesDeOuro() {
+        super("Dentes de Ouro", "Transporte clandestino perigoso com recompensas altas.");
+    }
 
-public class Missoes {
-    private static void missaoUm(Personagem personagem, JogoController jogo) throws InterruptedException {
+    public void executar(Personagem personagem, JogoController jogo) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
-        String missao = "\033[1mMissão: Dentes de Ouro\033[0m" ;
+        String missao = "\033[1mMissão: Dentes de Ouro\033[0m";
         TextoAnimado.escrever(missao);
         String tipo = "\033[1mTipo:\033[0m Transporte clandestino";
         TextoAnimado.escrever(tipo);
@@ -25,38 +29,51 @@ public class Missoes {
         TextoAnimado.escrever(resumo);
         String missaoResumo1 = "Você deve transportar um container selado por Night City — de Japantown até um ponto de entrega em Pacifica. O conteúdo é misterioso e valioso. Mas um velho nome do submundo descobre a movimentação… e quer a carga para si.";
         TextoAnimado.escrever(missaoResumo1);
-        //String missaoResumo2 = "O conteúdo é misterioso e valioso. Mas um velho nome do submundo descobre a movimentação… e quer a carga para si.";
-        //TextoAnimado.escrever(missaoResumo2);
         System.out.println();
         String pontos = "\033[1m...\033[0m\n";
         TextoAnimado.escrever(pontos);
         System.out.println();
-        String novoElemento = VERMELHO + "\033[1mNovo Elemento!\033[0m"+ RESET;;
+        String novoElemento = VERMELHO + "\033[1mNovo Elemento!\033[0m" + RESET;
+        ;
         TextoAnimado.escrever(novoElemento);
         System.out.println();
-        String fala = "-Você nem sabe o que tá carregando, "+ personagem.getNome() + ",  Mas eu sei. E eu vim buscar o que é meu...\033[1mcom juros.\033[0m\n";
+        String fala = "-Você nem sabe o que tá carregando, " + personagem.getNome() + ",  Mas eu sei. E eu vim buscar o que é meu...\033[1mcom juros.\033[0m\n";
         TextoAnimado.escrever(fala);
         System.out.println();
-        String monstro = VERMELHO + "\033[1mVilão – Chromejaw\033[0m"+ RESET;;
+        String monstro = VERMELHO + "\033[1mVilão – Chromejaw\033[0m" + RESET;
+        ;
         TextoAnimado.escrever(monstro);
         System.out.println("\033[1mAfiliado:\033[0m Ex-Maelstrom, agora mercenário solo\n" +
                 "\033[1mAparência:\033[0m Mandíbula de aço dourado, olhos vermelhos de escaneamento militar, braços substituídos por próteses com lâminas retráteis e armas integradas.\n\033[1mMotivação:\033[0m Chromejaw foi contratado por um rival do cliente para interceptar a carga.\nMas também quer usá-la como moeda de troca para subir de volta na cadeia alimentar de Night City.");
-        System.out.println();
         System.out.println("O que você vai fazer?");
-        System.out.println("1- Fugir");
-        System.out.println("2- Atacar");
+        System.out.println("1 - Fugir");
+        System.out.println("2 - Atacar");
+
         int acao = sc.nextInt();
-        if (acao == 1){
-
+        if (acao == 1) {
+            TextoAnimado.escrever("Você conseguiu escapar, mas perdeu a carga...");
+            TextoAnimado.escrever("Missão fracassada.");
         } else if (acao == 2) {
+            TextoAnimado.escrever("Você enfrentou Chromejaw com coragem...");
+            TextoAnimado.escrever("Depois de uma luta intensa, você vence!");
 
-        }else
-            System.out.println(VERMELHO + "Opção inválida" + RESET);
-        System.out.println(VERMELHO + "Você ficou parado sem fazer nada" + RESET);
-        TextoAnimado.escrever(pontos);
-        TextoAnimado.escrever(pontos);
-        TextoAnimado.escrever(pontos);
-        System.out.println(VERMELHO + "\033[1mVOCÊ MORREU!\033[0m" + RESET);
+            // Aqui concluímos a missão!
+            this.concluir();
+
+            // Recompensa: ex.
+            personagem.setHabilidade(personagem.getHabilidade() + 4);
+            TextoAnimado.escrever("Você ganhou +4 de habilidade!");
+        } else {
+            TextoAnimado.escrever("Opção inválida, você ficou parado e foi derrotado.");
+            TextoAnimado.escrever("Missão fracassada.");
+        }
+
+        // mostrar se a missão foi concluída ou não
+        if (this.isConcluida()) {
+            TextoAnimado.escrever("Missão concluída com sucesso! ✔");
+        } else {
+            TextoAnimado.escrever("Missão não concluída. ✖");
+        }
 
         sc.close();
     }

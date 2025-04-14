@@ -1,5 +1,7 @@
 package model;
 
+import model.missoes.Missoes;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
@@ -14,6 +16,7 @@ public class Personagem implements Serializable {
     private List<Hacks> hacks = new ArrayList<>();
     private int ouro = 0;
     private int provisoes = 2;
+    private List<Missoes> missoes = new ArrayList<>();
 
     public Personagem(String nome) {
         this.nome = nome;
@@ -26,6 +29,14 @@ public class Personagem implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public void adicionarMissao(Missoes m) {
+        missoes.add(m);
+    }
+
+    public List<Missoes> getMissoes() {
+        return missoes;
     }
 
     public int getHabilidade() {
