@@ -59,6 +59,7 @@ public class MissaoDentesDeOuro extends Missoes {
 
             // Aqui concluímos a missão!
             this.concluir();
+            personagem.adicionarMissao(this);
 
             // Recompensa: ex.
             personagem.setHabilidade(personagem.getHabilidade() + 4);
