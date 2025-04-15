@@ -102,6 +102,7 @@ public class TelaInventario {
 
                 default:
                     System.out.println(VERMELHO + "Opção inválida, tente novamente!" + RESET);
+                    abrirInventario(personagem, jogo);
                     return;
             }
 
