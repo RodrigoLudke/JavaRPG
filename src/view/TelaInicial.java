@@ -31,8 +31,10 @@ public class TelaInicial {
                     return;
                 case 2:
                     System.out.println("Carregando jogo...");
-                    jogo.carregarJogo();
-                    jogo.acessarInventario();
+                    if (jogo.carregarJogo(true)) {
+                        ;
+                        jogo.acessarInventario();
+                    }
                     return;
 
                 case 3:

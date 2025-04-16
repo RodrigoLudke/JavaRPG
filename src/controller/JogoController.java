@@ -35,12 +35,14 @@ public class JogoController {
             System.out.println("Erro ao salvar o jogo: " + e.getMessage());
         }
     }
-    public void carregarJogo() {
+    public boolean carregarJogo(boolean b) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("savegame.dat"))) {
             personagem = (Personagem) ois.readObject();
             System.out.println("Jogo carregado com sucesso!");
+            return true;
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Erro ao carregar o jogo: " + e.getMessage());
         }
+        return false;
     }
 }
