@@ -21,14 +21,14 @@ public class CombateController {
         int habilidadeOriginalInimigo = inimigo.getHabilidade();
 
         // Inicialização: Configura buffs ou penalidades
-        System.out.println("Preparando o combate...");
-        personagem.setHabilidade(habilidadeOriginalPersonagem + 2); // Exemplo de buff temporário
-        inimigo.setHabilidade(habilidadeOriginalInimigo - 1); // Exemplo de penalidade temporária
+        // System.out.println("Preparando o combate...");
+        // personagem.setHabilidade(habilidadeOriginalPersonagem + 2); // Exemplo de buff temporário
+        // inimigo.setHabilidade(habilidadeOriginalInimigo - 1); // Exemplo de penalidade temporária
 
         // Manipulação de estados: Exemplo de log ou atualização de status
-//        System.out.println("Status inicial do combate:");
-//        System.out.println("Personagem: Energia = " + personagem.getEnergia() + ", Habilidade = " + personagem.getHabilidade());
-//        System.out.println("Inimigo: Energia = " + inimigo.getEnergia() + ", Habilidade = " + inimigo.getHabilidade());
+        //  System.out.println("Status inicial do combate:");
+        //  System.out.println("Personagem: Energia = " + personagem.getEnergia() + ", Habilidade = " + personagem.getHabilidade());
+        //  System.out.println("Inimigo: Energia = " + inimigo.getEnergia() + ", Habilidade = " + inimigo.getHabilidade());
 
         // Chama a TelaCombate
         TelaCombate.combate(personagem, inimigo, jogo);
