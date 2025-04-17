@@ -1,5 +1,6 @@
 package model.missoes;
 
+import controller.CombateController;
 import controller.JogoController;
 import model.Personagem;
 import model.inimigos.ChromeJaw;
@@ -45,7 +46,7 @@ public class MissaoDentesDeOuro extends Missoes {
         System.out.println("\033[1mAfiliado:\033[0m Ex-Maelstrom, agora mercenário solo\n" +
                 "\033[1mAparência:\033[0m Mandíbula de aço dourado, olhos vermelhos de escaneamento militar, braços substituídos por próteses com lâminas retráteis e armas integradas.\n\033[1mMotivação:\033[0m Chromejaw foi contratado por um rival do cliente para interceptar a carga.\nMas também quer usá-la como moeda de troca para subir de volta na cadeia alimentar de Night City.");
 
-        jogo.jogoCombate(new ChromeJaw());
+        CombateController.iniciarCombate(personagem, new ChromeJaw(), jogo);
 
         sc.close();
     }

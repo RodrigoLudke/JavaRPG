@@ -19,9 +19,6 @@ public class JogoController {
     public void acessarInventario() throws InterruptedException {
         TelaInventario.abrirInventario(personagem, this); // só visualização
     }
-    public void jogoCombate(Inimigos inimigo) throws InterruptedException {
-        TelaCombate.combate(personagem, inimigo, this);
-    }
     public void jogoPadrao() throws InterruptedException {
         TelaPadrao.IntroducaoInicial(personagem, this);
     }
