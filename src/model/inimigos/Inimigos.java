@@ -1,27 +1,26 @@
-package model;
+package model.inimigos;
 
 import model.hacks.Hacks;
 import model.itens.Itens;
-import model.missoes.Missoes;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.io.Serializable;
 
-public class Personagem implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Inimigos {
     private String nome;
     private int habilidade;
     private int energia;
     private int sorte;
+    private int ouro;
+    private int provisoes;
     private List<Itens> inventario = new ArrayList<>();
     private List<Hacks> hacks = new ArrayList<>();
-    private int ouro = 0;
-    private int provisoes = 2;
-    private List<Missoes> missoes = new ArrayList<>();
 
-    public Personagem(String nome) {
+    public Inimigos(String nome, int habilidade, int energia, int sorte) {
         this.nome = nome;
+        this.habilidade = habilidade;
+        this.energia = energia;
+        this.sorte = sorte;
     }
 
     // Getters e setters, adicionar item, usar provisão, etc.
@@ -31,14 +30,6 @@ public class Personagem implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public void adicionarMissao(Missoes m) {
-        missoes.add(m);
-    }
-
-    public List<Missoes> getMissoes() {
-        return missoes;
     }
 
     public int getHabilidade() {
@@ -96,5 +87,4 @@ public class Personagem implements Serializable {
     public void adicionarHack(Hacks hack) {
         hacks.add(hack);
     }
-
 }

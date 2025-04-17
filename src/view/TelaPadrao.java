@@ -1,5 +1,6 @@
 package view;
 
+import controller.MissaoController;
 import model.Personagem;
 import model.missoes.MissaoDentesDeOuro;
 import view.utils.TextoAnimado;
@@ -36,7 +37,7 @@ public class TelaPadrao {
             switch (opcao) {
                 case 1:
                     System.out.println("Atendendo chamado do Jackie...");
-                    MissaoDentesDeOuro m1 = new MissaoDentesDeOuro();// Aqui você pode implementar a lógica para ir à missão
+                    MissaoDentesDeOuro m1 = new MissaoDentesDeOuro();
                     m1.executar(personagem, jogo);
                     return;
                 case 2:

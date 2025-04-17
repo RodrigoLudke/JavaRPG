@@ -2,6 +2,8 @@ package model.missoes;
 
 import controller.JogoController;
 import model.Personagem;
+import model.inimigos.ChromeJaw;
+import model.inimigos.Inimigos;
 import view.utils.TextoAnimado;
 
 import java.util.Scanner;
@@ -12,7 +14,6 @@ public class MissaoDentesDeOuro extends Missoes {
     public MissaoDentesDeOuro() {
         super("Dentes de Ouro", "Transporte clandestino perigoso com recompensas altas.");
     }
-
     public void executar(Personagem personagem, JogoController jogo) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
         String missao = "\033[1mMissão: Dentes de Ouro\033[0m";
@@ -34,47 +35,17 @@ public class MissaoDentesDeOuro extends Missoes {
         TextoAnimado.escrever(pontos);
         System.out.println();
         String novoElemento = VERMELHO + "\033[1mNovo Elemento!\033[0m" + RESET;
-        ;
         TextoAnimado.escrever(novoElemento);
         System.out.println();
         String fala = "-Você nem sabe o que tá carregando, " + personagem.getNome() + ",  Mas eu sei. E eu vim buscar o que é meu...\033[1mcom juros.\033[0m\n";
         TextoAnimado.escrever(fala);
         System.out.println();
         String monstro = VERMELHO + "\033[1mVilão – Chromejaw\033[0m" + RESET;
-        ;
         TextoAnimado.escrever(monstro);
         System.out.println("\033[1mAfiliado:\033[0m Ex-Maelstrom, agora mercenário solo\n" +
                 "\033[1mAparência:\033[0m Mandíbula de aço dourado, olhos vermelhos de escaneamento militar, braços substituídos por próteses com lâminas retráteis e armas integradas.\n\033[1mMotivação:\033[0m Chromejaw foi contratado por um rival do cliente para interceptar a carga.\nMas também quer usá-la como moeda de troca para subir de volta na cadeia alimentar de Night City.");
-        System.out.println("O que você vai fazer?");
-        System.out.println("1 - Fugir");
-        System.out.println("2 - Atacar");
 
-        int acao = sc.nextInt();
-        if (acao == 1) {
-            TextoAnimado.escrever("Você conseguiu escapar, mas perdeu a carga...");
-            TextoAnimado.escrever("Missão fracassada.");
-        } else if (acao == 2) {
-            TextoAnimado.escrever("Você enfrentou Chromejaw com coragem...");
-            TextoAnimado.escrever("Depois de uma luta intensa, você vence!");
-
-            // Aqui concluímos a missão!
-            this.concluir();
-            personagem.adicionarMissao(this);
-
-            // Recompensa: ex.
-            personagem.setHabilidade(personagem.getHabilidade() + 4);
-            TextoAnimado.escrever("Você ganhou +4 de habilidade!");
-        } else {
-            TextoAnimado.escrever("Opção inválida, você ficou parado e foi derrotado.");
-            TextoAnimado.escrever("Missão fracassada.");
-        }
-
-        // mostrar se a missão foi concluída ou não
-        if (this.isConcluida()) {
-            TextoAnimado.escrever("Missão concluída com sucesso! ✔");
-        } else {
-            TextoAnimado.escrever("Missão não concluída. ✖");
-        }
+        jogo.jogoCombate(new ChromeJaw());
 
         sc.close();
     }

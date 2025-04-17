@@ -1,12 +1,9 @@
 package controller;
 
 import model.Personagem;
-import model.Monstro;
-import java.util.Random;
 
 public class CombateController {
-    public static void iniciarCombate(Personagem p, Monstro m) {
-        Random rand = new Random();
-        // lógica simplificada de combate
-    }
+    public static void combate(Personagem p, JogoController jogo) throws InterruptedException {
+        // Lógica de combate : Por enquanto, não se faz necessario um controller apenas para o combate
+        }
 }
