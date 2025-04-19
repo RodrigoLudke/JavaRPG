@@ -52,7 +52,7 @@ public class MissaoDentesDeOuro extends Missoes {
         System.out.println("1 - Fugir pela rota lateral, arriscando um caminho por Kabuki ");
         System.out.println("2 - Encarar os Maelstrom e lutar por tempo ");
         System.out.println("3 - Negociar com Chromejaw ");
-        System.out.println("4 - Abrir Inventário");
+        System.out.println("4 - Abrir Inventário ");
         int acao = sc.nextInt();
 
         if (acao == 1) {
