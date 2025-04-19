@@ -2,29 +2,26 @@ package controller;
 
 import model.Personagem;
 import model.missoes.Missoes;
+import model.missoes.MissaoDentesDeOuro;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MissaoController {
-    private List<Missoes> missoes = new ArrayList<>();
+    private static final Map<String, Missoes> missoesDisponiveis = new HashMap<>();
 
-    public void adicionarMissao(Missoes m) {
-        missoes.add(m);
+    // Inicializa as missões disponíveis
+    static {
+        missoesDisponiveis.put("Dentes de Ouro", new MissaoDentesDeOuro());
+        // Adicione outras missões aqui
     }
 
-    public void mostrarMissoes() {
-        for (Missoes m : missoes) {
-            System.out.println((m.isConcluida() ? "[✔] " : "[ ] ") + m.getTitulo());
-        }
-    }
-
-    public void executarMissoes(String titulo, Personagem p, JogoController jogo) throws InterruptedException {
-        for (Missoes m : missoes) {
-            if (m.getTitulo().equalsIgnoreCase(titulo)) {
-                m.executar(p, jogo);
-                break;
-            }
+    public static void executarMissao(String titulo, Personagem p, JogoController jogo) throws InterruptedException {
+        Missoes missao = missoesDisponiveis.get(titulo); // Busca a missão pelo título
+        if (missao != null) {
+            missao.executar(p, jogo); // Executa a missão
+        } else {
+            System.out.println("Missão não encontrada: " + titulo);
         }
     }
 }

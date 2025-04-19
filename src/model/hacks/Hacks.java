@@ -1,4 +1,4 @@
-package model;
+package model.hacks;
 
 public class Hacks {
     private String nome;

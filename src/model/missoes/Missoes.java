@@ -30,7 +30,7 @@ public abstract class Missoes {
         this.concluida = true;
     }
 
-    public abstract void executar(Personagem personagem, JogoController jogo) throws InterruptedException; // cada missão terá sua própria lógica de execução
+    public abstract void executar(Personagem p, JogoController jogo) throws InterruptedException; // cada missão terá sua própria lógica de execução
 
     @Override
     public String toString() {
