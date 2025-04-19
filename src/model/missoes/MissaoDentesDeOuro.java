@@ -1,15 +1,11 @@
 package model.missoes;
 
 import controller.JogoController;
-import model.Monstro;
 import model.Personagem;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
 import java.util.Scanner;
 
-import static view.TelaCombate.combate;
-import static view.utils.Cores.RESET;
-import static view.utils.Cores.VERMELHO;
 public class MissaoDentesDeOuro extends Missoes {
     public MissaoDentesDeOuro() {
         super("Dentes de Ouro", "Transporte clandestino perigoso com recompensas altas.");
