@@ -22,6 +22,9 @@ public class Itens {
     public String getTipo() {
         return tipo;
     }
+    public int getBonusFA() {
+        return bonusFA;
+    }
     public boolean isPodeUsarEmCombate() {
         return podeUsarEmCombate;
     }

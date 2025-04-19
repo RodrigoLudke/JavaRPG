@@ -90,9 +90,20 @@ public class CombateController {
 
         // Aplicar dano com o item equipado
         if (itemEquipado != null && itemEquipado.isPodeUsarEmCombate() && escolha == opcao) {
-            int dano = Math.max(0, itemEquipado.getBonusDano() + personagem.getHabilidade() - inimigo.getHabilidade());
-            inimigo.setEnergia(inimigo.getEnergia() - dano);
-            System.out.println("Você atacou com " + itemEquipado.getNome() + " e causou " + dano + " de dano!");
+            // Calcular chance de acerto
+            int chanceBase = 70; // Chance base de 70%
+            int modificadorHabilidade = personagem.getHabilidade() - inimigo.getHabilidade();
+            int chanceFinal = chanceBase + modificadorHabilidade + itemEquipado.getBonusFA();
+
+            // Gerar número aleatório para determinar acerto
+            int resultado = (int) (Math.random() * 100);
+            if (resultado < chanceFinal) {
+                int dano = Math.max(0, itemEquipado.getBonusDano() + personagem.getHabilidade() - inimigo.getHabilidade());
+                inimigo.setEnergia(inimigo.getEnergia() - dano);
+                System.out.println("Você atacou com " + itemEquipado.getNome() + " e causou " + dano + " de dano!");
+            } else {
+                System.out.println("Você atacou com " + itemEquipado.getNome() + ", mas errou o ataque!");
+            }
             return;
         }
         opcao++;
