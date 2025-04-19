@@ -52,7 +52,7 @@ public class MissaoDentesDeOuro extends Missoes {
         TextoAnimado.escrever("Escolha sua próxima ação: ");
         System.out.println("1 - Fugir pela rota lateral, arriscando um caminho por Kabuki ");
         System.out.println("2 - Encarar os Maelstrom e lutar por tempo ");
-        System.out.println("3 - Negociar com Chromejaw ");
+        System.out.println("3 - Negociar com Chromejaw");
         int acao = sc.nextInt();
 
         if (acao == 1) {
