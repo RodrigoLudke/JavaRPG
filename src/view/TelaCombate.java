@@ -23,6 +23,6 @@ public class TelaCombate {
 
     public static void abrirInventario(Personagem personagem, JogoController jogo) throws InterruptedException {
         System.out.println("Abrindo o inventário...");
-        TelaInventario.abrirInventario(personagem, jogo);
+        TelaInventario.abrirInventarioCombate(personagem, jogo);
     }
 }
