@@ -86,7 +86,7 @@ public class MissaoDentesDeOuro extends Missoes {
                     TextoAnimado.escrever("Missão fracassada.");
                 }
         } else if (acao == 2) {
-            TextoAnimado.escrever("Você enfrentou Chromejaw com coragem....");
+            TextoAnimado.escrever("Você enfrentou Chromejaw com coragem...");
             TextoAnimado.escrever("Depois de uma luta intensa, você vence!");
 
             // Aqui concluímos a missão!
