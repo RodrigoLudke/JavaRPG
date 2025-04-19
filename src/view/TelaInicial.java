@@ -4,6 +4,8 @@ import java.util.concurrent.TimeUnit;
 import model.Personagem;
 import view.utils.TextoAnimado;
 import controller.JogoController;
+import view.utils.TextoAnimadoLongo;
+
 import java.util.Scanner;
 import static view.utils.Cores.*;
 

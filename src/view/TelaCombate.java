@@ -1,6 +1,8 @@
 package view;
 
+import model.Monstro;
 import model.Personagem;
+import model.missoes.MissaoDentesDeOuro;
 import view.utils.TextoAnimado;
 import controller.JogoController;
 
@@ -11,6 +13,7 @@ import static view.utils.Cores.*;
 import static view.utils.Cores.RESET;
 
 public class TelaCombate {
+
     public static void combate(Personagem p, JogoController jogo) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
         System.out.println(VERDE + "Você se depara com um inimigo!" + RESET);
@@ -19,6 +22,7 @@ public class TelaCombate {
         System.out.println("2 - Defender");
         System.out.println("3 - Fugir");
         int opcao = sc.nextInt();
+
 
         switch (opcao) {
             case 1:
@@ -31,7 +35,6 @@ public class TelaCombate {
                 break;
             case 3:
                 System.out.println(VERDE + "Você fugiu do combate!" + RESET);
-                // Lógica de fuga
                 break;
             default:
                 System.out.println(VERMELHO + "Opção inválida, tente novamente!" + RESET);
@@ -39,4 +42,7 @@ public class TelaCombate {
                 break;
         }
     }
-}
+
+
+    }
+

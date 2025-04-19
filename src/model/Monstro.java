@@ -14,4 +14,8 @@ public class Monstro {
         this.energia = energia;
         this.sorte = sorte;
     }
+
+
+
+
 }
