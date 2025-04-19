@@ -87,4 +87,10 @@ public class Inimigos {
     public void adicionarHack(Hacks hack) {
         hacks.add(hack);
     }
+    @Override
+    public String toString() {
+        return "Inimigo: " + nome + "\n" +
+                "Habilidade: " + habilidade + "\n" +
+                "Energia: " + energia;
+    }
 }
