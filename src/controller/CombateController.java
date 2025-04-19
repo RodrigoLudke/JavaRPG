@@ -5,8 +5,8 @@ import model.inimigos.Inimigos;
 import view.TelaCombate;
 
 public class CombateController {
+
     public static void iniciarCombate(Personagem personagem, Inimigos inimigo, JogoController jogo) throws InterruptedException {
-        // Validação: Verifica se o personagem ou inimigo têm energia suficiente
         if (personagem.getEnergia() <= 0) {
             System.out.println("Você não tem energia suficiente para lutar!");
             return;
@@ -16,27 +16,47 @@ public class CombateController {
             return;
         }
 
-        // Armazena os valores originais
-        int habilidadeOriginalPersonagem = personagem.getHabilidade();
-        int habilidadeOriginalInimigo = inimigo.getHabilidade();
+        System.out.println("O combate começou!");
 
-        // Inicialização: Configura buffs ou penalidades
-        // System.out.println("Preparando o combate...");
-        // personagem.setHabilidade(habilidadeOriginalPersonagem + 2); // Exemplo de buff temporário
-        // inimigo.setHabilidade(habilidadeOriginalInimigo - 1); // Exemplo de penalidade temporária
+        while (personagem.getEnergia() > 0 && inimigo.getEnergia() > 0) {
+            // Turno do jogador
+            int escolha = TelaCombate.mostrarOpcoes(personagem, inimigo);
+            switch (escolha) {
+                case 1: // Atacar
+                    int danoPersonagem = Math.max(0, personagem.getHabilidade() - inimigo.getHabilidade());
+                    inimigo.setEnergia(inimigo.getEnergia() - danoPersonagem);
+                    System.out.println("Você causou " + danoPersonagem + " de dano ao inimigo!");
+                    break;
 
-        // Manipulação de estados: Exemplo de log ou atualização de status
-        //  System.out.println("Status inicial do combate:");
-        //  System.out.println("Personagem: Energia = " + personagem.getEnergia() + ", Habilidade = " + personagem.getHabilidade());
-        //  System.out.println("Inimigo: Energia = " + inimigo.getEnergia() + ", Habilidade = " + inimigo.getHabilidade());
+                case 2: // Acessar inventário
+                    TelaCombate.abrirInventario(personagem, jogo);
+                    continue;
 
-        // Chama a TelaCombate
-        TelaCombate.combate(personagem, inimigo, jogo);
+                case 3: // Fugir
+                    System.out.println("Você fugiu do combate!");
+                    return;
 
-        // Restaura os valores originais
-        personagem.setHabilidade(habilidadeOriginalPersonagem);
-        inimigo.setHabilidade(habilidadeOriginalInimigo);
+                default:
+                    System.out.println("Opção inválida!");
+                    continue;
+            }
 
-        System.out.println("Combate finalizado. Estados restaurados.");
+            // Verificar se o inimigo foi derrotado
+            if (inimigo.getEnergia() <= 0) {
+                System.out.println("Você derrotou o inimigo!");
+                return;
+            }
+
+            // Turno do inimigo
+            int danoInimigo = Math.max(0, inimigo.getHabilidade() - personagem.getHabilidade());
+            personagem.setEnergia(personagem.getEnergia() - danoInimigo);
+            System.out.println("O inimigo causou " + danoInimigo + " de dano a você!");
+
+            // Verificar se o jogador foi derrotado
+            if (personagem.getEnergia() <= 0) {
+                System.out.println("Você foi derrotado...");
+                return;
+            }
+        }
     }
 }

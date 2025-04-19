@@ -1,7 +1,9 @@
 package model.missoes;
 
+import controller.CombateController;
 import controller.JogoController;
 import model.Personagem;
+import model.inimigos.ChromeJaw;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
 import java.util.Scanner;
@@ -83,6 +85,7 @@ public class MissaoDentesDeOuro extends Missoes {
                 }
         } else if (acao == 2) {
             TextoAnimado.escrever("Você enfrentou Chromejaw com coragem....");
+            CombateController.iniciarCombate(personagem, new ChromeJaw(), jogo);
             TextoAnimado.escrever("Depois de uma luta intensa, você vence!");
 
             // Aqui concluímos a missão!
