@@ -5,6 +5,7 @@ import controller.JogoController;
 import model.Personagem;
 import model.inimigos.ChromeJaw;
 import model.inimigos.Inimigos;
+import model.inimigos.utils.ItemFormatter;
 import model.itens.Itens;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
@@ -108,7 +109,7 @@ public class MissaoDentesDeOuro extends Missoes {
             TextoAnimado.escrever( "S: "+ ChromeJaw.sorte()); //é a sorte
             TextoAnimado.escrever( "E: "+ ChromeJaw.energia()); //é a energia
             TextoAnimado.escrever( "T: "+ ChromeJaw.tesouro()); //é o tesouro
-            TextoAnimado.escrever( "I: "+ ChromeJaw.itens()); // é um item, TEM QUE SER DESSA FORMA; canhão de plasma;w;1;5;5
+            TextoAnimado.escrever( "I: "+ ItemFormatter.formatarInventario(ChromeJaw.inventario())); // é um item, TEM QUE SER DESSA FORMA; canhão de plasma;w;1;5;5
 
             System.out.println("Gerando um número aleatório...");
             TextoAnimadoLongo.escrever(pontos);
