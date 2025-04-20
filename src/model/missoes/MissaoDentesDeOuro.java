@@ -5,6 +5,7 @@ import controller.JogoController;
 import model.Personagem;
 import model.inimigos.ChromeJaw;
 import model.inimigos.Inimigos;
+import model.itens.Itens;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
 
@@ -94,7 +95,9 @@ public class MissaoDentesDeOuro extends Missoes {
             //Encarar os Maelstrom e lutar por tempo
             TextoAnimado.escrever(personagem.getNome() + " ergue a mão para Jackie e saca a \033[1mpistola smart Unity MK.5\033[0m, programada com munição rastreável. A garagem vira um campo de batalha em segundos. ");
             TextoAnimado.escrever("\033[1mPistola smart Unity MK.5\033[0m adicionada ao inventario");
-            //Adiconar aqui a pistola no inventario
+            Itens pistola = new Itens("Pistola smart Unity MK.5", "Arma", true, 5, 5);
+            personagem.adicionarItem(pistola);
+
             TextoAnimado.escrever("Chromejaw avança como um tanque, com o punho metálico vibrando com força de demolição. Seu braço direito é um canhão de plasma portátil, e os olhos dele brilham em infravermelho. ");
             //Chamar informações do vilão
             TextoAnimado.escrever("M: Vilão em campo "); //indica que a cena é um monstro
@@ -139,7 +142,6 @@ public class MissaoDentesDeOuro extends Missoes {
             TextoAnimado.escrever( "— Essa carga não vale sua vida, Chrome. E se eu te dissesse que ela é mais perigosa com você do que comigo?  ");
             TextoAnimado.escrever("Chromejaw hesita. Sua mandíbula vibra com um ruído baixo.");
             TextoAnimado.escrever("— Fala logo, samurai de merda. O que tem aí dentro? ");
-            //ter implante de projeção ocular no inventario
             TextoAnimado.escrever(personagem.getNome() + " ativa seu implante de projeção ocular e forja rapidamente uma imagem: uma criatura embalada em fluido, com sensores de nanotoxinas conectados — um experimento Biodyne. ");
             TextoAnimado.escrever("— Quer entregar isso pra alguém? Vai acabar na lista de extermínio da Arasaka.");
             TextoAnimado.escrever(personagem.getNome() + " rola alto. Chromejaw recua, olhando para os homens dele. ");

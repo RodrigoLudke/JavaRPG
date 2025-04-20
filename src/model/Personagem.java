@@ -25,6 +25,7 @@ public class Personagem implements Serializable {
         this.nome = nome;
     }
 
+
     // Getters e setters, adicionar item, usar provisão, etc.
     public String getNome() {
         return nome;
@@ -86,9 +87,7 @@ public class Personagem implements Serializable {
         return inventario;
     }
 
-    public void adicionarItem(Itens item) {
-        inventario.add(item);
-    }
+    public void adicionarItem(Itens item) { inventario.add(item);}
 
     public List<Hacks> getHacks() {
         return hacks;

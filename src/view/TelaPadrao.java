@@ -38,7 +38,7 @@ public class TelaPadrao {
                 case 1:
                     System.out.println("Atendendo chamado do Jackie...");
 
-                    MissaoController.executarMissao("Dentes de Ouro ", personagem, jogo);
+                    MissaoController.executarMissao("Dentes de Ouro", personagem, jogo);
                     return;
                 case 2:
                     System.out.println("Abrindo inventário...");
