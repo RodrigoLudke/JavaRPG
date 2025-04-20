@@ -1,12 +1,17 @@
 package controller;
 
 import model.Personagem;
+import model.hacks.Hacks;
 import model.inimigos.Inimigos;
+import model.itens.Itens;
 import view.TelaCombate;
 
+import java.util.List;
+import java.util.Scanner;
+
 public class CombateController {
+
     public static void iniciarCombate(Personagem personagem, Inimigos inimigo, JogoController jogo) throws InterruptedException {
-        // Validação: Verifica se o personagem ou inimigo têm energia suficiente
         if (personagem.getEnergia() <= 0) {
             System.out.println("Você não tem energia suficiente para lutar!");
             return;
@@ -16,27 +21,104 @@ public class CombateController {
             return;
         }
 
-        // Armazena os valores originais
-        int habilidadeOriginalPersonagem = personagem.getHabilidade();
-        int habilidadeOriginalInimigo = inimigo.getHabilidade();
+        System.out.println("O combate começou!");
 
-        // Inicialização: Configura buffs ou penalidades
-        // System.out.println("Preparando o combate...");
-        // personagem.setHabilidade(habilidadeOriginalPersonagem + 2); // Exemplo de buff temporário
-        // inimigo.setHabilidade(habilidadeOriginalInimigo - 1); // Exemplo de penalidade temporária
+        while (personagem.getEnergia() > 0 && inimigo.getEnergia() > 0) {
+            // Turno do jogador
+            int escolha = TelaCombate.mostrarOpcoes(personagem, inimigo);
+            switch (escolha) {
+                case 1: // Atacar
+                    realizarAtaque(personagem, inimigo);
+                    break;
 
-        // Manipulação de estados: Exemplo de log ou atualização de status
-        //  System.out.println("Status inicial do combate:");
-        //  System.out.println("Personagem: Energia = " + personagem.getEnergia() + ", Habilidade = " + personagem.getHabilidade());
-        //  System.out.println("Inimigo: Energia = " + inimigo.getEnergia() + ", Habilidade = " + inimigo.getHabilidade());
+                case 2: // Acessar inventário
+                    TelaCombate.abrirInventario(personagem, jogo);
+                    continue;
 
-        // Chama a TelaCombate
-        TelaCombate.combate(personagem, inimigo, jogo);
+                case 3: // Fugir
+                    System.out.println("Você fugiu do combate!");
+                    return;
 
-        // Restaura os valores originais
-        personagem.setHabilidade(habilidadeOriginalPersonagem);
-        inimigo.setHabilidade(habilidadeOriginalInimigo);
+                default:
+                    System.out.println("Opção inválida!");
+                    continue;
+            }
 
-        System.out.println("Combate finalizado. Estados restaurados.");
+            // Verificar se o inimigo foi derrotado
+            if (inimigo.getEnergia() <= 0) {
+                System.out.println("Você derrotou o inimigo!");
+                return;
+            }
+
+            // Turno do inimigo
+            int danoInimigo = Math.max(0, inimigo.getHabilidade() - personagem.getHabilidade());
+            personagem.setEnergia(personagem.getEnergia() - danoInimigo);
+            System.out.println("O inimigo causou " + danoInimigo + " de dano a você!");
+
+            // Verificar se o jogador foi derrotado
+            if (personagem.getEnergia() <= 0) {
+                System.out.println("Você foi derrotado...");
+                return;
+            }
+        }
+    }
+
+    private static void realizarAtaque(Personagem personagem, Inimigos inimigo) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Escolha seu ataque:");
+        int opcao = 1;
+
+        // Exibir item equipado
+        Itens itemEquipado = personagem.getItemEquipado();
+        if (itemEquipado != null && itemEquipado.isPodeUsarEmCombate()) {
+            System.out.println(opcao + " - Atacar com " + itemEquipado.getNome() + " (Dano: " + itemEquipado.getBonusDano() + ")");
+            opcao++;
+        }
+
+        // Exibir hacks disponíveis
+        List<Hacks> hacks = personagem.getHacks();
+        for (Hacks hack : hacks) {
+            if (hack.isPodeUsarEmCombate()) {
+                System.out.println(opcao + " - Usar hack " + hack.getNome() + " (Dano: " + hack.getBonusDano() + ")");
+                opcao++;
+            }
+        }
+
+        int escolha = sc.nextInt();
+        opcao = 1;
+
+        // Aplicar dano com o item equipado
+        if (itemEquipado != null && itemEquipado.isPodeUsarEmCombate() && escolha == opcao) {
+            // Calcular chance de acerto
+            int chanceBase = 70; // Chance base de 70%
+            int modificadorHabilidade = personagem.getHabilidade() - inimigo.getHabilidade();
+            int chanceFinal = chanceBase + modificadorHabilidade + itemEquipado.getBonusFA();
+
+            // Gerar número aleatório para determinar acerto
+            int resultado = (int) (Math.random() * 100);
+            if (resultado < chanceFinal) {
+                int dano = Math.max(0, itemEquipado.getBonusDano() + personagem.getHabilidade() - inimigo.getHabilidade());
+                inimigo.setEnergia(inimigo.getEnergia() - dano);
+                System.out.println("Você atacou com " + itemEquipado.getNome() + " e causou " + dano + " de dano!");
+            } else {
+                System.out.println("Você atacou com " + itemEquipado.getNome() + ", mas errou o ataque!");
+            }
+            return;
+        }
+        opcao++;
+
+        // Aplicar dano com o hack escolhido
+        for (Hacks hack : hacks) {
+            if (hack.isPodeUsarEmCombate() && escolha == opcao) {
+                int dano = Math.max(0, hack.getBonusDano() + personagem.getHabilidade() - inimigo.getHabilidade());
+                inimigo.setEnergia(inimigo.getEnergia() - dano);
+                System.out.println("Você usou o hack " + hack.getNome() + " e causou " + dano + " de dano!");
+                return;
+            }
+            opcao++;
+        }
+
+        System.out.println("Opção inválida!");
     }
 }

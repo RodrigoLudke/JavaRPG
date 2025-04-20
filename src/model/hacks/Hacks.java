@@ -2,10 +2,25 @@ package model.hacks;
 
 public class Hacks {
     private String nome;
-    private int poder;
+    private String tipo;
+    private boolean podeUsarEmCombate;
+    private int bonusFA;
+    private int bonusDano;
 
-    public Hacks(String nome, int poder) {
+    public Hacks(String nome, String tipo, boolean podeUsarEmCombate, int bonusFA, int bonusDano) {
         this.nome = nome;
-        this.poder = poder;
+        this.tipo = tipo;
+        this.podeUsarEmCombate = podeUsarEmCombate;
+        this.bonusFA = bonusFA;
+        this.bonusDano = bonusDano;
+    }
+    public String getNome() {
+        return nome;
+    }
+    public boolean isPodeUsarEmCombate() {
+        return podeUsarEmCombate;
+    }
+    public int getBonusDano() {
+        return bonusDano;
     }
 }

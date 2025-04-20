@@ -6,6 +6,7 @@ public class Itens {
     private boolean podeUsarEmCombate;
     private int bonusFA;
     private int bonusDano;
+    private boolean equipado;
 
     public Itens(String nome, String tipo, boolean podeUsarEmCombate, int bonusFA, int bonusDano) {
         this.nome = nome;
@@ -13,5 +14,27 @@ public class Itens {
         this.podeUsarEmCombate = podeUsarEmCombate;
         this.bonusFA = bonusFA;
         this.bonusDano = bonusDano;
+        this.equipado = false;
+    }
+    public String getNome() {
+        return nome;
+    }
+    public String getTipo() {
+        return tipo;
+    }
+    public int getBonusFA() {
+        return bonusFA;
+    }
+    public boolean isPodeUsarEmCombate() {
+        return podeUsarEmCombate;
+    }
+    public boolean isEquipado() {
+        return equipado;
+    }
+    public void setEquipado(boolean equipado) {
+        this.equipado = equipado;
+    }
+    public int getBonusDano() {
+        return bonusDano;
     }
 }

@@ -19,6 +19,7 @@ public class Personagem implements Serializable {
     private int ouro = 0;
     private int provisoes = 2;
     private List<Missoes> missoes = new ArrayList<>();
+    private Itens itemEquipado;
 
     public Personagem(String nome) {
         this.nome = nome;
@@ -97,4 +98,28 @@ public class Personagem implements Serializable {
         hacks.add(hack);
     }
 
+    // Getters e setters, adicionar item, usar provisão, etc.
+    public Itens getItemEquipado() {
+        return itemEquipado;
+    }
+
+    public void equiparItem(Itens item) {
+        if (inventario.contains(item)) {
+            this.itemEquipado = item;
+            item.setEquipado(true); // Marca o item como equipado
+            System.out.println(item.getNome() + " foi equipado.");
+        } else {
+            throw new IllegalArgumentException("O item não está no inventário.");
+        }
+    }
+
+    public void desequiparItem() {
+        if (itemEquipado != null) {
+            itemEquipado.setEquipado(false); // Marca o item como não equipado
+            System.out.println(itemEquipado.getNome() + " foi desequipado.");
+            this.itemEquipado = null;
+        } else {
+            System.out.println("Nenhum item está equipado.");
+        }
+    }
 }

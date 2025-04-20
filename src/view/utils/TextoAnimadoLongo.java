@@ -38,12 +38,10 @@ public class TextoAnimadoLongo {
                         linha.append(fakeChar);
                         System.out.print("\r" + linha);
                         linha.setLength(linha.length() - 1);
-                        TimeUnit.MILLISECONDS.sleep(50);
                     }
 
                     linha.append(ch);
                     System.out.print("\r" + linha);
-                    TimeUnit.MILLISECONDS.sleep(300);
                     colunaAtual++;
                 }
             }
@@ -51,4 +49,3 @@ public class TextoAnimadoLongo {
             System.out.println(); // final
         }
     }
-

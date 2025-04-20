@@ -2,7 +2,6 @@ package view;
 
 import model.Monstro;
 import model.Personagem;
-import model.inimigos.Inimigos;
 import model.missoes.MissaoDentesDeOuro;
 import view.utils.TextoAnimado;
 import controller.JogoController;
@@ -15,7 +14,7 @@ import static view.utils.Cores.RESET;
 
 public class TelaCombate {
 
-    public static void combate(Personagem p, Inimigos inimigo, JogoController jogo) throws InterruptedException {
+    public static void combate(Personagem p, JogoController jogo) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
         System.out.println(VERDE + "Você se depara com um inimigo!" + RESET);
         System.out.println("Escolha uma ação:");
@@ -39,7 +38,7 @@ public class TelaCombate {
                 break;
             default:
                 System.out.println(VERMELHO + "Opção inválida, tente novamente!" + RESET);
-                combate(p, inimigo, jogo);
+                combate(p, jogo);
                 break;
         }
     }
