@@ -1,48 +1,28 @@
 package view;
 
-import model.Monstro;
 import model.Personagem;
-import model.missoes.MissaoDentesDeOuro;
-import view.utils.TextoAnimado;
+import model.inimigos.Inimigos;
 import controller.JogoController;
 
 import java.util.Scanner;
 
-import static view.TelaInicial.mostrarMenu;
-import static view.utils.Cores.*;
-import static view.utils.Cores.RESET;
-
 public class TelaCombate {
 
-    public static void combate(Personagem p, JogoController jogo) throws InterruptedException {
+    public static int mostrarOpcoes(Personagem personagem, Inimigos inimigo) {
         Scanner sc = new Scanner(System.in);
-        System.out.println(VERDE + "Você se depara com um inimigo!" + RESET);
+
+        System.out.println("\nSua energia: " + personagem.getEnergia());
+        System.out.println("Energia do inimigo: " + inimigo.getEnergia());
         System.out.println("Escolha uma ação:");
         System.out.println("1 - Atacar");
-        System.out.println("2 - Defender");
+        System.out.println("2 - Acessar Inventário");
         System.out.println("3 - Fugir");
-        int opcao = sc.nextInt();
 
-
-        switch (opcao) {
-            case 1:
-                System.out.println(VERDE + "Você atacou o inimigo!" + RESET);
-                // Lógica de ataque
-                break;
-            case 2:
-                System.out.println(VERDE + "Você se defendeu!" + RESET);
-                // Lógica de defesa
-                break;
-            case 3:
-                System.out.println(VERDE + "Você fugiu do combate!" + RESET);
-                break;
-            default:
-                System.out.println(VERMELHO + "Opção inválida, tente novamente!" + RESET);
-                combate(p, jogo);
-                break;
-        }
+        return sc.nextInt();
     }
 
-
+    public static void abrirInventario(Personagem personagem, JogoController jogo) throws InterruptedException {
+        System.out.println("Abrindo o inventário...");
+        TelaInventario.abrirInventarioCombate(personagem, jogo);
     }
-
+}
