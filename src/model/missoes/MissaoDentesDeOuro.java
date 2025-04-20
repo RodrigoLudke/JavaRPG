@@ -73,14 +73,16 @@ public class MissaoDentesDeOuro extends Missoes {
             System.out.println("4 - Abrir Inventário");
             int escolha = sc.nextInt();
             if(escolha == 1){
-                //Chamar a missão AbrirContainer
+                Missoes abrir = new AbrirContainer();
+                abrir.executar(personagem, jogo);
                 return;
             }else if(escolha == 2){
-                //Chamar a missão Seguir
+                Missoes seguir = new Seguir();
+                seguir.executar(personagem, jogo);
                 return;
             } else if (escolha == 3) {
-                //Chamar a missão Seguir
-                return;
+                Missoes contato = new Contato();
+                contato.executar(personagem, jogo);
             }else if (escolha == 4) {
                 //Abrir inventario
                 System.out.println("Abrindo inventário...");
@@ -121,14 +123,12 @@ public class MissaoDentesDeOuro extends Missoes {
             int num2 = atual + numeroV;
             TextoAnimado.escrever("Total atual para de habilidades para combate: " + num2);
             //iniciar combate
-            System.out.println("Teste");
-
-
-            TextoAnimado.escrever("Você enfrentou Chromejaw com coragem....");
+            TextoAnimadoLongo.escrever("Incio do combate...");
             CombateController.iniciarCombate(personagem, new ChromeJaw(), jogo);
             TextoAnimado.escrever("Depois de uma luta intensa, você vence!");
-
-
+            Itens canhao = new Itens("canhão de plasma", "Arma", true, 5, 7);
+            personagem.adicionarItem(canhao);
+            TextoAnimado.escrever("Item adicionado ao inventário: canhão de plasma");
             // Aqui concluímos a missão!
             this.concluir();
             personagem.adicionarMissao(this);
@@ -136,6 +136,33 @@ public class MissaoDentesDeOuro extends Missoes {
             // Recompensa: ex.
             personagem.setHabilidade(personagem.getHabilidade() + 4);
             TextoAnimado.escrever("Você ganhou +4 de habilidade!");
+            TextoAnimado.escrever("Escolha sua próxima ação: ");
+            System.out.println("1 - Abrir o container antes de entregá-lo — saber o que carrega pode salvar sua vida. ");
+            System.out.println("2 - Seguir com a entrega como combinado — sem perguntas.");
+            System.out.println("3 - Contatar um fixador confiável para investigar Silvertongue. ");
+            System.out.println("4 - Abrir Inventário");
+            int escolha = sc.nextInt();
+            if(escolha == 1){
+                Missoes abrir = new AbrirContainer();
+                abrir.executar(personagem, jogo);
+                return;
+            }else if(escolha == 2){
+                Missoes seguir = new Seguir();
+                seguir.executar(personagem, jogo);
+                return;
+            } else if (escolha == 3) {
+                Missoes contato = new Contato();
+                contato.executar(personagem, jogo);
+            }else if (escolha == 4) {
+                //Abrir inventario
+                System.out.println("Abrindo inventário...");
+                jogo.acessarInventario();
+                return;
+            }else {
+                TextoAnimado.escrever("Opção inválida, você ficou parado e foi derrotado.");
+                TextoAnimado.escrever("Missão fracassada.");
+            }
+
         } else if (acao == 3) {
             //Negociar com Chromejaw
             TextoAnimado.escrever(personagem.getNome() + " ergue as mãos e diz:");
@@ -156,14 +183,16 @@ public class MissaoDentesDeOuro extends Missoes {
             System.out.println("4 - Abrir Inventário");
             int escolha = sc.nextInt();
             if(escolha == 1){
-                //Chamar a missão AbrirContainer
+                Missoes abrir = new AbrirContainer();
+                abrir.executar(personagem, jogo);
                 return;
             }else if(escolha == 2){
-                //Chamar a missão Seguir
+                Missoes seguir = new Seguir();
+                seguir.executar(personagem, jogo);
                 return;
             } else if (escolha == 3) {
-                //Chamar a missão Seguir
-                return;
+                Missoes contato = new Contato();
+                contato.executar(personagem, jogo);
             }else if (escolha == 4) {
                 //Abrir inventario
                 System.out.println("Abrindo inventário...");
