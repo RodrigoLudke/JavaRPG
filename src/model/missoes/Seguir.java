@@ -22,6 +22,8 @@ public class Seguir extends Missoes {
 
     public void executar(Personagem personagem, JogoController jogo) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
+        TextoAnimado.escrever("Seguir com a entrega como combinado — sem perguntas ");
+        TextoAnimado.escrever("Você decide manter o código. Night City já cobra caro por quem quebra acordos. ");
         TextoAnimado.escrever("Jackie não discute — apenas acelera. Vocês passam por Charter Hill, atravessam um bloqueio policial com ajuda de subornos e finalmente entram nas ruínas decadentes de Pacifica. ");
         TextoAnimado.escrever("O ponto de entrega é uma torre abandonada, onde uma figura encapuzada os espera: Silvertongue. Ele sorri com dentes de ouro polido, a voz suave e venenosa. ");
         TextoAnimado.escrever("— Muito bem. Profissionalismo raro hoje em dia.");
@@ -52,6 +54,7 @@ public class Seguir extends Missoes {
         TextoAnimado.escrever("Depois de uma luta intensa, você vence!");
         Itens DronesReciclados = new Itens("Drones Reciclados", "Arma", true, 5, 10);
         personagem.adicionarItem(DronesReciclados);
+        TextoAnimado.escrever("Você pega os Drones Reciclados e os coloca na mochila.");
         TextoAnimado.escrever("— Você fez bem, mas... o que estava dentro, agora vai mudar o mundo. Espero que você nunca descubra como. ");
         TextoAnimado.escrever("Ele desaparece numa névoa de partículas, levando o container. ");
         System.out.println(VERDE + "Nova Missão:" + RESET);

@@ -19,6 +19,8 @@ public class AbrirContainer extends Missoes {
 
     public void executar(Personagem personagem, JogoController jogo) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
+        TextoAnimado.escrever("Abrir o container antes de entregá-lo");
+        TextoAnimado.escrever("Jackie hesita. ");
         TextoAnimado.escrever("— Tem certeza? Se a gente abrir isso e for rastreado, tamo morto antes de ligar a moto. ");
         TextoAnimado.escrever("Mas " + personagem.getNome() + "já está plugando seu spike decodificador no painel do container. O selo começa a abrir... e o ar ao redor gela por um segundo.");
         TextoAnimado.escrever("— O que é isso? — Jackie pergunta, olhando para o container. ");
@@ -41,7 +43,7 @@ public class AbrirContainer extends Missoes {
         TextoAnimado.escrever("Total atual para de habilidades para combate: " + num);
         TextoAnimado.escrever("Adicionado " + numeroV + " as habilidades no Inimigo");
         int atual2 = drones.habilidade();
-        int num2 = atual + numeroV;
+        int num2 = atual2 + numeroV;
         TextoAnimado.escrever("Total atual para de habilidades para combate: " + num2);
         //iniciar combate
         TextoAnimadoLongo.escrever("Incio do combate...");

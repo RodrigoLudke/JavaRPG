@@ -47,10 +47,10 @@ public class MissaoDentesDeOuro extends Missoes {
         System.out.println();
         TextoAnimado.escrever("— Eu ouvi dizer que você tem algo que pertence ao meu cliente. Entregue, e ninguém precisa virar ração de drone. ");
         String Tensao = personagem.getNome() + " está cercado. Jackie olha pra " + personagem.getNome() + ", mão próxima da pistola.";
+        TextoAnimado.escrever(Tensao);
         Itens pistola = new Itens("Pistola smart Unity MK.5", "Arma", true, 5, 5);
         personagem.adicionarItem(pistola);
         TextoAnimado.escrever("Item adicionado ao inventário: Pistola smart Unity MK.5");
-        TextoAnimado.escrever(Tensao);
         TextoAnimado.escrever("Escolha sua próxima ação: ");
         System.out.println("1 - Fugir pela rota lateral, arriscando um caminho por Kabuki");
         System.out.println("2 - Encarar os Maelstrom e lutar por tempo");
@@ -121,7 +121,7 @@ public class MissaoDentesDeOuro extends Missoes {
             TextoAnimado.escrever("Total atual para de habilidades para combate: " + num);
             TextoAnimado.escrever("Adicionado " + numeroV + " as habilidades no Inimigo");
             int atual2 = ChromeJaw.habilidade();
-            int num2 = atual + numeroV;
+            int num2 = atual2 + numeroV;
             TextoAnimado.escrever("Total atual para de habilidades para combate: " + num2);
             //iniciar combate
             TextoAnimadoLongo.escrever("Incio do combate...");
