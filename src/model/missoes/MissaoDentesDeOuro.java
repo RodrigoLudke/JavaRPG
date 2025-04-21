@@ -92,7 +92,8 @@ public class MissaoDentesDeOuro extends Missoes {
             }else if (escolha == 4) {
                 //Abrir inventario
                 System.out.println("Abrindo inventário...");
-                jogo.acessarInventario();
+                jogo.atualizarEstadoAtual("Missão: Dentes de Ouro : 1/1");
+                jogo.acessarInventarioExploracao();
                 return;
             }else {
                 TextoAnimado.escrever("Opção inválida, você ficou parado e foi derrotado.");
@@ -128,8 +129,11 @@ public class MissaoDentesDeOuro extends Missoes {
             TextoAnimadoLongo.escrever("Incio do combate...");
             CombateController.iniciarCombate(personagem, new ChromeJaw(), jogo);
             TextoAnimado.escrever("Depois de uma luta intensa, você vence!");
-            //Itens CanhaoDePlasma = new CanhaoDePlasma();
-            personagem.adicionarItem(ChromeJaw.inventario().get(0)); // Adiciona o Canhão de Plasma ao inventário
+
+            for (Itens item : ChromeJaw.inventario()) {
+                personagem.adicionarItem(item);
+            } // Adiciona o Canhão de Plasma ao inventário
+
             TextoAnimado.escrever("Item adicionado ao inventário: canhão de plasma");
             // Aqui concluímos a missão!
             this.concluir();
@@ -158,7 +162,8 @@ public class MissaoDentesDeOuro extends Missoes {
             }else if (escolha == 4) {
                 //Abrir inventario
                 System.out.println("Abrindo inventário...");
-                jogo.acessarInventario();
+                jogo.atualizarEstadoAtual("Missão: Dentes de Ouro : 2/1");
+                jogo.acessarInventarioExploracao();
                 return;
             }else {
                 TextoAnimado.escrever("Opção inválida, você ficou parado e foi derrotado.");
@@ -198,7 +203,7 @@ public class MissaoDentesDeOuro extends Missoes {
             }else if (escolha == 4) {
                 //Abrir inventario
                 System.out.println("Abrindo inventário...");
-                jogo.atualizarEstadoAtual("Missão: Dentes de Ouro : Primeira Escolha");
+                jogo.atualizarEstadoAtual("Missão: Dentes de Ouro : 3/1");
                 jogo.acessarInventarioExploracao();
                 return;
             }else {
@@ -209,7 +214,8 @@ public class MissaoDentesDeOuro extends Missoes {
         } else if (acao == 4){
             //Abrir inventario
             System.out.println("Abrindo inventário...");
-            jogo.acessarInventario();
+            jogo.atualizarEstadoAtual("Missão: Dentes de Ouro : 4/1");
+            jogo.acessarInventarioExploracao();
             return;
         } else {
             TextoAnimado.escrever("Opção inválida, você ficou parado e foi derrotado.");
