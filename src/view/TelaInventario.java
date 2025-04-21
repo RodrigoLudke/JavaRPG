@@ -71,7 +71,7 @@ public class TelaInventario {
     public static void abrirInventario(Personagem personagem, JogoController jogo) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Inventário:");
+        System.out.println("=== Inventário ===");
         System.out.println(ROXO + "Habilidade: " + personagem.getHabilidade() + RESET);
         System.out.println(CIANO +"Energia: " + personagem.getEnergia() + RESET);
         System.out.println(AZUL + "Sorte: " + personagem.getSorte() + RESET);
@@ -151,7 +151,7 @@ public class TelaInventario {
                     personagem.setEnergia(personagem.getEnergia() + cura);
                     System.out.println("Você usou " + itemSelecionado.getNome() + " e recuperou " + cura + " de energia!");
                     inventario.remove(itemSelecionado); // Remove o item após o uso, se necessário
-                } else if( itemSelecionado.getTipo().equals("Arma")) {
+                } else if (itemSelecionado.getTipo().equals("Arma")) {
                     // Exemplo: Equipar a arma
                     if (!itemSelecionado.isEquipado()) {
                         personagem.equiparItem(itemSelecionado);
@@ -169,8 +169,7 @@ public class TelaInventario {
                     } else {
                         System.out.println(itemSelecionado.getNome() + " já está equipado.");
                     }
-                }
-                else {
+                } else {
                     System.out.println("Este item não pode ser usado.");
                 }
             } else {
@@ -178,7 +177,54 @@ public class TelaInventario {
             }
         }
     }
+        public static void abrirInventarioExploracao (Personagem personagem, JogoController jogo) throws InterruptedException {
+            Scanner sc = new Scanner(System.in);
 
+            System.out.println("=== Inventário ===");
+            System.out.println("Item equipado: " + (personagem.getItemEquipado() != null ? personagem.getItemEquipado().getNome() : "Nenhum"));
+            System.out.println("Habilidade: " + personagem.getHabilidade());
+            System.out.println("Energia: " + personagem.getEnergia());
+            System.out.println("Sorte: " + personagem.getSorte());
+            System.out.println();
+
+            List<Itens> inventario = personagem.getInventario();
+            if (inventario.isEmpty()) {
+                System.out.println("Seu inventário está vazio.");
+            } else {
+                for (int i = 0; i < inventario.size(); i++) {
+                    Itens item = inventario.get(i);
+                    System.out.println((i + 1) + " - " + item.getNome() + (item.isEquipado() ? " (Equipado)" : ""));
+                }
+            }
+
+            System.out.println("0 - Voltar ao jogo");
+            System.out.print("Escolha um item para usar ou 0 para sair: ");
+            int escolha = sc.nextInt();
+
+            if (escolha == 0) {
+                System.out.println("Voltando ao jogo...");
+                return;
+            }
+
+            if (escolha > 0 && escolha <= inventario.size()) {
+                Itens itemSelecionado = inventario.get(escolha - 1);
+
+                if (itemSelecionado.getTipo().equals("Cura")) {
+                    // Exemplo: Usar o Kit Médico para curar
+                    int cura = 10; // Valor de cura pode ser ajustado
+                    personagem.setEnergia(personagem.getEnergia() + cura);
+                    System.out.println("Você usou " + itemSelecionado.getNome() + " e recuperou " + cura + " de energia!");
+                    inventario.remove(itemSelecionado); // Remove o item após o uso, se necessário
+                } else if (itemSelecionado.getTipo().equals("Arma")) {
+                    // Exemplo: Equipar a arma
+                    if (!itemSelecionado.isEquipado()) {
+                        personagem.equiparItem(itemSelecionado);
+                        itemSelecionado.setEquipado(true);
+                        System.out.println("Você equipou ");
+                    }
+
+                }
+            }
+
+        }
 }
-
-

@@ -8,6 +8,7 @@ import model.inimigos.Inimigos;
 import model.inimigos.utils.ItemFormatter;
 import model.itens.CanhaoDePlasma;
 import model.itens.Itens;
+import view.TelaInventario;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
 
@@ -198,6 +199,7 @@ public class MissaoDentesDeOuro extends Missoes {
                 //Abrir inventario
                 System.out.println("Abrindo inventário...");
                 jogo.acessarInventario();
+                jogo.acessarInventarioExploracao();
                 return;
             }else {
                 TextoAnimado.escrever("Opção inválida, você ficou parado e foi derrotado.");

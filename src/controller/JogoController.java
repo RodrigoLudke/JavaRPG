@@ -1,5 +1,6 @@
 package controller;
 
+import model.EstadoJogo;
 import model.Personagem;
 import model.inimigos.Inimigos;
 import view.*;
@@ -8,6 +9,7 @@ import java.io.*;
 
 public class JogoController {
     private Personagem personagem;
+    private String estadoAtual = "Início do jogo"; // Estado inicial do jogo
 
     public void iniciarJogo() throws InterruptedException {
         TelaInicial.mostrarMenu();
@@ -17,7 +19,10 @@ public class JogoController {
         TelaInventario.configurarPersonagem(personagem, this);
     }
     public void acessarInventario() throws InterruptedException {
-        TelaInventario.abrirInventario(personagem, this); // só visualização
+        TelaInventario.abrirInventario(personagem, this);// só visualização
+    }
+    public void acessarInventarioExploracao() throws InterruptedException {
+        TelaInventario.abrirInventarioExploracao(personagem, this);
     }
     public void jogoPadrao() throws InterruptedException {
         TelaPadrao.IntroducaoInicial(personagem, this);
@@ -25,18 +30,25 @@ public class JogoController {
     public void jogoBase() throws InterruptedException {
         TelaPadrao.Base(personagem, this);
     }
+
+    public void atualizarEstadoAtual(String novoEstado) {
+        this.estadoAtual = novoEstado;
+    }
+
     public void salvarJogo() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("savegame.dat"))) {
-            oos.writeObject(personagem);
-            System.out.println("Jogo salvo com sucesso!");
+            EstadoJogo estado = new EstadoJogo(personagem, estadoAtual);
+            oos.writeObject(estado);
+            System.out.println("Jogo salvo com sucesso! Ponto atual: " + estadoAtual);
         } catch (IOException e) {
             System.out.println("Erro ao salvar o jogo: " + e.getMessage());
         }
     }
-    public boolean carregarJogo(boolean b) {
+    public boolean carregarJogo() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("savegame.dat"))) {
-            personagem = (Personagem) ois.readObject();
-            System.out.println("Jogo carregado com sucesso!");
+            EstadoJogo estado = (EstadoJogo) ois.readObject();
+            this.personagem = estado.getPersonagem();
+            System.out.println("Jogo carregado com sucesso! Missão atual: " + estado.getMissaoAtual());
             return true;
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Erro ao carregar o jogo: " + e.getMessage());

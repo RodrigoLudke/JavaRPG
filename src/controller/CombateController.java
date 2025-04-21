@@ -186,4 +186,75 @@ public class CombateController {
         }
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////
+
+
+    public static void iniciarCombateComVarios(Personagem personagem, List<Inimigos> inimigos, JogoController jogo) throws InterruptedException {
+        if (personagem.getEnergia() <= 0) {
+            System.out.println("Você não tem energia suficiente para lutar!");
+            return;
+        }
+
+        System.out.println("O combate contra múltiplos inimigos começou!");
+        for (Inimigos inimigo : inimigos) {
+            System.out.println("- " + inimigo.getNome() + " (Energia: " + inimigo.getEnergia() + ")");
+        }
+
+        while (personagem.getEnergia() > 0 && !inimigos.isEmpty()) {
+
+            Scanner sc = new Scanner(System.in);
+            int escolha = TelaCombate.mostrarOpcoesInimigos(personagem, inimigos);
+
+            switch (escolha) {
+                case 1: // Atacar
+                    System.out.println("Escolha um inimigo para atacar:");
+                    for (int i = 0; i < inimigos.size(); i++) {
+                        System.out.println((i + 1) + " - " + inimigos.get(i).getNome() + " (Energia: " + inimigos.get(i).getEnergia() + ")");
+                    }
+                    int alvo = sc.nextInt() - 1;
+
+                    if (alvo >= 0 && alvo < inimigos.size()) {
+                        Inimigos inimigo = inimigos.get(alvo);
+                        realizarAtaque(personagem, inimigo);
+
+                        if (inimigo.getEnergia() <= 0) {
+                            System.out.println("Você derrotou " + inimigo.getNome() + "!");
+                            inimigos.remove(inimigo);
+                        }
+                    } else {
+                        System.out.println("Escolha inválida.");
+                    }
+                    break;
+
+                case 2: // Acessar inventário
+                    TelaCombate.abrirInventario(personagem, jogo);
+                    continue;
+
+                case 3: // Fugir
+                    System.out.println("Você fugiu do combate!");
+                    return;
+
+                default:
+                    System.out.println("Opção inválida!");
+                    continue;
+            }
+
+            // Turno dos inimigos
+            for (Inimigos inimigo : inimigos) {
+                if (inimigo.getEnergia() > 0) {
+                    turnoInimigo(inimigo, personagem);
+                }
+            }
+
+            // Verificar se o jogador foi derrotado
+            if (personagem.getEnergia() <= 0) {
+                System.out.println("Você foi derrotado...");
+                return;
+            }
+        }
+
+        if (inimigos.isEmpty()) {
+            System.out.println("Você derrotou todos os inimigos!");
+        }
+    }
 }
