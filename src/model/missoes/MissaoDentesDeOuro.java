@@ -198,7 +198,7 @@ public class MissaoDentesDeOuro extends Missoes {
             }else if (escolha == 4) {
                 //Abrir inventario
                 System.out.println("Abrindo inventário...");
-                jogo.acessarInventario();
+                jogo.atualizarEstadoAtual("Missão: Dentes de Ouro : Primeira Escolha");
                 jogo.acessarInventarioExploracao();
                 return;
             }else {
