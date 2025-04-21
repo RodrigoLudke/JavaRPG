@@ -11,7 +11,9 @@ public class ChromeJaw extends Inimigos {
         this.setOuro(5);
         this.setProvisoes(0);
 
-        //getInventario().add(new CanhaoDePlasma());
+        CanhaoDePlasma canhaoDePlasma = new CanhaoDePlasma(); // Cria a instância do Canhão de Plasma
+        getInventario().add(canhaoDePlasma); // Adiciona ao inventário
+        equiparItem(canhaoDePlasma);
     }
 
     public static int habilidade() {
@@ -36,7 +38,7 @@ public class ChromeJaw extends Inimigos {
 
     public static ArrayList<Itens> inventario() {
         ArrayList<Itens> inventario = new ArrayList<>();
-        inventario.add(new CanhaoDePlasma());
+        inventario.add(new CanhaoDePlasma()); // Adiciona o Canhão de Plasma ao inventário
         return inventario;
     }
 }

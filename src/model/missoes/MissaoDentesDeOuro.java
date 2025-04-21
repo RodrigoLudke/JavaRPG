@@ -6,6 +6,7 @@ import model.Personagem;
 import model.inimigos.ChromeJaw;
 import model.inimigos.Inimigos;
 import model.inimigos.utils.ItemFormatter;
+import model.itens.CanhaoDePlasma;
 import model.itens.Itens;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
@@ -127,8 +128,8 @@ public class MissaoDentesDeOuro extends Missoes {
             TextoAnimadoLongo.escrever("Incio do combate...");
             CombateController.iniciarCombate(personagem, new ChromeJaw(), jogo);
             TextoAnimado.escrever("Depois de uma luta intensa, você vence!");
-            Itens canhao = new Itens("canhão de plasma", "Arma", true, 5, 7);
-            personagem.adicionarItem(canhao);
+            //Itens CanhaoDePlasma = new CanhaoDePlasma();
+            personagem.adicionarItem(ChromeJaw.inventario().get(0)); // Adiciona o Canhão de Plasma ao inventário
             TextoAnimado.escrever("Item adicionado ao inventário: canhão de plasma");
             // Aqui concluímos a missão!
             this.concluir();

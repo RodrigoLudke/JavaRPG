@@ -122,7 +122,11 @@ public class CombateController {
     }
     private static void turnoInimigo(Inimigos inimigo, Personagem personagem) {
         Random random = new Random();
-        boolean vaiAtacar = random.nextBoolean(); // Decide aleatoriamente se vai atacar ou tentar se curar
+        boolean podeCurar = inimigo.getInventario().stream()
+                .anyMatch(item -> item.getTipo().equalsIgnoreCase("Cura"));
+
+        boolean vaiAtacar = !podeCurar || random.nextBoolean(); // Ataca se não puder curar ou decide aleatoriamente
+
 
         if (vaiAtacar) {
             realizarAtaqueInimigo(inimigo, personagem);
@@ -141,24 +145,35 @@ public class CombateController {
             personagem.setEnergia(personagem.getEnergia() - dano);
             System.out.println("O inimigo usou o hack " + hack.getNome() + " e causou " + dano + " de dano!");
         } else {
-            Itens armaEquipada = inimigo.getInventario().stream()
-                    .filter(item -> item.isPodeUsarEmCombate())
-                    .findFirst()
-                    .orElse(null);
+            // Verifica se o inimigo já tem uma arma equipada
+            Itens armaEquipada = inimigo.getItemEquipado();
 
-            if (armaEquipada != null) {
+            if (armaEquipada != null && armaEquipada.isPodeUsarEmCombate()) {
+                // Usa a arma equipada
                 int dano = Math.max(0, armaEquipada.getBonusDano() + inimigo.getHabilidade() - personagem.getHabilidade());
                 personagem.setEnergia(personagem.getEnergia() - dano);
                 System.out.println("O inimigo atacou com " + armaEquipada.getNome() + " e causou " + dano + " de dano!");
             } else {
-                System.out.println("O inimigo tentou atacar, mas não possui arma ou hack utilizável!");
+                // Seleciona uma arma válida do inventário
+                armaEquipada = inimigo.getInventario().stream()
+                        .filter(item -> item.isPodeUsarEmCombate())
+                        .findFirst()
+                        .orElse(null);
+
+                if (armaEquipada != null) {
+                    int dano = Math.max(0, armaEquipada.getBonusDano() + inimigo.getHabilidade() - personagem.getHabilidade());
+                    personagem.setEnergia(personagem.getEnergia() - dano);
+                    System.out.println("O inimigo atacou com " + armaEquipada.getNome() + " e causou " + dano + " de dano!");
+                } else {
+                    System.out.println("O inimigo tentou atacar, mas não possui arma ou hack utilizável!");
+                }
             }
         }
     }
 
     private static void tentarCurarInimigo(Inimigos inimigo) {
         Itens kitMedico = inimigo.getInventario().stream()
-                .filter(item -> item.getTipo().equalsIgnoreCase("Kit Médico"))
+                .filter(item -> item.getTipo().equalsIgnoreCase("Cura"))
                 .findFirst()
                 .orElse(null);
 

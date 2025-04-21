@@ -15,6 +15,7 @@ public class Inimigos {
     private int provisoes;
     private List<Itens> inventario = new ArrayList<>();
     private List<Hacks> hacks = new ArrayList<>();
+    private Itens itemEquipado;
 
     public Inimigos(String nome, int habilidade, int energia, int sorte) {
         this.nome = nome;
@@ -87,6 +88,20 @@ public class Inimigos {
     public void adicionarHack(Hacks hack) {
         hacks.add(hack);
     }
+
+    public Itens getItemEquipado() {
+        return itemEquipado;
+    }
+
+    public void equiparItem(Itens item) {
+        if (inventario.contains(item)) {
+            this.itemEquipado = item;
+            item.setEquipado(true); // Marca o item como equipado
+        } else {
+            throw new IllegalArgumentException("O item não está no inventário.");
+        }
+    }
+
     @Override
     public String toString() {
         return "Inimigo: " + nome + "\n" +
