@@ -47,6 +47,9 @@ public class MissaoDentesDeOuro extends Missoes {
         System.out.println();
         TextoAnimado.escrever("— Eu ouvi dizer que você tem algo que pertence ao meu cliente. Entregue, e ninguém precisa virar ração de drone. ");
         String Tensao = personagem.getNome() + " está cercado. Jackie olha pra " + personagem.getNome() + ", mão próxima da pistola.";
+        Itens pistola = new Itens("Pistola smart Unity MK.5", "Arma", true, 5, 5);
+        personagem.adicionarItem(pistola);
+        TextoAnimado.escrever("Item adicionado ao inventário: Pistola smart Unity MK.5");
         TextoAnimado.escrever(Tensao);
         TextoAnimado.escrever("Escolha sua próxima ação: ");
         System.out.println("1 - Fugir pela rota lateral, arriscando um caminho por Kabuki");
@@ -98,10 +101,6 @@ public class MissaoDentesDeOuro extends Missoes {
 
             //Encarar os Maelstrom e lutar por tempo
             TextoAnimado.escrever(personagem.getNome() + " ergue a mão para Jackie e saca a \033[1mpistola smart Unity MK.5\033[0m, programada com munição rastreável. A garagem vira um campo de batalha em segundos. ");
-            TextoAnimado.escrever("\033[1mPistola smart Unity MK.5\033[0m adicionada ao inventario");
-            Itens pistola = new Itens("Pistola smart Unity MK.5", "Arma", true, 5, 5);
-            personagem.adicionarItem(pistola);
-
             TextoAnimado.escrever("Chromejaw avança como um tanque, com o punho metálico vibrando com força de demolição. Seu braço direito é um canhão de plasma portátil, e os olhos dele brilham em infravermelho. ");
             //Chamar informações do vilão
             TextoAnimado.escrever("M: Vilão em campo "); //indica que a cena é um monstro

@@ -57,5 +57,7 @@ public class AbrirContainer extends Missoes {
         System.out.println(VERDE + "Nova Missão:" + RESET);
         Missoes despertar = new Despertar();
         despertar.executar(personagem, jogo);
+
+        sc.close();
     }
 }
