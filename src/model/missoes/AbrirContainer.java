@@ -2,8 +2,7 @@ package model.missoes;
 import controller.CombateController;
 import controller.JogoController;
 import model.Personagem;
-import model.inimigos.ChromeJaw;
-import model.inimigos.drones;
+import model.inimigos.Drones;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
 
@@ -42,17 +41,17 @@ public class AbrirContainer extends Missoes {
         int num = atual + numeroP;
         TextoAnimado.escrever("Total atual para de habilidades para combate: " + num);
         TextoAnimado.escrever("Adicionado " + numeroV + " as habilidades no Inimigo");
-        int atual2 = drones.habilidade();
+        int atual2 = Drones.habilidade();
         int num2 = atual2 + numeroV;
         TextoAnimado.escrever("Total atual para de habilidades para combate: " + num2);
         //iniciar combate
         TextoAnimadoLongo.escrever("Incio do combate...");
         TextoAnimado.escrever("M: Vilão em campo "); //indica que a cena é um monstro
-        TextoAnimado.escrever("N: " + drones.nome()); // é o nome do monstro
-        TextoAnimado.escrever( "H: "+ drones.habilidade()); //é a habilidade
-        TextoAnimado.escrever( "S: "+ drones.sorte()); //é a sorte
-        TextoAnimado.escrever( "E: "+ drones.energia()); //é a energia
-        CombateController.iniciarCombate(personagem, new drones(), jogo);
+        TextoAnimado.escrever("N: " + Drones.nome()); // é o nome do monstro
+        TextoAnimado.escrever( "H: "+ Drones.habilidade()); //é a habilidade
+        TextoAnimado.escrever( "S: "+ Drones.sorte()); //é a sorte
+        TextoAnimado.escrever( "E: "+ Drones.energia()); //é a energia
+        CombateController.iniciarCombate(personagem, new Drones(), jogo);
         TextoAnimado.escrever("Depois de uma luta intensa, você vence!");
         TextoAnimado.escrever("No final, você e Jackie escapam... feridos, mas vivos. A criança olha pra você e fala: ");
         TextoAnimado.escrever("— Eu sou o começo. E você já está marcado. ");

@@ -1,11 +1,22 @@
 package model.inimigos;
 
+import model.itens.CanhaoDePlasma;
+import model.itens.DronesReciclados;
+import model.itens.Itens;
+
+import java.util.ArrayList;
+
 public class LeRoi extends Inimigos{
     public LeRoi() {
         super("Le Roi", 10, 15, 10);
         this.setOuro(0);
         this.setProvisoes(0);
+
+        DronesReciclados dronesReciclados = new DronesReciclados();// Cria a instância do Drones Reciclados
+        getInventario().add(dronesReciclados); // Adiciona ao inventário
+        equiparItem(dronesReciclados); // Equipar o item
     }
+
 
     public static int habilidade() {return 10;}
 
@@ -17,12 +28,9 @@ public class LeRoi extends Inimigos{
 
     public static int tesouro() {return 1000;}
 
-    public static String itens() {
-        String name = "Drones Reciclados";
-        String tipo = "w";
-        int combate = 10;
-        int bonus = 5;
-        int dano = 10;
-        return name + "," + tipo  + "," + combate  + "," + bonus + "," + dano;
+    public static ArrayList<Itens> inventario() {
+        ArrayList<Itens> inventario = new ArrayList<>();
+        inventario.add(new DronesReciclados()); // Adiciona o Canhão de Plasma ao inventário
+        return inventario;
     }
 }

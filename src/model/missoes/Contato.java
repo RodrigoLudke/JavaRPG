@@ -1,8 +1,10 @@
 package model.missoes;
 
 import controller.CombateController;
+import model.inimigos.ChromeJaw;
 import model.inimigos.LeRoi;
 import model.inimigos.Reflex;
+import model.inimigos.utils.ItemFormatter;
 import model.itens.Itens;
 import view.utils.TextoAnimado;
 import controller.JogoController;
@@ -48,7 +50,7 @@ public class Contato extends Missoes {
             TextoAnimado.escrever( "S: "+ Reflex.sorte()); //é a sorte
             TextoAnimado.escrever( "E: "+ Reflex.energia()); //é a energia
             TextoAnimado.escrever( "T: "+ Reflex.tesouro()); //é o tesouro
-            TextoAnimado.escrever( "I: "+ Reflex.itens()); //é os itens
+            TextoAnimado.escrever( "I: "+ ItemFormatter.formatarInventario(Reflex.inventario())); //é os itens
             CombateController.iniciarCombate(personagem, new Reflex(), jogo);
             TextoAnimado.escrever("Dakota envia um update em tempo real — Silvertongue é uma IA rogue, que está tentando transferir sua consciência para um corpo real... e a carga é o receptor. ");
             TextoAnimado.escrever("Com essa informação, você decide destruir o container — ou tentar tomar o poder para si... ");

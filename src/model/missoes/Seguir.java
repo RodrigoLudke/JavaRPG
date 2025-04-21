@@ -5,7 +5,7 @@ import controller.JogoController;
 
 import model.Personagem;
 import model.inimigos.LeRoi;
-import model.inimigos.drones;
+import model.inimigos.utils.ItemFormatter;
 import model.itens.Itens;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
@@ -49,7 +49,7 @@ public class Seguir extends Missoes {
         TextoAnimado.escrever( "S: "+ LeRoi.sorte()); //é a sorte
         TextoAnimado.escrever( "E: "+ LeRoi.energia()); //é a energia
         TextoAnimado.escrever( "T: "+ LeRoi.tesouro()); //é o tesouro
-        TextoAnimado.escrever( "I: "+ LeRoi.itens()); //é os itens
+        TextoAnimado.escrever( "I: "+ ItemFormatter.formatarInventario(LeRoi.inventario())); //é os itens
         CombateController.iniciarCombate(personagem, new LeRoi(), jogo);
         TextoAnimado.escrever("Depois de uma luta intensa, você vence!");
         Itens DronesReciclados = new Itens("Drones Reciclados", "Arma", true, 5, 10);
