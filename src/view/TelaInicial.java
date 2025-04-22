@@ -34,8 +34,10 @@ public class TelaInicial {
                 case 2:
                     System.out.println("Carregando jogo...");
                     if (jogo.carregarJogo()) {
-                        ;
-                        jogo.acessarInventario();
+                        return;
+                    } else {
+                        System.out.println("Não foi possível carregar o jogo. Iniciando novo jogo...");
+                        mostrarMenu();
                     }
                     return;
 
