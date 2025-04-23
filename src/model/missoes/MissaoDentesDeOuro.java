@@ -6,6 +6,7 @@ import model.Personagem;
 import model.inimigos.ChromeJaw;
 import model.inimigos.utils.ItemFormatter;
 import model.itens.Itens;
+import model.itens.PistolaSmartUnityMK5;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
 
@@ -57,9 +58,10 @@ public class MissaoDentesDeOuro extends Missoes {
     }
 
     private void adicionarPistola(Personagem personagem) throws InterruptedException {
-        Itens pistola = new Itens("Pistola smart Unity MK.5", "Arma", true, 5, 5);
+        Itens pistola = (new PistolaSmartUnityMK5());
         personagem.adicionarItem(pistola);
-        TextoAnimado.escrever("Item adicionado ao inventário: Pistola smart Unity MK.5");
+        personagem.equiparItem(pistola);
+        TextoAnimado.escrever("Item adicionado ao inventário e equipado: Pistola smart Unity MK.5");
     }
 
     public void mostrarEscolhaInicial(Personagem personagem, JogoController jogo) throws InterruptedException {

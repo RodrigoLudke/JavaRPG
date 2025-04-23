@@ -30,6 +30,7 @@ public class TelaInicial {
                     Personagem p = new Personagem(nome);
 
                     jogo.novoJogo(nome);
+                    jogo.atualizarEstadoAtual("Início do jogo");
                     return;
                 case 2:
                     System.out.println("Carregando jogo...");
