@@ -1,11 +1,15 @@
 package view;
 
+import controller.MissaoController;
 import model.EstadoJogo;
 import model.Personagem;
 import model.itens.Itens;
 import model.missoes.*;
-import view.utils.TextoAnimado;
+import model.missoes.primeiraMissao.AbrirContainer;
+import model.missoes.primeiraMissao.Contato;
+import model.missoes.primeiraMissao.MissaoDentesDeOuro;
 import controller.JogoController;
+import model.missoes.primeiraMissao.Seguir;
 
 import java.util.List;
 import java.util.Scanner;
@@ -74,9 +78,9 @@ public class TelaInventario {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("=== Inventário ===");
-        System.out.println(ROXO + "Habilidade: " + personagem.getHabilidade() + RESET);
-        System.out.println(CIANO + "Energia: " + personagem.getEnergia() + RESET);
-        System.out.println(AZUL + "Sorte: " + personagem.getSorte() + RESET);
+        System.out.println(VERMELHO + "Habilidade: " + personagem.getHabilidade() + RESET);
+        System.out.println(VERMELHO + "Energia: " + personagem.getEnergia() + RESET);
+        System.out.println(VERMELHO + "Sorte: " + personagem.getSorte() + RESET);
 
         System.out.println();
 
@@ -90,8 +94,11 @@ public class TelaInventario {
             switch (opcao) {
                 case 1:
                     System.out.println("Voltando para o jogo...");
-                    if (jogo.carregarJogo()) {
-                        jogo.acessarInventarioExploracao();
+                    String estadoAtual = jogo.getEstadoAtual();
+                    if (estadoAtual.equals("Início do jogo")) {
+                        jogo.jogoBase();
+                    } else if (estadoAtual.startsWith("MissaoDentesDeOuro")) {
+                        MissaoController.executarMissao("MissaoDentesDeOuro", personagem, jogo);
                     }
                     return;
 
@@ -183,101 +190,102 @@ public class TelaInventario {
         }
     }
 
-    public static void abrirInventarioExploracao(Personagem personagem, JogoController jogo) throws InterruptedException {
-        Scanner sc = new Scanner(System.in);
+//    public static void abrirInventarioExploracao(Personagem personagem, JogoController jogo) throws InterruptedException {
+//        Scanner sc = new Scanner(System.in);
+//
+//        System.out.println("=== Inventário ===");
+//        System.out.println("Item equipado: " + (personagem.getItemEquipado() != null ? personagem.getItemEquipado().getNome() : "Nenhum"));
+//        System.out.println("Habilidade: " + personagem.getHabilidade());
+//        System.out.println("Energia: " + personagem.getEnergia());
+//        System.out.println("Sorte: " + personagem.getSorte());
+//        System.out.println();
+//
+//        List<Itens> inventario = personagem.getInventario();
+//        if (inventario.isEmpty()) {
+//            System.out.println("Seu inventário está vazio.");
+//        } else {
+//            for (int i = 0; i < inventario.size(); i++) {
+//                Itens item = inventario.get(i);
+//                System.out.println((i + 1) + " - " + item.getNome() + (item.isEquipado() ? " (Equipado)" : ""));
+//            }
+//        }
+//
+//        System.out.println("0 - Voltar ao jogo");
+//        System.out.println("S - Salvar Jogo");
+//        System.out.print("Escolha um item para usar ou 0 para sair: ");
+//        String escolha = sc.next();
+//
+//        if (escolha.equals("0")) {
+//            System.out.println("Voltando ao jogo...");
+//            String estadoAtual = jogo.getEstadoAtual();
+//            jogo.carregarJogo();
+//            return;
+//        }
+//
+//        if (escolha.equalsIgnoreCase("S")) {
+//            System.out.println("Salvando jogo...");
+//            jogo.salvarJogo();
+//            abrirInventarioExploracao(personagem, jogo);
+//            return;
+//        }
+//
+//        try {
+//            int escolhaInt = Integer.parseInt(escolha);
+//            if (escolhaInt > 0 && escolhaInt <= inventario.size()) {
+//                Itens itemSelecionado = inventario.get(escolhaInt - 1);
+//
+//                if (itemSelecionado.getTipo().equals("Cura")) {
+//                    int cura = 10; // Valor de cura pode ser ajustado
+//                    personagem.setEnergia(personagem.getEnergia() + cura);
+//                    System.out.println("Você usou " + itemSelecionado.getNome() + " e recuperou " + cura + " de energia!");
+//                    inventario.remove(itemSelecionado);
+//                } else if (itemSelecionado.getTipo().equals("Arma")) {
+//                    if (!itemSelecionado.isEquipado()) {
+//                        personagem.equiparItem(itemSelecionado);
+//                        itemSelecionado.setEquipado(true);
+//                        System.out.println("Você equipou " + itemSelecionado.getNome() + "!");
+//                    }
+//                }
+//            } else {
+//                System.out.println("Opção inválida! Tente novamente.");
+//            }
+//        } catch (NumberFormatException e) {
+//            System.out.println("Entrada inválida! Tente novamente.");
+//        }
+//    }
 
-        System.out.println("=== Inventário ===");
-        System.out.println("Item equipado: " + (personagem.getItemEquipado() != null ? personagem.getItemEquipado().getNome() : "Nenhum"));
-        System.out.println("Habilidade: " + personagem.getHabilidade());
-        System.out.println("Energia: " + personagem.getEnergia());
-        System.out.println("Sorte: " + personagem.getSorte());
-        System.out.println();
-
-        List<Itens> inventario = personagem.getInventario();
-        if (inventario.isEmpty()) {
-            System.out.println("Seu inventário está vazio.");
-        } else {
-            for (int i = 0; i < inventario.size(); i++) {
-                Itens item = inventario.get(i);
-                System.out.println((i + 1) + " - " + item.getNome() + (item.isEquipado() ? " (Equipado)" : ""));
-            }
-        }
-
-        System.out.println("0 - Voltar ao jogo");
-        System.out.println("S - Salvar Jogo");
-        System.out.print("Escolha um item para usar ou 0 para sair: ");
-        String escolha = sc.next();
-
-        if (escolha.equals("0")) {
-            System.out.println("Voltando ao jogo...");
-            voltarParaTelaAnterior(jogo, personagem);
-            return;
-        }
-
-        if (escolha.equalsIgnoreCase("S")) {
-            System.out.println("Salvando jogo...");
-            jogo.salvarJogo();
-            abrirInventarioExploracao(personagem, jogo);
-            return;
-        }
-
-        try {
-            int escolhaInt = Integer.parseInt(escolha);
-            if (escolhaInt > 0 && escolhaInt <= inventario.size()) {
-                Itens itemSelecionado = inventario.get(escolhaInt - 1);
-
-                if (itemSelecionado.getTipo().equals("Cura")) {
-                    int cura = 10; // Valor de cura pode ser ajustado
-                    personagem.setEnergia(personagem.getEnergia() + cura);
-                    System.out.println("Você usou " + itemSelecionado.getNome() + " e recuperou " + cura + " de energia!");
-                    inventario.remove(itemSelecionado);
-                } else if (itemSelecionado.getTipo().equals("Arma")) {
-                    if (!itemSelecionado.isEquipado()) {
-                        personagem.equiparItem(itemSelecionado);
-                        itemSelecionado.setEquipado(true);
-                        System.out.println("Você equipou " + itemSelecionado.getNome() + "!");
-                    }
-                }
-            } else {
-                System.out.println("Opção inválida! Tente novamente.");
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Entrada inválida! Tente novamente.");
-        }
-    }
-
-    private static void voltarParaTelaAnterior(JogoController jogo, Personagem personagem) throws InterruptedException {
-        String estadoAtual = jogo.getEstadoAtual();
-        MissaoDentesDeOuro missao = new MissaoDentesDeOuro();
-
-        switch (estadoAtual) {
-            case "Início do jogo" -> {
-                jogo.iniciarJogo();
-            }
-            case "MissaoDentesDeOuro_Escolha1" -> missao.mostrarEscolhaInicial(personagem, jogo);
-            case "MissaoDentesDeOuro_FugirLateral",
-                 "MissaoDentesDeOuro_EncararMaelstrom",
-                 "MissaoDentesDeOuro_NegociarChromejaw" -> missao.mostrarEscolhasFinais(personagem, jogo, estadoAtual);
-            case "MissaoDentesDeOuro_AbrirContainer" -> {
-                Missoes abrir = new AbrirContainer();
-                abrir.executar(personagem, jogo);
-            }
-            case "MissaoDentesDeOuro_SeguirEntrega" -> {
-                Missoes seguir = new Seguir();
-                seguir.executar(personagem, jogo);
-            }
-            case "MissaoDentesDeOuro_ContatarFixador" -> {
-                Missoes contato = new Contato();
-                contato.executar(personagem, jogo);
-            }
-            case null -> {
-                System.out.println("Estado não encontrado. Voltando ao menu principal.");
-                TelaInicial.mostrarMenu();
-            }
-            default -> {
-                System.out.println("Estado desconhecido: " + estadoAtual + ". Voltando ao menu principal.");
-                TelaInicial.mostrarMenu();
-            }
-        }
-    }
+//    private static void voltarParaTelaAnterior(JogoController jogo, Personagem personagem) throws InterruptedException {
+//        String estadoAtual = jogo.getEstadoAtual();
+//        MissaoDentesDeOuro missao = new MissaoDentesDeOuro();
+//
+//        switch (estadoAtual) {
+//            case "Início do jogo" -> {
+//                jogo.iniciarJogo();
+//            }
+//            case "MissaoDentesDeOuro_Escolha1" -> missao.mostrarEscolhaInicial(personagem, jogo);
+//            case "MissaoDentesDeOuro_FugirLateral",
+//                 "MissaoDentesDeOuro_EncararMaelstrom",
+//                 "MissaoDentesDeOuro_NegociarChromejaw" -> missao.mostrarEscolhasFinais(personagem, jogo, estadoAtual);
+//            case "MissaoDentesDeOuro_AbrirContainer" -> {
+//                Missoes abrir = new AbrirContainer();
+//                abrir.executar(personagem, jogo);
+//            }
+//            case "MissaoDentesDeOuro_SeguirEntrega" -> {
+//                Missoes seguir = new Seguir();
+//                seguir.executar(personagem, jogo);
+//            }
+//            case "MissaoDentesDeOuro_ContatarFixador" -> {
+//                Missoes contato = new Contato();
+//                contato.executar(personagem, jogo);
+//            }
+//            case null -> {
+//                System.out.println("Estado não encontrado. Voltando ao menu principal.");
+//                TelaInicial.mostrarMenu();
+//            }
+//            default -> {
+//                System.out.println("Estado desconhecido: " + estadoAtual + ". Voltando ao menu principal.");
+//                TelaInicial.mostrarMenu();
+//            }
+//        }
+//    }
 }

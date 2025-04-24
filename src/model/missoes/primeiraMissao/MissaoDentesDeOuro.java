@@ -1,29 +1,31 @@
-package model.missoes;
+package model.missoes.primeiraMissao;
 
-import controller.CombateController;
 import controller.JogoController;
 import model.Personagem;
 import model.inimigos.ChromeJaw;
 import model.inimigos.utils.ItemFormatter;
 import model.itens.Itens;
 import model.itens.PistolaSmartUnityMK5;
+import model.missoes.Missoes;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
 
 import java.util.Scanner;
+
+import static controller.CombateController.iniciarCombate;
 
 public class MissaoDentesDeOuro extends Missoes {
     private String pontos = "...";
     private Scanner sc;
 
     public MissaoDentesDeOuro() {
-        super("Dentes de Ouro", "Transporte clandestino perigoso com recompensas altas.");
+        super("MissaoDentesDeOuro", "Transporte clandestino perigoso com recompensas altas.");
         this.sc = new Scanner(System.in);
     }
 
     public void executar(Personagem personagem, JogoController jogo) throws InterruptedException {
         introduzirMissao(personagem);
-        adicionarPistola(personagem);
+        //adicionarPistola(personagem);
         mostrarEscolhaInicial(personagem, jogo);
         verificarConclusao();
         sc.close();
@@ -95,7 +97,7 @@ public class MissaoDentesDeOuro extends Missoes {
         TextoAnimado.escrever("\033[1mAlgo vivo\033[0m se move dentro.");
         TextoAnimado.escrever(personagem.getNome() + " sobreviveu ao primeiro obstáculo. Mas o que há dentro daquele container pulsa com vida própria...");
         TextoAnimado.escrever("e parece estar acordando. ");
-        mostrarEscolhasFinais(personagem, jogo, "1/1");
+        //mostrarEscolhasFinais(personagem, jogo, "1/1");
     }
 
     private void encararMaelstrom(Personagem personagem, JogoController jogo) throws InterruptedException {
@@ -103,8 +105,8 @@ public class MissaoDentesDeOuro extends Missoes {
         TextoAnimado.escrever("Chromejaw avança como um tanque, com o punho metálico vibrando com força de demolição. Seu braço direito é um canhão de plasma portátil, e os olhos dele brilham em infravermelho. ");
 
         mostrarInformacoesVilao();
-        realizarCombate(personagem, jogo);
-        mostrarEscolhasFinais(personagem, jogo, "2/1");
+        iniciarCombate(personagem, new ChromeJaw(), jogo);
+        //mostrarEscolhasFinais(personagem, jogo, "2/1");
     }
 
     private void mostrarInformacoesVilao() throws InterruptedException {
@@ -115,33 +117,6 @@ public class MissaoDentesDeOuro extends Missoes {
         TextoAnimado.escrever("E: " + ChromeJaw.energia());
         TextoAnimado.escrever("T: " + ChromeJaw.tesouro());
         TextoAnimado.escrever("I: " + ItemFormatter.formatarInventario(ChromeJaw.inventario()));
-    }
-
-    private void realizarCombate(Personagem personagem, JogoController jogo) throws InterruptedException {
-        System.out.println("Gerando um número aleatório...");
-        TextoAnimadoLongo.escrever(pontos);
-        int numeroP = (int)(Math.random() * 10) + 1;
-        int numeroV = (int)(Math.random() * 10) + 1;
-        TextoAnimado.escrever("Adicionado " + numeroP + " as habilidades no personagem");
-        int atual = personagem.getHabilidade();
-        int num = atual + numeroP;
-        TextoAnimado.escrever("Total atual para de habilidades para combate: " + num);
-        TextoAnimado.escrever("Adicionado " + numeroV + " as habilidades no Inimigo");
-        int atual2 = ChromeJaw.habilidade();
-        int num2 = atual2 + numeroV;
-        TextoAnimado.escrever("Total atual para de habilidades para combate: " + num2);
-        TextoAnimadoLongo.escrever("Inicio do combate...");
-        CombateController.iniciarCombate(personagem, new ChromeJaw(), jogo);
-        TextoAnimado.escrever("Depois de uma luta intensa, você vence!");
-
-        for (Itens item : ChromeJaw.inventario()) {
-            personagem.adicionarItem(item);
-        }
-        TextoAnimado.escrever("Item adicionado ao inventário: canhão de plasma");
-        this.concluir();
-        personagem.adicionarMissao(this);
-        personagem.setHabilidade(personagem.getHabilidade() + 4);
-        TextoAnimado.escrever("Você ganhou +4 de habilidade!");
     }
 
     private void negociarChromejaw(Personagem personagem, JogoController jogo) throws InterruptedException {
@@ -156,7 +131,7 @@ public class MissaoDentesDeOuro extends Missoes {
         TextoAnimado.escrever("Ele se afasta, mas deixa um recado: — Silvertongue joga sujo. Melhor garantir que essa entrega não seja sua última ");
         TextoAnimadoLongo.escrever(pontos);
         TextoAnimado.escrever("Saem em paz — mas agora sabem que o cliente pode estar mentindo sobre o que tem no container. E Night City nunca deixa um segredo escondido por muito tempo. ");
-        mostrarEscolhasFinais(personagem, jogo, "3/1");
+        //mostrarEscolhasFinais(personagem, jogo, "3/1");
     }
 
     public void mostrarEscolhasFinais(Personagem personagem, JogoController jogo, String estadoAtual) throws InterruptedException {
@@ -182,8 +157,8 @@ public class MissaoDentesDeOuro extends Missoes {
             contato.executar(personagem, jogo);
         } else if (escolha == 4) {
             System.out.println("Abrindo inventário...");
-            jogo.atualizarEstadoAtual("Missão: Dentes de Ouro : " + estadoAtual);
-            jogo.acessarInventarioExploracao();
+            jogo.atualizarEstadoAtual("MissaoDentesDeOuro_EscolhaFinal");
+            jogo.acessarInventario();
         } else {
             missaoFracassada();
         }
@@ -191,7 +166,7 @@ public class MissaoDentesDeOuro extends Missoes {
 
     private void abrirInventario(JogoController jogo) throws InterruptedException {
         System.out.println("Abrindo inventário...");
-        jogo.acessarInventarioExploracao();
+        jogo.acessarInventario();
     }
 
     private void missaoFracassada() throws InterruptedException {

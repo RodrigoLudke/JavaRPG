@@ -1,16 +1,15 @@
-package model.missoes;
+package model.missoes.primeiraMissao;
 
 import controller.CombateController;
-import model.inimigos.ChromeJaw;
-import model.inimigos.LeRoi;
 import model.inimigos.Reflex;
 import model.inimigos.utils.ItemFormatter;
 import model.itens.Itens;
+import model.missoes.Missoes;
+import model.missoes.SilvertongueExe;
 import view.utils.TextoAnimado;
 import controller.JogoController;
 
 import model.Personagem;
-import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
 import java.util.Scanner;
 

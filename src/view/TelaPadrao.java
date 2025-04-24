@@ -2,8 +2,6 @@ package view;
 
 import controller.MissaoController;
 import model.Personagem;
-import model.itens.Itens;
-import model.missoes.MissaoDentesDeOuro;
 import view.utils.TextoAnimado;
 import controller.JogoController;
 
@@ -39,8 +37,8 @@ public class TelaPadrao {
             switch (opcao) {
                 case 1:
                     System.out.println("Atendendo chamado do Jackie...");
-
-                    MissaoController.executarMissao("Dentes de Ouro", personagem, jogo);
+                    jogo.atualizarEstadoAtual("inicio");
+                    MissaoController.executarMissao("MissaoDentesDeOuro", personagem, jogo);
                     return;
                 case 2:
                     System.out.println("Abrindo inventário...");

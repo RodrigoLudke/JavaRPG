@@ -1,4 +1,4 @@
-package model.missoes;
+package model.missoes.primeiraMissao;
 
 import controller.CombateController;
 import controller.JogoController;
@@ -7,6 +7,8 @@ import model.Personagem;
 import model.inimigos.LeRoi;
 import model.inimigos.utils.ItemFormatter;
 import model.itens.Itens;
+import model.missoes.Missoes;
+import model.missoes.SilvertongueEcoDeOuro;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
 

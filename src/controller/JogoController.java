@@ -24,9 +24,9 @@ public class JogoController {
         TelaInventario.abrirInventario(personagem, this);// só visualização
     }
 
-    public void acessarInventarioExploracao() throws InterruptedException {
-        TelaInventario.abrirInventarioExploracao(personagem, this);
-    }
+//    public void acessarInventarioExploracao() throws InterruptedException {
+//        TelaInventario.abrirInventarioExploracao(personagem, this);
+//    }
 
     public void jogoPadrao() throws InterruptedException {
         TelaPadrao.IntroducaoInicial(personagem, this);
@@ -60,7 +60,7 @@ public class JogoController {
             this.personagem = estado.getPersonagem();
             this.estadoAtual = estado.getMissaoAtual(); // Garante que o estado é restaurado
             System.out.println("Jogo carregado com sucesso! Estado atual: " + estadoAtual);
-            TelaInventario.abrirInventarioExploracao(this.personagem, this); // Abre o inventário após carregar
+            TelaInventario.abrirInventario(this.personagem, this); // Abre o inventário após carregar
             return true;
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Erro ao carregar o jogo: " + e.getMessage());
