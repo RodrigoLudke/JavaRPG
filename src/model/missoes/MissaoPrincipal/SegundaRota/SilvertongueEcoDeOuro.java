@@ -60,7 +60,7 @@ public class SilvertongueEcoDeOuro extends Missoes {
             TextoAnimado.escrever("Adicionado " + numeroV + " as habilidades no Inimigo");
             inimigosDrones.add(drone);
 
-            TextoAnimado.escrever("\nInformações do Drone " + i + ":");
+            System.out.println("\nInformações do Drone " + i + ":");
             TextoAnimado.escrever("Total atual para de habilidades para combate: " + drone.getHabilidade());
             mostrarInformacoesVilao(drone);
         }
