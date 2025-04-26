@@ -115,6 +115,7 @@ public class MissaoDentesDeOuro extends Missoes {
         mostrarInformacoesVilao();
         System.out.println("Gerando um número aleatório...");
         TextoAnimadoLongo.escrever("...");
+        ChromeJaw inimigoChromeJaw = new ChromeJaw();
         int numeroP = (int)(Math.random() * 10) + 1;
         int numeroV = (int)(Math.random() * 10) + 1;
         TextoAnimado.escrever("Adicionado " + numeroP + " as habilidades no personagem");
@@ -122,10 +123,10 @@ public class MissaoDentesDeOuro extends Missoes {
         int num = atual + numeroP;
         TextoAnimado.escrever("Total atual para de habilidades para combate: " + num);
         TextoAnimado.escrever("Adicionado " + numeroV + " as habilidades no Inimigo");
-        int atual2 = ChromeJaw.habilidade();
+        int atual2 = inimigoChromeJaw.getHabilidade();
         int num2 = atual2 + numeroV;
         TextoAnimado.escrever("Total atual para de habilidades para combate: " + num2);
-        ChromeJaw inimigoChromeJaw = new ChromeJaw();
+
         iniciarCombate(personagem, inimigoChromeJaw, jogo);
         vasculharCorpo(personagem, inimigoChromeJaw);
         mostrarEscolhasFinais(personagem, jogo, "2/1");
