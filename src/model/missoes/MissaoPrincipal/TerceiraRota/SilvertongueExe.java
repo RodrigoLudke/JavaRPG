@@ -135,7 +135,6 @@ public class SilvertongueExe extends Missoes {
     private void verificarConclusao() throws InterruptedException {
         if (this.isConcluida()) {
             TextoAnimado.escrever("Missão concluída com sucesso! ✔");
-            TelaInicial.mostrarMenu();
         } else {
             TextoAnimado.escrever("Missão não concluída. ✖");
             TelaInicial.mostrarMenu();
