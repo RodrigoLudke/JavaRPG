@@ -3,10 +3,12 @@ package model.missoes.primeiraMissao;
 import controller.JogoController;
 import model.Personagem;
 import model.inimigos.ChromeJaw;
+import model.inimigos.Reflex;
 import model.inimigos.utils.ItemFormatter;
 import model.itens.Itens;
 import model.itens.PistolaSmartUnityMK5;
 import model.missoes.Missoes;
+import view.utils.ApagarConsole;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
 
@@ -25,7 +27,7 @@ public class MissaoDentesDeOuro extends Missoes {
 
     public void executar(Personagem personagem, JogoController jogo) throws InterruptedException {
         introduzirMissao(personagem);
-        //adicionarPistola(personagem);
+        adicionarPistola(personagem);
         mostrarEscolhaInicial(personagem, jogo);
         verificarConclusao();
         sc.close();
@@ -90,14 +92,14 @@ public class MissaoDentesDeOuro extends Missoes {
         TextoAnimado.escrever("Mas não demora até que \033[1mChromejaw\033[0m envie um dos seus caçadores: \n");
         TextoAnimado.escrever("Ramone, piloto da gangue, com um corpo tão modificado que a moto é praticamente uma extensão de seus membros cibernéticos. Os olhos dele piscam em vermelho enquanto se conecta à rede de trânsito, hackeando semáforos e cortando caminho pelas vias elevadas..");
         TextoAnimado.escrever("Uma perseguição insana começa. ");
-        TextoAnimado.escrever(pontos);
-        TextoAnimado.escrever(pontos);
-        TextoAnimado.escrever(pontos);
+        TextoAnimadoLongo.escrever(pontos);
+        TextoAnimadoLongo.escrever(pontos);
+        TextoAnimadoLongo.escrever(pontos);
         TextoAnimado.escrever("Escapam por pouco, chegando ao túnel de acesso de Pacifica. Mas o container sofreu danos — uma pequena rachadura no selo revela um brilho estranho..");
         TextoAnimado.escrever("\033[1mAlgo vivo\033[0m se move dentro.");
         TextoAnimado.escrever(personagem.getNome() + " sobreviveu ao primeiro obstáculo. Mas o que há dentro daquele container pulsa com vida própria...");
         TextoAnimado.escrever("e parece estar acordando. ");
-        //mostrarEscolhasFinais(personagem, jogo, "1/1");
+        mostrarEscolhasFinais(personagem, jogo, "1/1");
     }
 
     private void encararMaelstrom(Personagem personagem, JogoController jogo) throws InterruptedException {
@@ -105,8 +107,20 @@ public class MissaoDentesDeOuro extends Missoes {
         TextoAnimado.escrever("Chromejaw avança como um tanque, com o punho metálico vibrando com força de demolição. Seu braço direito é um canhão de plasma portátil, e os olhos dele brilham em infravermelho. ");
 
         mostrarInformacoesVilao();
+        System.out.println("Gerando um número aleatório...");
+        TextoAnimadoLongo.escrever("...");
+        int numeroP = (int)(Math.random() * 10) + 1;
+        int numeroV = (int)(Math.random() * 10) + 1;
+        TextoAnimado.escrever("Adicionado " + numeroP + " as habilidades no personagem");
+        int atual = personagem.getHabilidade();
+        int num = atual + numeroP;
+        TextoAnimado.escrever("Total atual para de habilidades para combate: " + num);
+        TextoAnimado.escrever("Adicionado " + numeroV + " as habilidades no Inimigo");
+        int atual2 = ChromeJaw.habilidade();
+        int num2 = atual2 + numeroV;
+        TextoAnimado.escrever("Total atual para de habilidades para combate: " + num2);
         iniciarCombate(personagem, new ChromeJaw(), jogo);
-        //mostrarEscolhasFinais(personagem, jogo, "2/1");
+        mostrarEscolhasFinais(personagem, jogo, "2/1");
     }
 
     private void mostrarInformacoesVilao() throws InterruptedException {
@@ -131,7 +145,7 @@ public class MissaoDentesDeOuro extends Missoes {
         TextoAnimado.escrever("Ele se afasta, mas deixa um recado: — Silvertongue joga sujo. Melhor garantir que essa entrega não seja sua última ");
         TextoAnimadoLongo.escrever(pontos);
         TextoAnimado.escrever("Saem em paz — mas agora sabem que o cliente pode estar mentindo sobre o que tem no container. E Night City nunca deixa um segredo escondido por muito tempo. ");
-        //mostrarEscolhasFinais(personagem, jogo, "3/1");
+        mostrarEscolhasFinais(personagem, jogo, "3/1");
     }
 
     public void mostrarEscolhasFinais(Personagem personagem, JogoController jogo, String estadoAtual) throws InterruptedException {

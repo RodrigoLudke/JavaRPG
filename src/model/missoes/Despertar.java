@@ -60,7 +60,6 @@ public class Despertar extends Missoes{
         p.adicionarItem(DoisGuardasArasaka.inventario().get(0));
         TextoAnimado.escrever("Item adicionado ao inventário: rifles De Pulso");
 
-
         TextoAnimado.escrever("Com o caminho livre, vocês sobem a escada até o convés de carga. ");
         TextoAnimado.escrever("Dentro do porão principal, o container brilha com um selo holográfico. Antes que você possa conectar o spike, motores pesados ecoam: ");
         TextoAnimado.escrever("Voz pelos alto‑falantes:");

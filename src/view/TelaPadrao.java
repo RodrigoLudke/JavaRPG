@@ -4,6 +4,7 @@ import controller.MissaoController;
 import model.Personagem;
 import view.utils.TextoAnimado;
 import controller.JogoController;
+import view.utils.TextoAnimadoLongo;
 
 import java.util.Scanner;
 
