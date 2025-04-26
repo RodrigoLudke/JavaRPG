@@ -112,10 +112,11 @@ public class MissaoDentesDeOuro extends Missoes {
         TextoAnimado.escrever(personagem.getNome() + " ergue a mão para Jackie e saca a \033[1mpistola smart Unity MK.5\033[0m, programada com munição rastreável. A garagem vira um campo de batalha em segundos. ");
         TextoAnimado.escrever("Chromejaw avança como um tanque, com o punho metálico vibrando com força de demolição. Seu braço direito é um canhão de plasma portátil, e os olhos dele brilham em infravermelho. ");
 
-        mostrarInformacoesVilao();
+        ChromeJaw inimigoChromeJaw = new ChromeJaw();
+        mostrarInformacoesVilao(inimigoChromeJaw);
         System.out.println("Gerando um número aleatório...");
         TextoAnimadoLongo.escrever("...");
-        ChromeJaw inimigoChromeJaw = new ChromeJaw();
+
         int numeroP = (int)(Math.random() * 10) + 1;
         int numeroV = (int)(Math.random() * 10) + 1;
         TextoAnimado.escrever("Adicionado " + numeroP + " as habilidades no personagem");
@@ -164,14 +165,14 @@ public class MissaoDentesDeOuro extends Missoes {
         }
     }
 
-    private void mostrarInformacoesVilao() throws InterruptedException {
+    private void mostrarInformacoesVilao(Inimigos inimigo) throws InterruptedException {
         TextoAnimado.escrever("M: Vilão em campo");
-        TextoAnimado.escrever("N: " + ChromeJaw.nome());
-        TextoAnimado.escrever("H: " + ChromeJaw.habilidade());
-        TextoAnimado.escrever("S: " + ChromeJaw.sorte());
-        TextoAnimado.escrever("E: " + ChromeJaw.energia());
-        TextoAnimado.escrever("T: " + ChromeJaw.tesouro());
-        TextoAnimado.escrever("I: " + ItemFormatter.formatarInventario(ChromeJaw.inventario()));
+        TextoAnimado.escrever("N: " + inimigo.getNome());
+        TextoAnimado.escrever("H: " + inimigo.getHabilidade());
+        TextoAnimado.escrever("S: " + inimigo.getSorte());
+        TextoAnimado.escrever("E: " + inimigo.getEnergia());
+        TextoAnimado.escrever("T: " + inimigo.getTesouro());
+        TextoAnimado.escrever("I: " + ItemFormatter.formatarInventario(inimigo.getInventario()));
     }
 
     private void negociarChromejaw(Personagem personagem, JogoController jogo) throws InterruptedException {

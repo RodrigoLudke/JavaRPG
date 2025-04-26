@@ -57,7 +57,7 @@ public class Inimigos {
         this.sorte = sorte;
     }
 
-    public int getOuro() {
+    public int getTesouro() {
         return ouro;
     }
 
