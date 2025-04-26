@@ -62,9 +62,11 @@ public class AbrirContainer extends Missoes {
             Drones drone = new Drones();
             int numeroV = (int)(Math.random() * 10) + 1;
             drone.setHabilidade(drone.getHabilidade() + numeroV);
+            TextoAnimado.escrever("Adicionado " + numeroV + " as habilidades no Inimigo");
             inimigosDrones.add(drone);
 
             TextoAnimado.escrever("\nInformações do Drone " + i + ":");
+            TextoAnimado.escrever("Total atual para de habilidades para combate: " + drone.getHabilidade());
             mostrarInformacoesVilao(drone);
         }
 

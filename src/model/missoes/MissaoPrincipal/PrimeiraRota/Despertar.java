@@ -54,9 +54,11 @@ public class Despertar extends Missoes {
             GuardaArasaka guardaArasaka = new GuardaArasaka();
             int numeroV = (int)(Math.random() * 10) + 1;
             guardaArasaka.setHabilidade(guardaArasaka.getHabilidade() + numeroV);
+            TextoAnimado.escrever("Adicionado " + numeroV + " as habilidades no Inimigo");
             inimigosGuardas.add(guardaArasaka);
 
             TextoAnimado.escrever("\nInformações do Guarda " + i + ":");
+            TextoAnimado.escrever("Total atual para de habilidades para combate: " + guardaArasaka.getHabilidade());
             mostrarInformacoesVilao(guardaArasaka);
         }
 
