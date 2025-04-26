@@ -1,12 +1,12 @@
-package model.missoes;
+package model.missoes.MissaoPrincipal.SegundaRota;
 
 import controller.CombateController;
 import controller.JogoController;
 import model.Personagem;
-import model.inimigos.DoisGuardasArasaka;
 import model.inimigos.Drones;
 import model.inimigos.Silvertongue;
 import model.itens.VoxOmnis;
+import model.missoes.Missoes;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
 

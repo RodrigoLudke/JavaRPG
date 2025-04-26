@@ -1,17 +1,16 @@
-package model.missoes;
+package model.missoes.MissaoPrincipal.PrimeiraRota;
 
 import controller.CombateController;
 import controller.JogoController;
 import model.Personagem;
-import model.inimigos.ChromeJaw;
 import model.inimigos.DoisGuardasArasaka;
-import model.inimigos.LeRoi;
+import model.missoes.Missoes;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
 
 import java.util.Scanner;
 
-public class Despertar extends Missoes{
+public class Despertar extends Missoes {
     public Despertar() {
         super("ΔX: O Despertar", " Agora você carrega algo que as megacorporações vão caçar até os confins da Net.");
 

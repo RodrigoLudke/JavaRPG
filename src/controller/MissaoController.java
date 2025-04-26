@@ -2,7 +2,7 @@ package controller;
 
 import model.Personagem;
 import model.missoes.Missoes;
-import model.missoes.primeiraMissao.MissaoDentesDeOuro;
+import model.missoes.MissaoPrincipal.MissaoDentesDeOuro;
 
 import java.util.HashMap;
 import java.util.Map;

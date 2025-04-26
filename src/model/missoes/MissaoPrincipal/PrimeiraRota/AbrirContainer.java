@@ -1,9 +1,8 @@
-package model.missoes.primeiraMissao;
+package model.missoes.MissaoPrincipal.PrimeiraRota;
 import controller.CombateController;
 import controller.JogoController;
 import model.Personagem;
 import model.inimigos.Drones;
-import model.missoes.Despertar;
 import model.missoes.Missoes;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;

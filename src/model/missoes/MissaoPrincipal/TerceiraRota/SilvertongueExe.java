@@ -1,7 +1,8 @@
-package model.missoes;
+package model.missoes.MissaoPrincipal.TerceiraRota;
 
 import controller.JogoController;
 import model.Personagem;
+import model.missoes.Missoes;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
 
@@ -10,7 +11,7 @@ import java.util.Scanner;
 import static view.utils.Cores.VERMELHO;
 import static view.utils.Cores.RESET;
 
-public class SilvertongueExe extends Missoes{
+public class SilvertongueExe extends Missoes {
     public SilvertongueExe() {
         super("Silvertongue.exe", "A IA percebendo o plano, invade o seu sistema, tentando te convencer a não destruir o futuro. A luta se torna interna — um duelo mental entre você e uma mente que nunca dorme.");
     }

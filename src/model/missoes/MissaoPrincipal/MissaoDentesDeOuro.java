@@ -1,16 +1,17 @@
-package model.missoes.primeiraMissao;
+package model.missoes.MissaoPrincipal;
 
 import controller.JogoController;
 import model.Personagem;
 import model.inimigos.ChromeJaw;
 import model.inimigos.Inimigos;
-import model.inimigos.Reflex;
 import model.inimigos.utils.ItemFormatter;
 import model.itens.Itens;
 import model.itens.PistolaSmartUnityMK5;
+import model.missoes.MissaoPrincipal.PrimeiraRota.AbrirContainer;
+import model.missoes.MissaoPrincipal.SegundaRota.Seguir;
+import model.missoes.MissaoPrincipal.TerceiraRota.Contato;
 import model.missoes.Missoes;
 import view.TelaInicial;
-import view.TelaInventario;
 import view.utils.ApagarConsole;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;

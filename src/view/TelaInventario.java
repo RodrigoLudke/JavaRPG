@@ -1,15 +1,9 @@
 package view;
 
 import controller.MissaoController;
-import model.EstadoJogo;
 import model.Personagem;
 import model.itens.Itens;
-import model.missoes.*;
-import model.missoes.primeiraMissao.AbrirContainer;
-import model.missoes.primeiraMissao.Contato;
-import model.missoes.primeiraMissao.MissaoDentesDeOuro;
 import controller.JogoController;
-import model.missoes.primeiraMissao.Seguir;
 
 import java.util.List;
 import java.util.Scanner;

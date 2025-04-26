@@ -1,17 +1,17 @@
-package model.missoes;
+package model.missoes.MissaoPrincipal.TerceiraRota;
 
 import controller.CombateController;
 import controller.JogoController;
 import model.Personagem;
-import model.inimigos.Reflex;
 import model.inimigos.Stryx;
 import model.itens.Itens;
+import model.missoes.Missoes;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
 
 import java.util.Scanner;
 
-public class EcoDeOuro extends Missoes{
+public class EcoDeOuro extends Missoes {
     public EcoDeOuro() {
         super("Eco de Ouro", "Você é metade você. Metade algo mais. As megacorporações perceberam. E estão vindo.");
     }
