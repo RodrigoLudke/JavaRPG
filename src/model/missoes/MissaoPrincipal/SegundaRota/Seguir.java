@@ -2,12 +2,14 @@ package model.missoes.MissaoPrincipal.SegundaRota;
 
 import controller.CombateController;
 import controller.JogoController;
-
 import model.Personagem;
+import model.inimigos.Inimigos;
 import model.inimigos.LeRoi;
 import model.inimigos.utils.ItemFormatter;
 import model.itens.Itens;
 import model.missoes.Missoes;
+import view.TelaInicial;
+import view.utils.ApagarConsole;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
 
@@ -17,21 +19,34 @@ import static view.utils.Cores.RESET;
 import static view.utils.Cores.VERDE;
 
 public class Seguir extends Missoes {
+    private Scanner sc;
+
     public Seguir() {
-        super("Seguir com a entrega como combinado — sem perguntas ", "Você decide manter o código. Night City já cobra caro por quem quebra acordos.  ");
+        super("Seguir com a entrega como combinado — sem perguntas", "Você decide manter o código. Night City já cobra caro por quem quebra acordos.");
+        this.sc = new Scanner(System.in);
     }
 
     public void executar(Personagem personagem, JogoController jogo) throws InterruptedException {
-        Scanner sc = new Scanner(System.in);
-        TextoAnimado.escrever("Seguir com a entrega como combinado — sem perguntas ");
-        TextoAnimado.escrever("Você decide manter o código. Night City já cobra caro por quem quebra acordos. ");
-        TextoAnimado.escrever("Jackie não discute — apenas acelera. Vocês passam por Charter Hill, atravessam um bloqueio policial com ajuda de subornos e finalmente entram nas ruínas decadentes de Pacifica. ");
-        TextoAnimado.escrever("O ponto de entrega é uma torre abandonada, onde uma figura encapuzada os espera: Silvertongue. Ele sorri com dentes de ouro polido, a voz suave e venenosa. ");
+        ApagarConsole.limparConsole();
+        introduzirMissao(personagem);
+        lutarContraLeRoi(personagem, jogo);
+        verificarConclusao();
+        sc.close();
+    }
+
+    private void introduzirMissao(Personagem personagem) throws InterruptedException {
+        TextoAnimado.escrever("Seguir com a entrega como combinado — sem perguntas");
+        TextoAnimado.escrever("Você decide manter o código. Night City já cobra caro por quem quebra acordos.");
+        TextoAnimado.escrever("Jackie não discute — apenas acelera. Vocês passam por Charter Hill, atravessam um bloqueio policial com ajuda de subornos e finalmente entram nas ruínas decadentes de Pacifica.");
+        TextoAnimado.escrever("O ponto de entrega é uma torre abandonada, onde uma figura encapuzada os espera: Silvertongue. Ele sorri com dentes de ouro polido, a voz suave e venenosa.");
         TextoAnimado.escrever("— Muito bem. Profissionalismo raro hoje em dia.");
-        TextoAnimado.escrever("Mas enquanto o container é transferido, uma gangue Voodoo Boys renegada aparece. Eles querem o conteúdo para si — não por dinheiro, mas por informação genética. Liderados por LeRoi, um ex-nômade convertido em tecnoxamã, eles falam com espíritos da Net. ");
+        TextoAnimado.escrever("Mas enquanto o container é transferido, uma gangue Voodoo Boys renegada aparece. Eles querem o conteúdo para si — não por dinheiro, mas por informação genética. Liderados por LeRoi, um ex-nômade convertido em tecnoxamã, eles falam com espíritos da Net.");
+    }
+
+    private void lutarContraLeRoi(Personagem personagem, JogoController jogo) throws InterruptedException {
         TextoAnimado.escrever("Combate!");
-        System.out.println("Gerando um número aleatório...");
-        TextoAnimadoLongo.escrever("...");
+        LeRoi leRoi = new LeRoi();
+
         int numeroP = (int)(Math.random() * 10) + 1;
         int numeroV = (int)(Math.random() * 10) + 1;
         TextoAnimado.escrever("Adicionado " + numeroP + " as habilidades no personagem");
@@ -39,30 +54,142 @@ public class Seguir extends Missoes {
         int num = atual + numeroP;
         TextoAnimado.escrever("Total atual para de habilidades para combate: " + num);
         TextoAnimado.escrever("Adicionado " + numeroV + " as habilidades no Inimigo");
-        int atual2 = LeRoi.habilidade();
-        int num2 = atual + numeroV;
+        int atual2 = leRoi.getHabilidade();
+        int num2 = atual2 + numeroV;
         TextoAnimado.escrever("Total atual para de habilidades para combate: " + num2);
-        //iniciar combate
-        TextoAnimadoLongo.escrever("Incio do combate...");
-        TextoAnimado.escrever("M: Vilão em campo "); //indica que a cena é um monstro
-        TextoAnimado.escrever("N: " + LeRoi.nome()); // é o nome do monstro
-        TextoAnimado.escrever( "H: "+ LeRoi.habilidade()); //é a habilidade
-        TextoAnimado.escrever( "S: "+ LeRoi.sorte()); //é a sorte
-        TextoAnimado.escrever( "E: "+ LeRoi.energia()); //é a energia
-        TextoAnimado.escrever( "T: "+ LeRoi.tesouro()); //é o tesouro
-        TextoAnimado.escrever( "I: "+ ItemFormatter.formatarInventario(LeRoi.inventario())); //é os itens
-        CombateController.iniciarCombate(personagem, new LeRoi(), jogo);
-        TextoAnimado.escrever("Depois de uma luta intensa, você vence!");
-        Itens DronesReciclados = new Itens("Drones Reciclados", "Arma", true, 5, 10);
-        personagem.adicionarItem(DronesReciclados);
-        TextoAnimado.escrever("Você pega os Drones Reciclados e os coloca na mochila.");
-        TextoAnimado.escrever("— Você fez bem, mas... o que estava dentro, agora vai mudar o mundo. Espero que você nunca descubra como. ");
-        TextoAnimado.escrever("Ele desaparece numa névoa de partículas, levando o container. ");
+
+        mostrarInformacoesVilao(leRoi);
+        CombateController.iniciarCombate(personagem, leRoi, jogo);
+        vasculharCorpo(personagem, leRoi);
+        desfechoMissao(personagem, jogo);
+    }
+
+    private void mostrarInformacoesVilao(Inimigos inimigo) throws InterruptedException {
+        TextoAnimado.escrever("M: Vilão em campo");
+        TextoAnimado.escrever("N: " + inimigo.getNome());
+        TextoAnimado.escrever("H: " + inimigo.getHabilidade());
+        TextoAnimado.escrever("S: " + inimigo.getSorte());
+        TextoAnimado.escrever("E: " + inimigo.getEnergia());
+        TextoAnimado.escrever("T: " + inimigo.getTesouro());
+        TextoAnimado.escrever("I: " + ItemFormatter.formatarInventario(inimigo.getInventario()));
+    }
+
+    private void vasculharCorpo(Personagem personagem, Inimigos inimigo) throws InterruptedException {
+        Scanner sc = new Scanner(System.in);
+
+        TextoAnimado.escrever("O corpo de " + inimigo.getNome() + " jaz no chão.");
+        System.out.println("Deseja vasculhar o corpo?");
+        System.out.println("1 - Sim");
+        System.out.println("2 - Não");
+
+        int escolha = sc.nextInt();
+
+        if (escolha == 1) {
+            if (!inimigo.getInventario().isEmpty()) {
+                System.out.println("\nItens encontrados:");
+                for (int i = 0; i < inimigo.getInventario().size(); i++) {
+                    Itens item = inimigo.getInventario().get(i);
+                    System.out.println((i + 1) + " - " + item.getNome());
+                }
+
+                System.out.println("\nEscolha um item para pegar (0 para não pegar nada):");
+                int itemEscolhido = sc.nextInt();
+
+                if (itemEscolhido > 0 && itemEscolhido <= inimigo.getInventario().size()) {
+                    Itens itemPego = inimigo.getInventario().get(itemEscolhido - 1);
+                    personagem.adicionarItem(itemPego);
+                    TextoAnimado.escrever("Você pegou: " + itemPego.getNome());
+                }
+            } else {
+                TextoAnimado.escrever("Não encontrou nada útil no corpo.");
+            }
+        }
+    }
+
+    private void desfechoMissao(Personagem personagem, JogoController jogo) throws InterruptedException {
+        TextoAnimado.escrever("— Você fez bem, mas... o que estava dentro, agora vai mudar o mundo. Espero que você nunca descubra como.");
+        TextoAnimado.escrever("Ele desaparece numa névoa de partículas, levando o container.");
         System.out.println(VERDE + "Nova Missão:" + RESET);
         Missoes EcoOuro = new SilvertongueEcoDeOuro();
         EcoOuro.executar(personagem, jogo);
+    }
 
-        sc.close();
-
+    private void verificarConclusao() throws InterruptedException {
+        if (this.isConcluida()) {
+            TextoAnimado.escrever("Missão concluída com sucesso! ✔");
+        } else {
+            TextoAnimado.escrever("Missão não concluída. ✖");
+            TelaInicial.mostrarMenu();
+        }
     }
 }
+
+
+//package model.missoes.MissaoPrincipal.SegundaRota;
+//
+//import controller.CombateController;
+//import controller.JogoController;
+//
+//import model.Personagem;
+//import model.inimigos.LeRoi;
+//import model.inimigos.utils.ItemFormatter;
+//import model.itens.Itens;
+//import model.missoes.Missoes;
+//import view.utils.TextoAnimado;
+//import view.utils.TextoAnimadoLongo;
+//
+//import java.util.Scanner;
+//
+//import static view.utils.Cores.RESET;
+//import static view.utils.Cores.VERDE;
+//
+//public class Seguir extends Missoes {
+//    public Seguir() {
+//        super("Seguir com a entrega como combinado — sem perguntas ", "Você decide manter o código. Night City já cobra caro por quem quebra acordos.  ");
+//    }
+//
+//    public void executar(Personagem personagem, JogoController jogo) throws InterruptedException {
+//        Scanner sc = new Scanner(System.in);
+//        TextoAnimado.escrever("Seguir com a entrega como combinado — sem perguntas ");
+//        TextoAnimado.escrever("Você decide manter o código. Night City já cobra caro por quem quebra acordos. ");
+//        TextoAnimado.escrever("Jackie não discute — apenas acelera. Vocês passam por Charter Hill, atravessam um bloqueio policial com ajuda de subornos e finalmente entram nas ruínas decadentes de Pacifica. ");
+//        TextoAnimado.escrever("O ponto de entrega é uma torre abandonada, onde uma figura encapuzada os espera: Silvertongue. Ele sorri com dentes de ouro polido, a voz suave e venenosa. ");
+//        TextoAnimado.escrever("— Muito bem. Profissionalismo raro hoje em dia.");
+//        TextoAnimado.escrever("Mas enquanto o container é transferido, uma gangue Voodoo Boys renegada aparece. Eles querem o conteúdo para si — não por dinheiro, mas por informação genética. Liderados por LeRoi, um ex-nômade convertido em tecnoxamã, eles falam com espíritos da Net. ");
+//        TextoAnimado.escrever("Combate!");
+//        System.out.println("Gerando um número aleatório...");
+//        TextoAnimadoLongo.escrever("...");
+//        int numeroP = (int)(Math.random() * 10) + 1;
+//        int numeroV = (int)(Math.random() * 10) + 1;
+//        TextoAnimado.escrever("Adicionado " + numeroP + " as habilidades no personagem");
+//        int atual = personagem.getHabilidade();
+//        int num = atual + numeroP;
+//        TextoAnimado.escrever("Total atual para de habilidades para combate: " + num);
+//        TextoAnimado.escrever("Adicionado " + numeroV + " as habilidades no Inimigo");
+//        int atual2 = LeRoi.habilidade();
+//        int num2 = atual + numeroV;
+//        TextoAnimado.escrever("Total atual para de habilidades para combate: " + num2);
+//        //iniciar combate
+//        TextoAnimadoLongo.escrever("Incio do combate...");
+//        TextoAnimado.escrever("M: Vilão em campo "); //indica que a cena é um monstro
+//        TextoAnimado.escrever("N: " + LeRoi.nome()); // é o nome do monstro
+//        TextoAnimado.escrever( "H: "+ LeRoi.habilidade()); //é a habilidade
+//        TextoAnimado.escrever( "S: "+ LeRoi.sorte()); //é a sorte
+//        TextoAnimado.escrever( "E: "+ LeRoi.energia()); //é a energia
+//        TextoAnimado.escrever( "T: "+ LeRoi.tesouro()); //é o tesouro
+//        TextoAnimado.escrever( "I: "+ ItemFormatter.formatarInventario(LeRoi.inventario())); //é os itens
+//        CombateController.iniciarCombate(personagem, new LeRoi(), jogo);
+//        TextoAnimado.escrever("Depois de uma luta intensa, você vence!");
+//        Itens DronesReciclados = new Itens("Drones Reciclados", "Arma", true, 5, 10);
+//        personagem.adicionarItem(DronesReciclados);
+//        TextoAnimado.escrever("Você pega os Drones Reciclados e os coloca na mochila.");
+//        TextoAnimado.escrever("— Você fez bem, mas... o que estava dentro, agora vai mudar o mundo. Espero que você nunca descubra como. ");
+//        TextoAnimado.escrever("Ele desaparece numa névoa de partículas, levando o container. ");
+//        System.out.println(VERDE + "Nova Missão:" + RESET);
+//        Missoes EcoOuro = new SilvertongueEcoDeOuro();
+//        EcoOuro.executar(personagem, jogo);
+//
+//        sc.close();
+//
+//    }
+//}
