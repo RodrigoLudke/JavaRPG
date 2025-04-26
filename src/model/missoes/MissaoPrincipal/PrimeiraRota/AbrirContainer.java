@@ -6,6 +6,7 @@ import model.inimigos.ChromeJaw;
 import model.inimigos.Drones;
 import model.inimigos.Inimigos;
 import model.inimigos.utils.ItemFormatter;
+import model.itens.Itens;
 import model.missoes.Missoes;
 import view.TelaInicial;
 import view.utils.ApagarConsole;
@@ -76,6 +77,12 @@ public class AbrirContainer extends Missoes {
         TextoAnimado.escrever("Total atual de habilidades para combate: " + personagem.getHabilidade());
 
         CombateController.iniciarCombateComVarios(personagem, inimigosDrones, jogo);
+        // Vasculhar corpos após o combate
+        TextoAnimado.escrever("\nApós a batalha, você observa os corpos dos guardas caídos...");
+        for (int i = 0; i < inimigosDrones.size(); i++) {
+            TextoAnimado.escrever("\nGuarda " + (i + 1) + ":");
+            vasculharCorpo(personagem, inimigosDrones.get(i));
+        }
         desfechoMissao(personagem, jogo);
     }
 
@@ -87,6 +94,38 @@ public class AbrirContainer extends Missoes {
         TextoAnimado.escrever("E: " + drone.getEnergia());
         TextoAnimado.escrever("T: " + drone.getTesouro());
         TextoAnimado.escrever("I: " + ItemFormatter.formatarInventario(drone.getInventario()));
+    }
+
+    private void vasculharCorpo(Personagem personagem, Inimigos inimigo) throws InterruptedException {
+        Scanner sc = new Scanner(System.in);
+
+        TextoAnimado.escrever("O corpo de " + inimigo.getNome() + " jaz no chão.");
+        System.out.println("Deseja vasculhar o corpo?");
+        System.out.println("1 - Sim");
+        System.out.println("2 - Não");
+
+        int escolha = sc.nextInt();
+
+        if (escolha == 1) {
+            if (!inimigo.getInventario().isEmpty()) {
+                System.out.println("\nItens encontrados:");
+                for (int i = 0; i < inimigo.getInventario().size(); i++) {
+                    Itens item = inimigo.getInventario().get(i);
+                    System.out.println((i + 1) + " - " + item.getNome());
+                }
+
+                System.out.println("\nEscolha um item para pegar (0 para não pegar nada):");
+                int itemEscolhido = sc.nextInt();
+
+                if (itemEscolhido > 0 && itemEscolhido <= inimigo.getInventario().size()) {
+                    Itens itemPego = inimigo.getInventario().get(itemEscolhido - 1);
+                    personagem.adicionarItem(itemPego);
+                    TextoAnimado.escrever("Você pegou: " + itemPego.getNome());
+                }
+            } else {
+                TextoAnimado.escrever("Não encontrou nada útil no corpo.");
+            }
+        }
     }
 
     private void desfechoMissao(Personagem personagem, JogoController jogo) throws InterruptedException {
