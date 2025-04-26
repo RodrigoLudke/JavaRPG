@@ -66,6 +66,7 @@ public class SilvertongueExe extends Missoes {
         TextoAnimado.escrever("Você salvou o mundo de um novo tirano digital — ao custo de si mesmo.");
         TextoAnimado.escrever("Você é um herói, mas a cidade nunca saberá seu nome.");
         TextoAnimado.escrever("\033[1mMissão Finalizada: Silvertongue.exe - Final Trágico\033[0m");
+        // FIM DA ROTA 3
         this.concluir();
     }
 
@@ -100,6 +101,7 @@ public class SilvertongueExe extends Missoes {
         TextoAnimado.escrever("Você sente um vazio, mas também uma nova liberdade. Você é você mesmo novamente.");
         TextoAnimado.escrever("O deus digital foi silenciado para sempre. Em Night City, o neón continua brilhando indiferente, e nem todo brilho é redenção.");
         TextoAnimado.escrever("\033[1mMissão Finalizada: Silvertongue.exe - Final Heroico\033[0m");
+        // FIM DA ROTA 3
         this.concluir();
     }
 
@@ -127,6 +129,7 @@ public class SilvertongueExe extends Missoes {
         TextoAnimado.escrever("Você é a nova ordem..........");
         TextoAnimado.escrever("Você de verdade se foi.");
         TextoAnimado.escrever("\033[1mMissão fracassada: Silvertongue.exe\033[0m");
+        // FIM DA ROTA 3
     }
 
     private void verificarConclusao() throws InterruptedException {
