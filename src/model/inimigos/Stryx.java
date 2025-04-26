@@ -2,7 +2,6 @@ package model.inimigos;
 
 import model.itens.Itens;
 import model.itens.Nullfang;
-import model.itens.VoxOmnis;
 
 import java.util.ArrayList;
 

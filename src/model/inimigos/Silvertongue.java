@@ -1,8 +1,8 @@
 package model.inimigos;
 
-import model.itens.CanhaoDePlasma;
+import model.hacks.Hacks;
 import model.itens.Itens;
-import model.itens.VoxOmnis;
+import model.hacks.VoxOmnis;
 
 import java.util.ArrayList;
 
@@ -12,9 +12,8 @@ public class Silvertongue extends Inimigos{
         this.setOuro(0);
         this.setProvisoes(0);
 
-        VoxOmnis voxOmnis = new VoxOmnis();
-        getInventario().add(voxOmnis);
-        equiparItem(voxOmnis);
+        VoxOmnis voxOmnis = new VoxOmnis(); // Cria a instância do Vox Omnis
+        getHacks().add(voxOmnis); // Adiciona ao inventário
 
     }
 
@@ -39,8 +38,11 @@ public class Silvertongue extends Inimigos{
     }
 
     public static ArrayList<Itens> inventario() {
-        ArrayList<Itens> inventario = new ArrayList<>();
-        inventario.add(new VoxOmnis());
-        return inventario;
+        return new ArrayList<>();
+    }
+    public static ArrayList<Hacks> hacks() {
+        ArrayList<Hacks> hacks = new ArrayList<>();
+        hacks.add(new VoxOmnis());
+        return hacks;
     }
 }
