@@ -3,11 +3,14 @@ package model.missoes.primeiraMissao;
 import controller.JogoController;
 import model.Personagem;
 import model.inimigos.ChromeJaw;
+import model.inimigos.Inimigos;
 import model.inimigos.Reflex;
 import model.inimigos.utils.ItemFormatter;
 import model.itens.Itens;
 import model.itens.PistolaSmartUnityMK5;
 import model.missoes.Missoes;
+import view.TelaInicial;
+import view.TelaInventario;
 import view.utils.ApagarConsole;
 import view.utils.TextoAnimado;
 import view.utils.TextoAnimadoLongo;
@@ -26,6 +29,7 @@ public class MissaoDentesDeOuro extends Missoes {
     }
 
     public void executar(Personagem personagem, JogoController jogo) throws InterruptedException {
+        ApagarConsole.limparConsole();
         introduzirMissao(personagem);
         adicionarPistola(personagem);
         mostrarEscolhaInicial(personagem, jogo);
@@ -70,7 +74,6 @@ public class MissaoDentesDeOuro extends Missoes {
 
     public void mostrarEscolhaInicial(Personagem personagem, JogoController jogo) throws InterruptedException {
         TextoAnimado.escrever("Escolha sua próxima ação: ");
-        jogo.atualizarEstadoAtual("MissaoDentesDeOuro_Escolha1");
 
         System.out.println("1 - Fugir pela rota lateral, arriscando um caminho por Kabuki");
         System.out.println("2 - Encarar os Maelstrom e lutar por tempo");
@@ -82,10 +85,12 @@ public class MissaoDentesDeOuro extends Missoes {
             case 1 -> fugirRotaLateral(personagem, jogo);
             case 2 -> encararMaelstrom(personagem, jogo);
             case 3 -> negociarChromejaw(personagem, jogo);
-            case 4 -> abrirInventario(jogo);
+            case 4 -> {
+                jogo.atualizarEstadoAtual("MissaoDentesDeOuro_Escolha1"); abrirInventario(jogo);
+                }
             default -> missaoFracassada();
+            }
         }
-    }
 
     private void fugirRotaLateral(Personagem personagem, JogoController jogo) throws InterruptedException {
         TextoAnimado.escrever("Jackie grita — Corre! — enquanto " + personagem.getNome() + " ativa a porta lateral da garagem com um chute. O som da velha grade se abrindo ecoa como um alarme. " + personagem.getNome() + " e Jackie montam nas motos e disparam pelos becos estreitos de Kabuki, onde neon se mistura com fumaça de alimentos de rua e lixo. ");
@@ -119,8 +124,42 @@ public class MissaoDentesDeOuro extends Missoes {
         int atual2 = ChromeJaw.habilidade();
         int num2 = atual2 + numeroV;
         TextoAnimado.escrever("Total atual para de habilidades para combate: " + num2);
-        iniciarCombate(personagem, new ChromeJaw(), jogo);
+        ChromeJaw inimigoChromeJaw = new ChromeJaw();
+        iniciarCombate(personagem, inimigoChromeJaw, jogo);
+        vasculharCorpo(personagem, inimigoChromeJaw);
         mostrarEscolhasFinais(personagem, jogo, "2/1");
+    }
+
+    private void vasculharCorpo(Personagem personagem, Inimigos inimigo) throws InterruptedException {
+        Scanner sc = new Scanner(System.in);
+
+        TextoAnimado.escrever("O corpo de " + inimigo.getNome() + " jaz no chão.");
+        System.out.println("Deseja vasculhar o corpo?");
+        System.out.println("1 - Sim");
+        System.out.println("2 - Não");
+
+        int escolha = sc.nextInt();
+
+        if (escolha == 1) {
+            if (!inimigo.getInventario().isEmpty()) {
+                System.out.println("\nItens encontrados:");
+                for (int i = 0; i < inimigo.getInventario().size(); i++) {
+                    Itens item = inimigo.getInventario().get(i);
+                    System.out.println((i + 1) + " - " + item.getNome());
+                }
+
+                System.out.println("\nEscolha um item para pegar (0 para não pegar nada):");
+                int itemEscolhido = sc.nextInt();
+
+                if (itemEscolhido > 0 && itemEscolhido <= inimigo.getInventario().size()) {
+                    Itens itemPego = inimigo.getInventario().get(itemEscolhido - 1);
+                    personagem.adicionarItem(itemPego);
+                    TextoAnimado.escrever("Você pegou: " + itemPego.getNome());
+                }
+            } else {
+                TextoAnimado.escrever("Não encontrou nada útil no corpo.");
+            }
+        }
     }
 
     private void mostrarInformacoesVilao() throws InterruptedException {
@@ -191,8 +230,10 @@ public class MissaoDentesDeOuro extends Missoes {
     private void verificarConclusao() throws InterruptedException {
         if (this.isConcluida()) {
             TextoAnimado.escrever("Missão concluída com sucesso! ✔");
+            //implementar logica para ir para proxima missao
         } else {
             TextoAnimado.escrever("Missão não concluída. ✖");
+            TelaInicial.mostrarMenu();
         }
     }
 }

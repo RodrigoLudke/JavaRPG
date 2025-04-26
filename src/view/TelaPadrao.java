@@ -21,7 +21,6 @@ public class TelaPadrao {
         System.out.println();
         String introducao2 = p.getNome() + " acorda com o gosto amargo da ressaca e promessas penduradas na agenda. As luzes da cidade invadem o apartamento pela janela quebrada, e as sirenes ao longe lembram que, em Night City, o amanhã nunca vem fácil — e o hoje já cobra caro. O telefone vibra: é Jackie. Um trampo apareceu. Pequeno, sujo, mas com potencial. Um transporte discreto, entrega rápida, ninguém faz perguntas. A carga? Um container selado vindo direto das mãos de um cliente extravagante com créditos demais e escrúpulos de menos. Lá dentro, algo exótico — um símbolo de poder para alguém que já tem tudo. Mas em Night City, até as cargas inofensivas têm dentes.";
         TextoAnimado.escrever(introducao2);
-        TextoAnimado.escrever("Item adicionado ao inventário: SabreCyberPunk");
         System.out.println();
         jogo.jogoBase();
     }

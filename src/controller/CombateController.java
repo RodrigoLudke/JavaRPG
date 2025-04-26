@@ -15,6 +15,7 @@ public class CombateController {
     public static void iniciarCombate(Personagem personagem, Inimigos inimigo, JogoController jogo) throws InterruptedException {
         if (personagem.getEnergia() <= 0) {
             System.out.println("Você não tem energia suficiente para lutar!");
+            jogo.iniciarJogo();
             return;
         }
         if (inimigo.getEnergia() <= 0) {
