@@ -18,9 +18,6 @@ public class CombateController {
     public static void iniciarCombate(Personagem personagem, Inimigos inimigo, JogoController jogo) throws InterruptedException {
         if (personagem.getEnergia() <= 0) {
             System.out.println("Você não tem energia suficiente para lutar!");
-            ApagarConsole.limparConsole();
-            System.out.println("Game Over!");
-            TelaInicial.mostrarMenu();
             return;
         }
         if (inimigo.getEnergia() <= 0) {
@@ -63,6 +60,9 @@ public class CombateController {
             // Verificar se o jogador foi derrotado
             if (personagem.getEnergia() <= 0) {
                 System.out.println("Você foi derrotado...");
+                ApagarConsole.limparConsole();
+                System.out.println("Game Over!");
+                TelaInicial.mostrarMenu();
                 return;
             }
         }
