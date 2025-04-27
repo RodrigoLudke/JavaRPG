@@ -262,5 +262,6 @@ public class CombateController {
         if (inimigos.isEmpty()) {
             System.out.println("Você derrotou todos os inimigos!");
         }
+
     }
 }

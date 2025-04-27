@@ -60,6 +60,7 @@ public class TelaInicial {
         }
         sc.close();
         System.out.println(AMARELO + "Saindo...");
+        jogo.sairDoJogo();
 
 
     }

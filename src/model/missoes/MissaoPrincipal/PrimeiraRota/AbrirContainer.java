@@ -46,7 +46,8 @@ public class AbrirContainer extends Missoes {
         TextoAnimado.escrever("Dentro:");
         TextoAnimado.escrever("uma criança-ciborgue, em animação suspensa. Pele artificial, olhos de espiral azul e conexões diretamente ligadas a um biochip experimental da Kang-Tao. No peito, um símbolo: ‘Specimen Y-ΔX’. A criatura abre os olhos — e " + personagem.getNome() + " sente uma pressão nos implantes cerebrais, como se alguém estivesse... escutando seus pensamentos. ");
         TextoAnimado.escrever("De repente, o sistema de alarme dispara. O selo de segurança estava conectado a uma rede satelital da Arasaka. ");
-        TextoAnimadoLongo.escrever("Emboscada!");
+        ApagarConsole.limparConsole();
+        TextoAnimado.escrever("Emboscada!");
         TextoAnimado.escrever("Drones Arasaka descem do céu, escudos ativos e metralhadoras rotativas zumbindo. ");
         TextoAnimado.escrever("Um solo equipado com exoesqueleto negro surge no telhado próximo: Operador Rei, caçador de protótipos. Ele fala como se já estivesse entediado:");
         TextoAnimado.escrever("— Objeto ΔX detectado. Eliminação de testemunhas autorizada. ");

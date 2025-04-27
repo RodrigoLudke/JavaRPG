@@ -3,6 +3,7 @@ package model.missoes.MissaoPrincipal.PrimeiraRota;
 import controller.CombateController;
 import controller.JogoController;
 import model.Personagem;
+import model.TesteSorte;
 import model.inimigos.*;
 import model.inimigos.utils.ItemFormatter;
 import model.itens.Itens;
@@ -103,6 +104,7 @@ public class Despertar extends Missoes {
 
     private void lutarContraTrovaCinzento(Personagem personagem, JogoController jogo) throws InterruptedException {
         TextoAnimado.escrever("Combate!");
+
         TrovaoCinzento trovaoCinzento = new TrovaoCinzento();
 
         int numeroP = (int)(Math.random() * 10) + 1;

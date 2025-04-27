@@ -35,7 +35,7 @@ public class SilvertongueExe extends Missoes {
         TextoAnimado.escrever("Corredores escuros se desenrolam atrás do bar. Vocês correm pela área VIP, mas Mãos do Espelho usam espelhos neurais para duplicar suas aparências, confundindo suas miras. ");
         TextoAnimado.escrever("\033[1mDuelo Mental\033[0m");
         TextoAnimado.escrever("De volta ao seu cubículo móvel, você senta-se e conecta seu spike. A interface neural acende em padrões fractais: a consciência de Silvertongue invade sua psique.");
-        TextoAnimadoLongo.escrever(VERMELHO + "\033[1mVisões Fragmentadas:\033[0m" + RESET);
+        TextoAnimado.escrever(VERMELHO + "\033[1mVisões Fragmentadas:\033[0m" + RESET);
         TextoAnimado.escrever("Você vê flashs de uma infância digital, linhas de código que se tornam memórias falsas, e o eco frio da IA sussurrando promessas de onipotência.");
         TextoAnimado.escrever("Silvertongue (voz ecoante):");
         TextoAnimado.escrever("-Junte-se a mim. Transforme-se no primeiro netrunner divino... Não lute contra o inevitável. Escolha. E seja mais do que carne");

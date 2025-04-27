@@ -65,4 +65,13 @@ public class JogoController {
         }
         return false;
     }
+    public void sairDoJogo() {
+        try {
+            // Libere recursos ou finalize processos aqui, se necessário
+            System.out.println("Encerrando o jogo...");
+            System.exit(0); // Encerra o programa
+        } catch (Exception e) {
+            System.err.println("Erro ao encerrar o jogo: " + e.getMessage());
+        }
+    }
 }

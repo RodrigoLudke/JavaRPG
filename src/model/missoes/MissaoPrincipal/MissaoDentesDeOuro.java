@@ -2,6 +2,7 @@ package model.missoes.MissaoPrincipal;
 
 import controller.JogoController;
 import model.Personagem;
+import model.TesteSorte;
 import model.inimigos.ChromeJaw;
 import model.inimigos.Inimigos;
 import model.inimigos.utils.ItemFormatter;
@@ -51,6 +52,7 @@ public class MissaoDentesDeOuro extends Missoes {
         TextoAnimadoLongo.escrever(pontos);
         TextoAnimadoLongo.escrever(pontos);
         TextoAnimadoLongo.escrever(pontos);
+        ApagarConsole.limparConsole();
         String missaoResumo2 = "As luzes de Japantown ainda dançam nos reflexos do asfalto molhado quando " + personagem.getNome() +" encontra Jackie na garagem subterrânea do \"Red Lotus\", um clube de mahou-trance famoso entre netrunners e caçadores de glitch. Ele está encostado na sua Yaiba Kusanagi, mascando um cigarro eletrônico com sabor de tequila.";
         TextoAnimado.escrever(missaoResumo2);
         String dialogo1 = "— Ey " + personagem.getNome() + ", pronto pra isso? O tal do Silvertongue pagou bem, mas disse pra não abrir o container nem por um segundo. Palavras dele: 'Se você olhar, talvez ele olhe de volta.' Seja lá o que isso signifique… ";
@@ -104,6 +106,7 @@ public class MissaoDentesDeOuro extends Missoes {
         TextoAnimadoLongo.escrever(pontos);
         TextoAnimadoLongo.escrever(pontos);
         TextoAnimadoLongo.escrever(pontos);
+        ApagarConsole.limparConsole();
         TextoAnimado.escrever("Escapam por pouco, chegando ao túnel de acesso de Pacifica. Mas o container sofreu danos — uma pequena rachadura no selo revela um brilho estranho..");
         TextoAnimado.escrever("\033[1mAlgo vivo\033[0m se move dentro.");
         TextoAnimado.escrever(personagem.getNome() + " sobreviveu ao primeiro obstáculo. Mas o que há dentro daquele container pulsa com vida própria...");
@@ -114,7 +117,20 @@ public class MissaoDentesDeOuro extends Missoes {
     private void encararMaelstrom(Personagem personagem, JogoController jogo) throws InterruptedException {
         TextoAnimado.escrever(personagem.getNome() + " ergue a mão para Jackie e saca a \033[1mpistola smart Unity MK.5\033[0m, programada com munição rastreável. A garagem vira um campo de batalha em segundos. ");
         TextoAnimado.escrever("Chromejaw avança como um tanque, com o punho metálico vibrando com força de demolição. Seu braço direito é um canhão de plasma portátil, e os olhos dele brilham em infravermelho. ");
-
+        TextoAnimado.escrever("Dejesa usar o teste de sorte?");
+        System.out.println("1 - Sim");
+        System.out.println("2 - Não");
+        int sorte = sc.nextInt();
+        if (sorte == 1) {
+            boolean sucesso = TesteSorte.testarSorte(personagem);
+            if (sucesso) {
+                TextoAnimado.escrever("Teste de sorte bem-sucedido!");
+                TesteSorte.aplicarSorteNoCombate(personagem, new ChromeJaw(), true);
+            } else {
+                TextoAnimado.escrever("Teste de sorte falhou!");
+            }
+        }
+        TextoAnimado.escrever("Combate iniciado!");
         ChromeJaw inimigoChromeJaw = new ChromeJaw();
         mostrarInformacoesVilao(inimigoChromeJaw);
         System.out.println("Gerando um número aleatório...");

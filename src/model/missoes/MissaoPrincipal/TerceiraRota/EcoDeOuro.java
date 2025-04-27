@@ -81,7 +81,7 @@ public class EcoDeOuro extends Missoes {
     }
 
     private void mostrarInformacoesVilao(Inimigos inimigo) throws InterruptedException {
-        TextoAnimadoLongo.escrever("Início do combate...");
+        TextoAnimado.escrever("Início do combate...");
         TextoAnimado.escrever("M: Vilão em campo");
         TextoAnimado.escrever("N: " + inimigo.getNome());
         TextoAnimado.escrever("H: " + inimigo.getHabilidade());

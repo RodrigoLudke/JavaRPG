@@ -3,6 +3,7 @@ package model.missoes.MissaoPrincipal.SegundaRota;
 import controller.CombateController;
 import controller.JogoController;
 import model.Personagem;
+import model.TesteSorte;
 import model.hacks.VoxOmnis;
 import model.inimigos.Drones;
 import model.inimigos.Inimigos;
@@ -76,9 +77,9 @@ public class SilvertongueEcoDeOuro extends Missoes {
 
         CombateController.iniciarCombateComVarios(personagem, inimigosDrones, jogo);
         // Vasculhar corpos após o combate
-        TextoAnimado.escrever("\nApós a batalha, você observa os corpos dos guardas caídos...");
+        TextoAnimado.escrever("Após a batalha, você observa os corpos dos guardas caídos...");
         for (int i = 0; i < inimigosDrones.size(); i++) {
-            TextoAnimado.escrever("\nGuarda " + (i + 1) + ":");
+            TextoAnimado.escrever("Guarda " + (i + 1) + ":");
             vasculharCorpo(personagem, inimigosDrones.get(i));
         }
         meioMissao(personagem, jogo);
@@ -92,13 +93,26 @@ public class SilvertongueEcoDeOuro extends Missoes {
         TextoAnimado.escrever("Silvertongue (voz calma):");
         TextoAnimado.escrever("-Parabéns por vir tão longe. Mas o 'eco de ouro' não se desfaz em pedaços.");
         TextoAnimado.escrever("Ele pressiona um comando: o ouro líquido começa a se liquefazer, formando uma massa viva de código psicocinético — o proto‑deus digital. ");
-        TextoAnimadoLongo.escrever("\033[1mO Coração da Criação...\033[0m");
+        TextoAnimado.escrever("\033[1mO Coração da Criação...\033[0m");
         ApagarConsole.limparConsole();
         lutarContraSilvertongue(personagem, jogo);
     }
 
     private void lutarContraSilvertongue(Personagem personagem, JogoController jogo) throws InterruptedException {
         TextoAnimado.escrever("Combate!");
+        TextoAnimado.escrever("Dejesa usar o teste de sorte?");
+        System.out.println("1 - Sim");
+        System.out.println("2 - Não");
+        int sorte = sc.nextInt();
+        if (sorte == 1) {
+            boolean sucesso = TesteSorte.testarSorte(personagem);
+            if (sucesso) {
+                TextoAnimado.escrever("Teste de sorte bem-sucedido!");
+                TesteSorte.aplicarSorteNoCombate(personagem, new Silvertongue(), sucesso);
+            } else {
+                TextoAnimado.escrever("Teste de sorte falhou!");
+            }
+        }
         Silvertongue silvertongue = new Silvertongue();
 
         System.out.println("Gerando um número aleatório...");
@@ -115,7 +129,7 @@ public class SilvertongueEcoDeOuro extends Missoes {
         int num2 = atual2 + numeroV;
         TextoAnimado.escrever("Total atual para de habilidades para combate: " + num2);
         mostrarInformacoesVilao(silvertongue);
-        TextoAnimado.escrever(VoxOmnis.descricao());
+
 
         CombateController.iniciarCombate(personagem, silvertongue, jogo);
         vasculharCorpo(personagem, silvertongue);
