@@ -4,7 +4,7 @@ import view.utils.TextoAnimado;
 
 public class UparPersonagem {
     private static final int XP_POR_COMBATE = 100;
-    private static final int XP_BASE_LEVEL = 500;
+    private static final int XP_BASE_LEVEL = 300;
 
     public static void uparAposCombate(Personagem personagem) throws InterruptedException {
         // Adiciona XP após o combate
@@ -27,7 +27,7 @@ public class UparPersonagem {
 
     private static void subirLevel(Personagem personagem) throws InterruptedException {
         personagem.setLevel(personagem.getLevel() + 1);
-        TextoAnimado.escrever("\n=== LEVEL UP! ===");
+        TextoAnimado.escrever("=== LEVEL UP! ===");
         TextoAnimado.escrever("Você alcançou o nível " + personagem.getLevel() + "!");
 
         // Aumenta atributos
