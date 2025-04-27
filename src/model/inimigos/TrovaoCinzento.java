@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class TrovaoCinzento extends Inimigos{
     public TrovaoCinzento() {
-        super("Trovão Cinzento", 18, 20, 15);
+        super("Trovão Cinzento", 10, 20, 15);
         this.setOuro(0);
         this.setProvisoes(0);
 
@@ -17,7 +17,7 @@ public class TrovaoCinzento extends Inimigos{
         equiparItem(canhaoMicroMisseis);
     }
 
-    public static int habilidade() {return 18;}
+    public static int habilidade() {return 10;}
 
     public static String nome() {
         return "Trovão Cinzento";

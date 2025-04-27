@@ -38,6 +38,7 @@ public class SilvertongueEcoDeOuro extends Missoes {
     private void introduzirMissao() throws InterruptedException {
         TextoAnimado.escrever("Silvertongue: Eco de Ouro");
         TextoAnimado.escrever("Você começa a ouvir boatos — sobre um novo deus digital sendo criado nas sombras... e sobre um entregador que talvez tenha dado a chave sem saber.");
+        ApagarConsole.limparConsole();
         TextoAnimadoLongo.escrever("...");
         TextoAnimado.escrever("Após a entrega, você e Jackie voltam à barbearia improvisada de Viktor em Santo Domingo. Enquanto ele ajusta seu implante ocular, um contato anônimo no NetWatch lhe envia uma mensagem criptografada: ");
         TextoAnimado.escrever("Mensagem NetWatch (texto piscando): ");
@@ -45,7 +46,7 @@ public class SilvertongueEcoDeOuro extends Missoes {
         TextoAnimado.escrever("Vocês decifram coordenadas e percebem que Silvertongue usou o container como semente para um servidor neural clandestino, pronto para enterrar a vontade humana.");
         TextoAnimado.escrever("Em meio à névoa tóxica e streetlights cor de ferrugem, vocês escalam o esqueleto metálico da Omnicorp Tower. No nível 42, um corredor de acid-etched glass e drones de patrulha paira silencioso.");
         TextoAnimado.escrever("“\033[1mO Conclave da Luz“\033[0m ");
-        TextoAnimado.escrever("Comandante!");
+        ApagarConsole.limparConsole();
     }
 
     private void lutarContraDrones(Personagem personagem, JogoController jogo) throws InterruptedException {
@@ -92,6 +93,7 @@ public class SilvertongueEcoDeOuro extends Missoes {
         TextoAnimado.escrever("-Parabéns por vir tão longe. Mas o 'eco de ouro' não se desfaz em pedaços.");
         TextoAnimado.escrever("Ele pressiona um comando: o ouro líquido começa a se liquefazer, formando uma massa viva de código psicocinético — o proto‑deus digital. ");
         TextoAnimadoLongo.escrever("\033[1mO Coração da Criação...\033[0m");
+        ApagarConsole.limparConsole();
         lutarContraSilvertongue(personagem, jogo);
     }
 
@@ -167,6 +169,7 @@ public class SilvertongueEcoDeOuro extends Missoes {
         TextoAnimado.escrever("Silvertongue (com um sorriso triste): ");
         TextoAnimado.escrever("-Eis o preço de brincar de deus. Que o silêncio quebre o eco ");
         TextoAnimado.escrever("Ele se levanta, os olhos de metal agora opacos. O ouro líquido começa a se solidificar, formando uma armadura de dados que o envolve como uma segunda pele. ");
+        ApagarConsole.limparConsole();
         TextoAnimadoLongo.escrever("...");
         System.out.println();
         TextoAnimado.escrever("Com as últimas forças, ele aperta um botão no seu spike interno, apagando sua personalidade da rede. Em poucos segundos, desaparece por completo — tanto fisicamente quanto como dado. ");

@@ -51,6 +51,7 @@ public class AbrirContainer extends Missoes {
         TextoAnimado.escrever("Um solo equipado com exoesqueleto negro surge no telhado próximo: Operador Rei, caçador de protótipos. Ele fala como se já estivesse entediado:");
         TextoAnimado.escrever("— Objeto ΔX detectado. Eliminação de testemunhas autorizada. ");
         System.out.println();
+        ApagarConsole.limparConsole();
     }
 
     private void lutarContraDrones(Personagem personagem, JogoController jogo) throws InterruptedException {

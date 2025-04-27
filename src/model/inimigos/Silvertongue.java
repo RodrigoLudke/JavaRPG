@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Silvertongue extends Inimigos{
     public Silvertongue() {
-        super("Silvertongue", 20, 20, 20);
+        super("Silvertongue", 10, 20, 10);
         this.setOuro(0);
         this.setProvisoes(0);
 
@@ -18,7 +18,7 @@ public class Silvertongue extends Inimigos{
     }
 
     public static int habilidade() {
-        return 20;
+        return 10;
     }
 
     public static String nome() {

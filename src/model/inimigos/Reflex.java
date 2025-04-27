@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Reflex extends Inimigos{
     public Reflex() {
-        super("Meika “Reflex” Hoshino", 15, 18, 13);
+        super("Meika “Reflex” Hoshino", 8, 18, 13);
         this.setOuro(0);
         this.setProvisoes(0);
 
@@ -18,7 +18,7 @@ public class Reflex extends Inimigos{
 
     }
 
-    public static int habilidade() {return 15;}
+    public static int habilidade() {return 8;}
 
     public static String nome() {return "Meika “Reflex” Hoshino";}
 

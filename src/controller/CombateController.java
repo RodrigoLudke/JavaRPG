@@ -7,6 +7,7 @@ import model.itens.Itens;
 import view.TelaCombate;
 import view.TelaInicial;
 import view.TelaInventario;
+import view.utils.ApagarConsole;
 
 import java.util.List;
 import java.util.Random;
@@ -17,6 +18,7 @@ public class CombateController {
     public static void iniciarCombate(Personagem personagem, Inimigos inimigo, JogoController jogo) throws InterruptedException {
         if (personagem.getEnergia() <= 0) {
             System.out.println("Você não tem energia suficiente para lutar!");
+            ApagarConsole.limparConsole();
             System.out.println("Game Over!");
             TelaInicial.mostrarMenu();
             return;

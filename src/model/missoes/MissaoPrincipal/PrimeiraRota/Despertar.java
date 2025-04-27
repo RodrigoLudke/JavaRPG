@@ -128,6 +128,7 @@ public class Despertar extends Missoes {
         TextoAnimado.escrever("Deleção Segura: apaga todas as cópias digitais do “Projeto Vórtice Mental” na rede do cargueiro. ");
         TextoAnimado.escrever("Explosion Check: arma cargas de implosão magnética nos racks de dados para evitar recuperação. ");
         TextoAnimado.escrever("Enquanto Jackie segura a lanterna e Eon observa, o porão inteiro entra em colapso controlado. Vocês correm pelas rampas, saltam para as hover‑bikes e, num estrondo surdo, o navio explode num clarão alaranjado que reflete nas águas do porto. ");
+        ApagarConsole.limparConsole();
         TextoAnimadoLongo.escrever("...");
         TextoAnimado.escrever("Na manhã seguinte, sob o neblina suave de Watson, vocês estacionam a moto num beco silencioso. O container está vazio, Eon vive livre de correntes digitais. ");
         TextoAnimado.escrever("Jackie (sorrindo, cansado): ");

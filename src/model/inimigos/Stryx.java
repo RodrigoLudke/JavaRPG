@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Stryx extends Inimigos{
     public Stryx() {
-        super("Stryx", 15, 15, 15);
+        super("Stryx", 10, 10, 10);
         this.setOuro(0);
         this.setProvisoes(0);
 
@@ -18,7 +18,7 @@ public class Stryx extends Inimigos{
     }
 
     public static int habilidade() {
-        return 15;
+        return 10;
     }
 
     public static String nome() {
@@ -26,11 +26,11 @@ public class Stryx extends Inimigos{
     }
 
     public static int sorte() {
-        return 15;
+        return 10;
     }
 
     public static int energia() {
-        return 15;
+        return 10;
     }
 
     public static int tesouro() {

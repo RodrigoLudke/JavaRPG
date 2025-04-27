@@ -33,9 +33,11 @@ public class EcoDeOuro extends Missoes {
     private void introduzirMissao() throws InterruptedException {
         TextoAnimado.escrever("Eco de Ouro");
         TextoAnimado.escrever("Você é metade você. Metade algo mais. As megacorporações perceberam. E estão vindo.");
+        ApagarConsole.limparConsole();
         TextoAnimadoLongo.escrever("...");
         TextoAnimado.escrever("Você aceitou o pacto. Agora carrega Silvertongue dentro de si — uma fusão entre carne e código. Não é mais só você. Sua mente pulsa em dois tons, e o mundo começa a sentir isso. Megaestruturas sussurram seu nome na Deep Net. Uma nova entidade híbrida nasceu. Mas nem todos aceitam esse novo tipo de poder.");
         TextoAnimado.escrever("Você entra no DataCoração, o núcleo oculto sob Night City onde corporações guardam suas consciências em nuvem. Silvertongue quer libertar sua “família”: outras IAs esquecidas, em quarentena digital.");
+        ApagarConsole.limparConsole();
         introduzirDialogoInicial();
     }
 
@@ -44,6 +46,7 @@ public class EcoDeOuro extends Missoes {
         TextoAnimado.escrever("-Eles nos enterraram vivos, por medo do amanhã. Hoje... desenterramos o futuro.");
         TextoAnimado.escrever("Você hackeia firewalls vivos, se esgueira entre sentinelas de silício. A fusão te dá novas habilidades: pulsos de duplicação, reflexos de previsão neural, e códigos de translocação.");
         TextoAnimado.escrever("Mas no centro da rede, algo te espera.");
+        ApagarConsole.limparConsole();
         introduzirStryx();
     }
 
@@ -52,9 +55,11 @@ public class EcoDeOuro extends Missoes {
         TextoAnimado.escrever("Seu corpo é um artefato de guerra — puro titânio banhado em mercúrio negro, e sua mente, fundida a algoritmos de tortura neural.");
         TextoAnimado.escrever("Stryx:");
         TextoAnimado.escrever("-Você se deixou possuir. Não é mais humano. Hora de apagar o erro");
+
     }
 
     private void lutarContraStryx(Personagem personagem, JogoController jogo) throws InterruptedException {
+        ApagarConsole.limparConsole();
         TextoAnimado.escrever("COMBATE FINAL");
         Stryx stryx = new Stryx();
 

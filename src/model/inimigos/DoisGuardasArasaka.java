@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class DoisGuardasArasaka extends Inimigos{
     public DoisGuardasArasaka() {
-        super("Dois Guardas Arasaka", 15, 20, 6);
+        super("Dois Guardas Arasaka", 8, 15, 6);
         this.setOuro(0);
         this.setProvisoes(0);
 
@@ -17,7 +17,7 @@ public class DoisGuardasArasaka extends Inimigos{
         equiparItem(riflesDePulso);
     }
 
-    public static int habilidade() {return 15;}
+    public static int habilidade() {return 8;}
 
     public static String nome() {
         return "Dois Guardas Arasaka";
@@ -28,7 +28,7 @@ public class DoisGuardasArasaka extends Inimigos{
     }
 
     public static int energia() {
-        return 20;
+        return 15;
     }
 
     public static int tesouro() {

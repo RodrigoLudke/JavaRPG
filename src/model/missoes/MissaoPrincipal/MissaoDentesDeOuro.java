@@ -47,6 +47,7 @@ public class MissaoDentesDeOuro extends Missoes {
         TextoAnimado.escrever("\033[1mResumo da Missão\033[0m");
         String missaoResumo1 = personagem.getNome() + " deve transportar um container selado por Night City — de Japantown até um ponto de entrega em Pacifica. O conteúdo é misterioso e valioso. Mas um velho nome do submundo descobre a movimentação… e quer a carga para si.";
         TextoAnimado.escrever(missaoResumo1);
+        ApagarConsole.limparConsole();
         TextoAnimadoLongo.escrever(pontos);
         TextoAnimadoLongo.escrever(pontos);
         TextoAnimadoLongo.escrever(pontos);
@@ -64,6 +65,7 @@ public class MissaoDentesDeOuro extends Missoes {
         TextoAnimado.escrever("— Eu ouvi dizer que você tem algo que pertence ao meu cliente. Entregue, e ninguém precisa virar ração de drone. ");
         String Tensao = personagem.getNome() + " está cercado. Jackie olha pra " + personagem.getNome() + ", mão próxima da pistola.";
         TextoAnimado.escrever(Tensao);
+        ApagarConsole.limparConsole();
     }
 
     private void adicionarPistola(Personagem personagem) throws InterruptedException {
@@ -98,6 +100,7 @@ public class MissaoDentesDeOuro extends Missoes {
         TextoAnimado.escrever("Mas não demora até que \033[1mChromejaw\033[0m envie um dos seus caçadores: \n");
         TextoAnimado.escrever("Ramone, piloto da gangue, com um corpo tão modificado que a moto é praticamente uma extensão de seus membros cibernéticos. Os olhos dele piscam em vermelho enquanto se conecta à rede de trânsito, hackeando semáforos e cortando caminho pelas vias elevadas..");
         TextoAnimado.escrever("Uma perseguição insana começa. ");
+        ApagarConsole.limparConsole();
         TextoAnimadoLongo.escrever(pontos);
         TextoAnimadoLongo.escrever(pontos);
         TextoAnimadoLongo.escrever(pontos);

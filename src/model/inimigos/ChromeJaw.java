@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class ChromeJaw extends Inimigos {
     public ChromeJaw() {
-        super("Chrome Jaw", 8, 10, 6);
+        super("Chrome Jaw", 6, 7, 6);
         this.setOuro(0);
         this.setProvisoes(0);
 
@@ -17,7 +17,7 @@ public class ChromeJaw extends Inimigos {
     }
 
     public static int habilidade() {
-        return 8;
+        return 6;
     }
 
     public static String nome() {
@@ -29,7 +29,7 @@ public class ChromeJaw extends Inimigos {
     }
 
     public static int energia() {
-        return 10;
+        return 7;
     }
 
     public static int tesouro() {
@@ -38,7 +38,7 @@ public class ChromeJaw extends Inimigos {
 
     public static ArrayList<Itens> inventario() {
         ArrayList<Itens> inventario = new ArrayList<>();
-        inventario.add(new CanhaoDePlasma()); // Adiciona o Canhão de Plasma ao inventário
+        inventario.add(new CanhaoDePlasma());  // Adiciona o Canhão de Plasma ao inventário
         return inventario;
     }
 }
