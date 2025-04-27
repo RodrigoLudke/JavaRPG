@@ -3,6 +3,7 @@ package model.missoes.MissaoPrincipal.TerceiraRota;
 import controller.CombateController;
 import controller.JogoController;
 import model.Personagem;
+import model.UparPersonagem;
 import model.inimigos.Inimigos;
 import model.inimigos.Stryx;
 import model.itens.Itens;
@@ -76,6 +77,7 @@ public class EcoDeOuro extends Missoes {
 
         mostrarInformacoesVilao(stryx);
         CombateController.iniciarCombate(personagem, stryx, jogo);
+        UparPersonagem.uparAposCombate(personagem);
         vasculharCorpo(personagem, stryx);
         desfechoMissao();
     }

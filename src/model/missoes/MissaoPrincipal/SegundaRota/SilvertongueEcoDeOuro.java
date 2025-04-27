@@ -4,6 +4,7 @@ import controller.CombateController;
 import controller.JogoController;
 import model.Personagem;
 import model.TesteSorte;
+import model.UparPersonagem;
 import model.hacks.VoxOmnis;
 import model.inimigos.Drones;
 import model.inimigos.Inimigos;
@@ -82,6 +83,7 @@ public class SilvertongueEcoDeOuro extends Missoes {
             TextoAnimado.escrever("Guarda " + (i + 1) + ":");
             vasculharCorpo(personagem, inimigosDrones.get(i));
         }
+        UparPersonagem.uparAposCombate(personagem);
         meioMissao(personagem, jogo);
     }
 
@@ -132,6 +134,7 @@ public class SilvertongueEcoDeOuro extends Missoes {
 
 
         CombateController.iniciarCombate(personagem, silvertongue, jogo);
+        UparPersonagem.uparAposCombate(personagem);
         vasculharCorpo(personagem, silvertongue);
         desfechoMissao();
     }

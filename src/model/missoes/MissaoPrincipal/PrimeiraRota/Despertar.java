@@ -4,6 +4,7 @@ import controller.CombateController;
 import controller.JogoController;
 import model.Personagem;
 import model.TesteSorte;
+import model.UparPersonagem;
 import model.inimigos.*;
 import model.inimigos.utils.ItemFormatter;
 import model.itens.Itens;
@@ -78,6 +79,7 @@ public class Despertar extends Missoes {
             TextoAnimado.escrever("\nGuarda " + (i + 1) + ":");
             vasculharCorpo(personagem, inimigosGuardas.get(i));
         }
+        UparPersonagem.uparAposCombate(personagem);
         meioMissao(personagem, jogo);
     }
 
@@ -120,6 +122,7 @@ public class Despertar extends Missoes {
 
         mostrarInformacoesVilao(trovaoCinzento);
         CombateController.iniciarCombate(personagem, trovaoCinzento, jogo);
+        UparPersonagem.uparAposCombate(personagem);
         vasculharCorpo(personagem, trovaoCinzento);
         desfechoMissao(personagem, jogo);
     }

@@ -2,6 +2,7 @@ package model.missoes.MissaoPrincipal.PrimeiraRota;
 import controller.CombateController;
 import controller.JogoController;
 import model.Personagem;
+import model.UparPersonagem;
 import model.inimigos.ChromeJaw;
 import model.inimigos.Drones;
 import model.inimigos.Inimigos;
@@ -87,6 +88,7 @@ public class AbrirContainer extends Missoes {
             TextoAnimado.escrever("\nGuarda " + (i + 1) + ":");
             vasculharCorpo(personagem, inimigosDrones.get(i));
         }
+        UparPersonagem.uparAposCombate(personagem);
         desfechoMissao(personagem, jogo);
     }
 

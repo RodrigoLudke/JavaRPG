@@ -3,6 +3,7 @@ package model.missoes.MissaoPrincipal;
 import controller.JogoController;
 import model.Personagem;
 import model.TesteSorte;
+import model.UparPersonagem;
 import model.inimigos.ChromeJaw;
 import model.inimigos.Inimigos;
 import model.inimigos.utils.ItemFormatter;
@@ -148,6 +149,7 @@ public class MissaoDentesDeOuro extends Missoes {
         TextoAnimado.escrever("Total atual para de habilidades para combate: " + num2);
 
         iniciarCombate(personagem, inimigoChromeJaw, jogo);
+        UparPersonagem.uparAposCombate(personagem);
         vasculharCorpo(personagem, inimigoChromeJaw);
         mostrarEscolhasFinais(personagem, jogo, "2/1");
     }

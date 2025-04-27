@@ -20,6 +20,10 @@ public class Personagem implements Serializable {
     private int provisoes = 2;
     private List<Missoes> missoes = new ArrayList<>();
     private Itens itemEquipado;
+    private int xp = 0;
+    private int level = 1;
+    private int energiaMaxima = 20;
+
 
     public Personagem(String nome) {
         this.nome = nome;
@@ -121,4 +125,11 @@ public class Personagem implements Serializable {
             System.out.println("Nenhum item está equipado.");
         }
     }
+    //Getters e setters para XP e Level
+    public int getXp() { return xp; }
+    public void setXp(int xp) { this.xp = xp; }
+    public int getLevel() { return level; }
+    public void setLevel(int level) { this.level = level; }
+    public int getEnergiaMaxima() { return energiaMaxima; }
+    public void setEnergiaMaxima(int energiaMaxima) { this.energiaMaxima = energiaMaxima; }
 }

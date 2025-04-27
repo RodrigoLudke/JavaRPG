@@ -3,6 +3,7 @@ package model.missoes.MissaoPrincipal.SegundaRota;
 import controller.CombateController;
 import controller.JogoController;
 import model.Personagem;
+import model.UparPersonagem;
 import model.inimigos.Inimigos;
 import model.inimigos.LeRoi;
 import model.inimigos.utils.ItemFormatter;
@@ -60,6 +61,7 @@ public class Seguir extends Missoes {
 
         mostrarInformacoesVilao(leRoi);
         CombateController.iniciarCombate(personagem, leRoi, jogo);
+        UparPersonagem.uparAposCombate(personagem);
         vasculharCorpo(personagem, leRoi);
         desfechoMissao(personagem, jogo);
     }

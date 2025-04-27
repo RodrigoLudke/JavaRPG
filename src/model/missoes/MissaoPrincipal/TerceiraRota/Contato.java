@@ -3,6 +3,7 @@ package model.missoes.MissaoPrincipal.TerceiraRota;
 import controller.CombateController;
 import controller.JogoController;
 import model.Personagem;
+import model.UparPersonagem;
 import model.inimigos.Inimigos;
 import model.inimigos.Reflex;
 import model.inimigos.utils.ItemFormatter;
@@ -64,6 +65,7 @@ public class Contato extends Missoes {
                 mostrarInformacoesVilao(reflex);
 
                 CombateController.iniciarCombate(personagem, reflex, jogo);
+                UparPersonagem.uparAposCombate(personagem);
                 vasculharCorpo(personagem, reflex);
                 desfechoMissao(personagem, jogo);
         }
