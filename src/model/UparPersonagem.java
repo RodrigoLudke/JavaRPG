@@ -4,7 +4,7 @@ import view.utils.TextoAnimado;
 
 public class UparPersonagem {
     private static final int XP_POR_COMBATE = 100;
-    private static final int XP_BASE_LEVEL = 300;
+    private static final int XP_BASE_LEVEL = 200;
 
     public static void uparAposCombate(Personagem personagem) throws InterruptedException {
         // Adiciona XP após o combate
