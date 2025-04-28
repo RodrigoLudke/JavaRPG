@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class Drones extends Inimigos{
     public Drones() {
         super("Drones", 3, 4, 4);
-        this.setOuro(0);
         this.setProvisoes(0);
 
         ArmaDoDrone armaDoDrone = new ArmaDoDrone(); // Cria a instância do Canhão de Plasma

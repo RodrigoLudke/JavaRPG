@@ -2,18 +2,19 @@ package model.inimigos;
 
 import model.itens.CanhaoDePlasma;
 import model.itens.Itens;
+import model.itens.KitMedico;
 
 import java.util.ArrayList;
 
 public class ChromeJaw extends Inimigos {
     public ChromeJaw() {
         super("Chrome Jaw", 6, 7, 6);
-        this.setOuro(0);
         this.setProvisoes(0);
 
         CanhaoDePlasma canhaoDePlasma = new CanhaoDePlasma(); // Cria a instância do Canhão de Plasma
         getInventario().add(canhaoDePlasma); // Adiciona ao inventário
         equiparItem(canhaoDePlasma);
+        KitMedico kitMedico = new KitMedico(); // Cria a instância do Kit Médico
     }
 
     public static int habilidade() {

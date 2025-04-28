@@ -1,6 +1,7 @@
 package model.inimigos;
 
 import model.itens.Itens;
+import model.itens.KitMedico;
 import model.itens.Nullfang;
 
 import java.util.ArrayList;
@@ -8,12 +9,13 @@ import java.util.ArrayList;
 public class Stryx extends Inimigos{
     public Stryx() {
         super("Stryx", 10, 10, 10);
-        this.setOuro(0);
         this.setProvisoes(0);
 
         Nullfang nullfang = new Nullfang();
         getInventario().add(nullfang);
         equiparItem(nullfang);
+
+        KitMedico kitMedico = new KitMedico(); // Cria a instância do Kit Médico
 
     }
 

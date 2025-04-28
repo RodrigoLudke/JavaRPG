@@ -3,18 +3,20 @@ package model.inimigos;
 import model.itens.CanhaoDePlasma;
 import model.itens.Itens;
 import model.itens.KatanaCromada;
+import model.itens.KitMedico;
 
 import java.util.ArrayList;
 
 public class Reflex extends Inimigos{
     public Reflex() {
         super("Meika “Reflex” Hoshino", 8, 18, 13);
-        this.setOuro(0);
         this.setProvisoes(0);
 
         KatanaCromada katanaCromada = new KatanaCromada(); // Cria a instância do Canhão de Plasma
         getInventario().add(katanaCromada); // Adiciona ao inventário
         equiparItem(katanaCromada); // Equipar o item
+
+        KitMedico kitMedico = new KitMedico(); // Cria a instância do Kit Médico
 
     }
 

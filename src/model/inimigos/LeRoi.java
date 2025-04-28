@@ -3,18 +3,20 @@ package model.inimigos;
 import model.itens.CanhaoDePlasma;
 import model.itens.DronesReciclados;
 import model.itens.Itens;
+import model.itens.KitMedico;
 
 import java.util.ArrayList;
 
 public class LeRoi extends Inimigos{
     public LeRoi() {
         super("Le Roi", 10, 15, 10);
-        this.setOuro(0);
         this.setProvisoes(0);
 
         DronesReciclados dronesReciclados = new DronesReciclados();// Cria a instância do Drones Reciclados
         getInventario().add(dronesReciclados); // Adiciona ao inventário
         equiparItem(dronesReciclados); // Equipar o item
+
+        KitMedico kitMedico = new KitMedico(); // Cria a instância do Kit Médico
     }
 
 

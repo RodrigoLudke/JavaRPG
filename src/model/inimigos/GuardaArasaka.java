@@ -1,6 +1,7 @@
 package model.inimigos;
 
 import model.itens.Itens;
+import model.itens.KitMedico;
 import model.itens.RiflesDePulso;
 
 import java.util.ArrayList;
@@ -8,12 +9,13 @@ import java.util.ArrayList;
 public class GuardaArasaka  extends Inimigos{
     public GuardaArasaka() {
         super("Guarda Arasaka", 8, 12, 5);
-        this.setOuro(0);
         this.setProvisoes(0);
 
         RiflesDePulso riflesDePulso = new RiflesDePulso(); // Cria a instância do Canhão de Plasma
         getInventario().add(riflesDePulso); // Adiciona ao inventário
         equiparItem(riflesDePulso);
+
+        KitMedico kitMedico = new KitMedico(); // Cria a instância do Kit Médico
     }
 
     public static int habilidade() {return 8;}

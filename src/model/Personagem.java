@@ -17,7 +17,7 @@ public class Personagem implements Serializable {
     private List<Itens> inventario = new ArrayList<>();
     private List<Hacks> hacks = new ArrayList<>();
     private int ouro = 0;
-    private int provisoes = 2;
+    private int provisoes = 0;
     private List<Missoes> missoes = new ArrayList<>();
     private Itens itemEquipado;
     private int xp = 0;

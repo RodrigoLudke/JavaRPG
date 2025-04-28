@@ -3,17 +3,19 @@ package model.inimigos;
 import model.hacks.Hacks;
 import model.itens.Itens;
 import model.hacks.VoxOmnis;
+import model.itens.KitMedico;
 
 import java.util.ArrayList;
 
 public class Silvertongue extends Inimigos{
     public Silvertongue() {
         super("Silvertongue", 10, 20, 10);
-        this.setOuro(0);
         this.setProvisoes(0);
 
         VoxOmnis voxOmnis = new VoxOmnis(); // Cria a instância do Vox Omnis
         getHacks().add(voxOmnis); // Adiciona ao inventário
+
+        KitMedico kitMedico = new KitMedico(); // Cria a instância do Kit Médico
 
     }
 

@@ -2,6 +2,7 @@ package model.inimigos;
 
 import model.itens.CanhaoMicroMisseis;
 import model.itens.Itens;
+import model.itens.KitMedico;
 import model.itens.RiflesDePulso;
 
 import java.util.ArrayList;
@@ -9,12 +10,13 @@ import java.util.ArrayList;
 public class TrovaoCinzento extends Inimigos{
     public TrovaoCinzento() {
         super("Trovão Cinzento", 10, 20, 15);
-        this.setOuro(0);
         this.setProvisoes(0);
 
         CanhaoMicroMisseis canhaoMicroMisseis = new CanhaoMicroMisseis(); // Cria a instância do Canhão de Plasma
         getInventario().add(canhaoMicroMisseis); // Adiciona ao inventário
         equiparItem(canhaoMicroMisseis);
+
+        KitMedico kitMedico = new KitMedico(); // Cria a instância do Kit Médico
     }
 
     public static int habilidade() {return 10;}
