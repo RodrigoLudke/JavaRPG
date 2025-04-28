@@ -158,22 +158,15 @@ public class TelaInventario {
                     System.out.println("Você usou " + itemSelecionado.getNome() + " e recuperou " + cura + " de energia!");
                     inventario.remove(itemSelecionado); // Remove o item após o uso, se necessário
                 } else if (itemSelecionado.getTipo().equals("Arma")) {
-                    // Exemplo: Equipar a arma
                     if (!itemSelecionado.isEquipado()) {
+                        if (personagem.getItemEquipado() != null) {
+                            personagem.desequiparItem(); // Desequipa o item atual
+                        }
                         personagem.equiparItem(itemSelecionado);
-                        itemSelecionado.setEquipado(true);
                         System.out.println("Você equipou " + itemSelecionado.getNome() + "!");
                     } else {
-                        System.out.println(itemSelecionado.getNome() + " já está equipado.");
-                    }
-                } else if (itemSelecionado.getTipo().equals("Acessorio")) {
-                    // Exemplo: Equipar o acessório
-                    if (!itemSelecionado.isEquipado()) {
-                        personagem.equiparItem(itemSelecionado);
-                        itemSelecionado.setEquipado(true);
-                        System.out.println("Você equipou " + itemSelecionado.getNome() + "!");
-                    } else {
-                        System.out.println(itemSelecionado.getNome() + " já está equipado.");
+                        personagem.desequiparItem();
+                        System.out.println("Você desequipou " + itemSelecionado.getNome() + ".");
                     }
                 } else {
                     System.out.println("Este item não pode ser usado.");

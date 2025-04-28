@@ -29,8 +29,7 @@ public class Personagem implements Serializable {
         this.nome = nome;
         if (nome.equals("wize")) {
             Itens EspadaDoDev = new Itens("EspadaDoDev", "Arma", true, 100, 999);
-            this.adicionarItem(EspadaDoDev);
-            this.equiparItem(EspadaDoDev);
+            adicionarItem(EspadaDoDev);
         }
     }
 
