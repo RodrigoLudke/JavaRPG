@@ -138,6 +138,7 @@ public class AbrirContainer extends Missoes {
         TextoAnimado.escrever("Depois de uma luta intensa, você vence!");
         TextoAnimado.escrever("No final, você e Jackie escapam... feridos, mas vivos. A criança olha pra você e fala: ");
         TextoAnimado.escrever("— Eu sou o começo. E você já está marcado. ");
+        this.concluir();
     }
 
     private void verificarConclusao(Personagem personagem, JogoController jogo) throws InterruptedException {

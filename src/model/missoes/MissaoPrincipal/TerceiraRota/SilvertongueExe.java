@@ -137,6 +137,7 @@ public class SilvertongueExe extends Missoes {
         if (this.isConcluida()) {
             TextoAnimado.escrever("Missão concluída com sucesso! ✔");
             TextoAnimado.escrever("FIM DA ROTA 3");
+            TelaInicial.mostrarMenu();
         } else {
             TextoAnimado.escrever("Missão não concluída. ✖");
             TelaInicial.mostrarMenu();

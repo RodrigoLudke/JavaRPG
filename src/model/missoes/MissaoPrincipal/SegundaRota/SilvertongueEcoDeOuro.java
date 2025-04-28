@@ -196,6 +196,7 @@ public class SilvertongueEcoDeOuro extends Missoes {
         TextoAnimado.escrever("Você olha para as cinzas do \033[1mcristal\033[0m e sente o pulso calmo de um mundo que segue intacto — pelo menos por enquanto. ");
         TextoAnimado.escrever("O deus digital foi contido, Silvertongue se foi, e Night City segue seu próprio ritmo frenético, indiferente aos fantasmas que quase mudaram seu curso para sempre.  ");
         TextoAnimadoLongo.escrever("\033[1mMissão Concluída: Silvertongue: Eco de Ouro\033[0m ");
+        this.concluir();
         // FIM DA ROTA 2
     }
 

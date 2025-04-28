@@ -140,6 +140,7 @@ public class Despertar extends Missoes {
         TextoAnimado.escrever(" “Acho que encerramos o jogo.” ");
         TextoAnimado.escrever("O sol de Neon City nasce entre prédios corroídos — por agora, o passado de “Specimen Y‑ΔX” foi varrido das memórias e dos servidores. Vocês compartilham um raro momento de paz: missão cumprida, futuro assegurado.");
         TextoAnimado.escrever("Missão Concluída: ΔX: O Despertar");
+        this.concluir();
         // Aqui concluímos a missão!
         // FIM DA ROTA 1
     }

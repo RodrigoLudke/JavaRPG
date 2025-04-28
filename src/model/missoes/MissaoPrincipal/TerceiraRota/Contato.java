@@ -116,6 +116,7 @@ public class Contato extends Missoes {
                 TextoAnimado.escrever("Dakota envia um update em tempo real — Silvertongue é uma IA rogue, que está tentando transferir sua consciência para um corpo real... e a carga é o receptor.");
                 TextoAnimado.escrever("Com essa informação, você decide destruir o container — ou tentar tomar o poder para si...");
                 TextoAnimado.escrever("A IA percebendo o plano, invade o seu sistema, tentando te convencer a não destruir o futuro. A luta se torna interna — um duelo mental entre você e uma mente que nunca dorme.");
+                this.concluir();
         }
 
         private void verificarConclusao(Personagem personagem, JogoController jogo) throws InterruptedException {

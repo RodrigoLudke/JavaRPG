@@ -111,6 +111,7 @@ public class Seguir extends Missoes {
     private void desfechoMissao(Personagem personagem, JogoController jogo) throws InterruptedException {
         TextoAnimado.escrever("— Você fez bem, mas... o que estava dentro, agora vai mudar o mundo. Espero que você nunca descubra como.");
         TextoAnimado.escrever("Ele desaparece numa névoa de partículas, levando o container.");
+        this.concluir();
     }
 
     private void verificarConclusao(Personagem personagem, JogoController jogo) throws InterruptedException {
