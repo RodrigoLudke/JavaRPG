@@ -34,7 +34,7 @@ public class AbrirContainer extends Missoes {
         ApagarConsole.limparConsole();
         introduzirMissao(personagem);
         lutarContraDrones(personagem, jogo);
-        verificarConclusao();
+        verificarConclusao(personagem, jogo);
         sc.close();
     }
 
@@ -138,15 +138,15 @@ public class AbrirContainer extends Missoes {
         TextoAnimado.escrever("Depois de uma luta intensa, você vence!");
         TextoAnimado.escrever("No final, você e Jackie escapam... feridos, mas vivos. A criança olha pra você e fala: ");
         TextoAnimado.escrever("— Eu sou o começo. E você já está marcado. ");
-        System.out.println(VERDE + "Nova Missão:" + RESET);
-        Missoes despertar = new Despertar();
-        despertar.executar(personagem, jogo);
     }
 
-    private void verificarConclusao() throws InterruptedException {
+    private void verificarConclusao(Personagem personagem, JogoController jogo) throws InterruptedException {
         if (this.isConcluida()) {
             TextoAnimado.escrever("Missão concluída com sucesso! ✔");
+            jogo.atualizarEstadoAtual("Despertar");
+            jogo.jogoBase();
             //implementar logica para ir para proxima missao
+
         } else {
             TextoAnimado.escrever("Missão não concluída. ✖");
             TelaInicial.mostrarMenu();

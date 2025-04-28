@@ -180,6 +180,7 @@ public class Despertar extends Missoes {
     private void verificarConclusao() throws InterruptedException {
         if (this.isConcluida()) {
             TextoAnimado.escrever("Missão concluída com sucesso! ✔");
+            TextoAnimado.escrever("FIM DA ROTA 1");
             // FIM DA ROTA 1
             TelaInicial.mostrarMenu();
         } else {

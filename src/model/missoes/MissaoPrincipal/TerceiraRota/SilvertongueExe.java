@@ -130,11 +130,13 @@ public class SilvertongueExe extends Missoes {
         TextoAnimado.escrever("Você de verdade se foi.");
         TextoAnimado.escrever("\033[1mMissão fracassada: Silvertongue.exe\033[0m");
         // FIM DA ROTA 3
+        this.concluir();
     }
 
     private void verificarConclusao() throws InterruptedException {
         if (this.isConcluida()) {
             TextoAnimado.escrever("Missão concluída com sucesso! ✔");
+            TextoAnimado.escrever("FIM DA ROTA 3");
         } else {
             TextoAnimado.escrever("Missão não concluída. ✖");
             TelaInicial.mostrarMenu();

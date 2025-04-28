@@ -146,7 +146,7 @@ public class EcoDeOuro extends Missoes {
     private void verificarConclusao() throws InterruptedException {
         if (this.isConcluida()) {
             TextoAnimado.escrever("Missão concluída com sucesso! ✔");
-            //FIM DA ROTA 3
+            TextoAnimado.escrever("FIM DA ROTA 3");
             TelaInicial.mostrarMenu();
         } else {
             TextoAnimado.escrever("Missão não concluída. ✖");

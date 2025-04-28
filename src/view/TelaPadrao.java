@@ -16,6 +16,8 @@ public class TelaPadrao {
     public static void IntroducaoInicial(Personagem p, JogoController jogo) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
 
+        jogo.atualizarEstadoAtual("inicio");
+
         String introducao = " Night City — uma metrópole brilhante e decadente cravada na costa da Califórnia do Norte. Governada por megacorporações e assolada pela desigualdade, a cidade pulsa com neon, violência e tecnologia. Seus arranha-céus tocam os céus, enquanto os becos fervilham de gangues, mercenários e inteligências artificiais fora de controle. É um lugar onde tudo está à venda — desde memórias até corpos modificados com cromo. Em Night City, o sonho americano virou um pesadelo digital. Mas para muitos, ainda é o único lugar onde vale a pena lutar por um futuro — ou morrer tentando. ";
         TextoAnimado.escrever(introducao);
         System.out.println();
@@ -27,7 +29,8 @@ public class TelaPadrao {
 
     public static void Base(Personagem personagem, JogoController jogo) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
-        System.out.println("1 - Atender Chamado do Jackie (ir a missão)");
+        //System.out.println("1 - Atender Chamado do Jackie (ir a missão)");
+        System.out.println("1 - Ir a Missão");
         System.out.println("2 - Abrir Inventário");
         System.out.println("3 - Voltar para o Menu Principal");
         System.out.println("4 - Sair do Jogo");
@@ -36,9 +39,41 @@ public class TelaPadrao {
         while (opcao != 4) {
             switch (opcao) {
                 case 1:
-                    System.out.println("Atendendo chamado do Jackie...");
-                    jogo.atualizarEstadoAtual("inicio");
-                    MissaoController.executarMissao("MissaoDentesDeOuro", personagem, jogo);
+                    if (jogo.getEstadoAtual().equals("inicio")) {
+                        System.out.println("Atendendo chamado do Jackie...");
+                        MissaoController.executarMissao("MissaoDentesDeOuro", personagem, jogo);
+                    }
+                    //PRIMEIRA ROTA
+                    else if (jogo.getEstadoAtual().equals("AbrirContainer")) {
+                        MissaoController.executarMissao("AbrirContainer", personagem, jogo);
+                        return;
+                    }
+                    else if (jogo.getEstadoAtual().equals("Despertar")) {
+                        MissaoController.executarMissao("Despertar", personagem, jogo);
+                        return;
+                    }
+                    //SEGUNDA ROTA
+                    else if (jogo.getEstadoAtual().equals("Seguir")) {
+                        MissaoController.executarMissao("Seguir", personagem, jogo);
+                        return;
+                    }
+                    else if (jogo.getEstadoAtual().equals("SilvertongueEcoDeOuro")) {
+                        MissaoController.executarMissao("SilvertongueEcoDeOuro", personagem, jogo);
+                        return;
+                    }
+                    //TERCEIRA ROTA
+                    else if (jogo.getEstadoAtual().equals("Contato")) {
+                        MissaoController.executarMissao("Cotato", personagem, jogo);
+                        return;
+                    }
+                    else if (jogo.getEstadoAtual().equals("EcoDeOuro")) {
+                        MissaoController.executarMissao("EcoDeOuro", personagem, jogo);
+                        return;
+                    }
+                    else if (jogo.getEstadoAtual().equals("SilvertongueExe")) {
+                        MissaoController.executarMissao("SilvertongueExe", personagem, jogo);
+                        return;
+                    }
                     return;
                 case 2:
                     System.out.println("Abrindo inventário...");

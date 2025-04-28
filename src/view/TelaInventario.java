@@ -89,7 +89,7 @@ public class TelaInventario {
                 case 1:
                     System.out.println("Voltando para o jogo...");
                     String estadoAtual = jogo.getEstadoAtual();
-                    if (estadoAtual.equals("Início do jogo")) {
+                    if (estadoAtual.equals("inicio") || estadoAtual.equals("Despertar") || estadoAtual.equals("AbrirContainer") || estadoAtual.equals("Seguir") || estadoAtual.equals("SilvertongueEcoDeOuro") || estadoAtual.equals("Contato") || estadoAtual.equals("EcoDeOuro") || estadoAtual.equals("SilvertongueExe")) {
                         jogo.jogoBase();
                     } else if (estadoAtual.startsWith("MissaoDentesDeOuro")) {
                         MissaoController.executarMissao("MissaoDentesDeOuro", personagem, jogo);
