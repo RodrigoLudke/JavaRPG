@@ -112,8 +112,16 @@ public class Personagem implements Serializable {
 
     public void equiparItem(Itens item) {
         if (inventario.contains(item)) {
+            // Desequipa todos os itens do mesmo tipo
+            for (Itens i : inventario) {
+                if (i.getTipo().equals(item.getTipo())) {
+                    i.setEquipado(false);
+                }
+            }
+
+            // Equipa o novo item
             this.itemEquipado = item;
-            item.setEquipado(true); // Marca o item como equipado
+            item.setEquipado(true);
             System.out.println(item.getNome() + " foi equipado.");
         } else {
             throw new IllegalArgumentException("O item não está no inventário.");
