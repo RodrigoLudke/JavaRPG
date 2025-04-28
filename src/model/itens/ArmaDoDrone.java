@@ -2,7 +2,7 @@ package model.itens;
 
 public class ArmaDoDrone extends Itens {
     private static final String NOME = "Arma do Drone";
-    private static final String TIPO = "w";
+    private static final String TIPO = "Arma";
     private static final boolean PODE_USAR_EM_COMBATE = true;
     private static final int BONUS_FA = 1;
     private static final int BONUS_DANO = 2;
