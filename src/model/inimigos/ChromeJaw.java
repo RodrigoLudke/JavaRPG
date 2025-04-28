@@ -15,6 +15,7 @@ public class ChromeJaw extends Inimigos {
         getInventario().add(canhaoDePlasma); // Adiciona ao inventário
         equiparItem(canhaoDePlasma);
         KitMedico kitMedico = new KitMedico(); // Cria a instância do Kit Médico
+        getInventario().add(kitMedico); // Adiciona ao inventário
     }
 
     public static int habilidade() {

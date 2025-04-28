@@ -17,6 +17,7 @@ public class LeRoi extends Inimigos{
         equiparItem(dronesReciclados); // Equipar o item
 
         KitMedico kitMedico = new KitMedico(); // Cria a instância do Kit Médico
+        getInventario().add(kitMedico); // Adiciona ao inventário
     }
 
 

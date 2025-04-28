@@ -16,6 +16,7 @@ public class Stryx extends Inimigos{
         equiparItem(nullfang);
 
         KitMedico kitMedico = new KitMedico(); // Cria a instância do Kit Médico
+        getInventario().add(kitMedico); // Adiciona ao inventário
 
     }
 

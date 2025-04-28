@@ -17,6 +17,7 @@ public class Reflex extends Inimigos{
         equiparItem(katanaCromada); // Equipar o item
 
         KitMedico kitMedico = new KitMedico(); // Cria a instância do Kit Médico
+        getInventario().add(kitMedico); // Adiciona ao inventário
 
     }
 

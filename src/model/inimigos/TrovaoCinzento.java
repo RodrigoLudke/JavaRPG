@@ -17,6 +17,7 @@ public class TrovaoCinzento extends Inimigos{
         equiparItem(canhaoMicroMisseis);
 
         KitMedico kitMedico = new KitMedico(); // Cria a instância do Kit Médico
+        getInventario().add(kitMedico); // Adiciona ao inventário
     }
 
     public static int habilidade() {return 10;}

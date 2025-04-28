@@ -16,6 +16,7 @@ public class Silvertongue extends Inimigos{
         getHacks().add(voxOmnis); // Adiciona ao inventário
 
         KitMedico kitMedico = new KitMedico(); // Cria a instância do Kit Médico
+        getInventario().add(kitMedico); // Adiciona ao inventário
 
     }
 
