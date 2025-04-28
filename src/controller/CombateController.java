@@ -39,10 +39,6 @@ public class CombateController {
                     TelaCombate.abrirInventario(personagem, jogo);
                     continue;
 
-                case 3: // Fugir
-                    System.out.println("Você fugiu do combate!");
-                    return;
-
                 default:
                     System.out.println("Opção inválida!");
                     continue;
@@ -235,10 +231,6 @@ public class CombateController {
                 case 2: // Acessar inventário
                     TelaCombate.abrirInventario(personagem, jogo);
                     continue;
-
-                case 3: // Fugir
-                    System.out.println("Você fugiu do combate!");
-                    return;
 
                 default:
                     System.out.println("Opção inválida!");

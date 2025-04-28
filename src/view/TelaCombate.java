@@ -17,7 +17,6 @@ public class TelaCombate {
         System.out.println("Escolha uma ação:");
         System.out.println("1 - Atacar");
         System.out.println("2 - Acessar Inventário");
-        System.out.println("3 - Fugir");
 
         return sc.nextInt();
     }
@@ -32,7 +31,6 @@ public class TelaCombate {
         System.out.println("Escolha uma ação:");
         System.out.println("1 - Atacar");
         System.out.println("2 - Acessar Inventário");
-        System.out.println("3 - Fugir");
 
         return sc.nextInt();
     }
