@@ -38,12 +38,12 @@ public class TextoAnimado {
                     linha.append(fakeChar);
                     System.out.print("\r" + linha);
                     linha.setLength(linha.length() - 1);
-                    TimeUnit.MILLISECONDS.sleep(5);
+                    TimeUnit.MILLISECONDS.sleep(25);
                 }
 
                 linha.append(ch);
                 System.out.print("\r" + linha);
-                TimeUnit.MILLISECONDS.sleep(5);
+                TimeUnit.MILLISECONDS.sleep(30);
                 colunaAtual++;
             }
         }
