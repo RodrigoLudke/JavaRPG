@@ -83,9 +83,9 @@ public class AbrirContainer extends Missoes {
 
         CombateController.iniciarCombateComVarios(personagem, inimigosDrones, jogo);
         // Vasculhar corpos após o combate
-        TextoAnimado.escrever("\nApós a batalha, você observa os corpos dos guardas caídos...");
+        TextoAnimado.escrever("Após a batalha, você observa os corpos dos guardas caídos...");
         for (int i = 0; i < inimigosDrones.size(); i++) {
-            TextoAnimado.escrever("\nGuarda " + (i + 1) + ":");
+            TextoAnimado.escrever("Guarda " + (i + 1) + ":");
             vasculharCorpo(personagem, inimigosDrones.get(i));
         }
         UparPersonagem.uparAposCombate(personagem);

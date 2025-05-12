@@ -74,9 +74,9 @@ public class Despertar extends Missoes {
 
         CombateController.iniciarCombateComVarios(personagem, inimigosGuardas, jogo);
         // Vasculhar corpos após o combate
-        TextoAnimado.escrever("\nApós a batalha, você observa os corpos dos guardas caídos...");
+        TextoAnimado.escrever("Após a batalha, você observa os corpos dos guardas caídos...");
         for (int i = 0; i < inimigosGuardas.size(); i++) {
-            TextoAnimado.escrever("\nGuarda " + (i + 1) + ":");
+            TextoAnimado.escrever("Guarda " + (i + 1) + ":");
             vasculharCorpo(personagem, inimigosGuardas.get(i));
         }
         UparPersonagem.uparAposCombate(personagem);
