@@ -8,6 +8,7 @@ import view.TelaCombate;
 import view.TelaInicial;
 import view.TelaInventario;
 import view.utils.ApagarConsole;
+import view.utils.TextoAnimado;
 
 import java.util.List;
 import java.util.Random;
@@ -187,6 +188,43 @@ public class CombateController {
             System.out.println("O inimigo tentou se curar, mas não possui um Kit Médico!");
         }
     }
+
+    public static void vasculharCorpo(Personagem personagem, Inimigos inimigo, int escolhajogador) throws InterruptedException {
+        Scanner sc = new Scanner(System.in);
+
+       int escolha = escolhajogador;
+
+        if (escolha == 1) {
+            List<Itens> inventarioInimigo = inimigo.getInventario();
+            if (!inventarioInimigo.isEmpty()) {
+                mostrarItensEncontrados(inventarioInimigo);
+                processarEscolhaItem(personagem, inventarioInimigo, sc);
+            } else {
+                TextoAnimado.escrever("Não encontrou nada útil no corpo.");
+            }
+        }
+    }
+
+    private static void mostrarItensEncontrados(List<Itens> inventario) {
+        System.out.println("\nItens encontrados:");
+        for (int i = 0; i < inventario.size(); i++) {
+            Itens item = inventario.get(i);
+            System.out.println((i + 1) + " - " + item.getNome());
+        }
+    }
+
+    private static void processarEscolhaItem(Personagem personagem, List<Itens> inventario, Scanner sc) throws InterruptedException {
+        System.out.println("\nEscolha um item para pegar (0 para não pegar nada):");
+        int itemEscolhido = sc.nextInt();
+
+        if (itemEscolhido > 0 && itemEscolhido <= inventario.size()) {
+            Itens itemPego = inventario.get(itemEscolhido - 1);
+            personagem.adicionarItem(itemPego);
+            TextoAnimado.escrever("Você pegou: " + itemPego.getNome());
+            inventario.remove(itemEscolhido - 1);
+        }
+    }
+
 
     /////////////////////////////////////////////////////////////////////////////////////
 

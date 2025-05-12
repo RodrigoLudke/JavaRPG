@@ -1,5 +1,6 @@
 package model.missoes.MissaoPrincipal;
 
+import controller.CombateController;
 import controller.JogoController;
 import model.Personagem;
 import model.TesteSorte;
@@ -164,26 +165,7 @@ public class MissaoDentesDeOuro extends Missoes {
 
         int escolha = sc.nextInt();
 
-        if (escolha == 1) {
-            if (!inimigo.getInventario().isEmpty()) {
-                System.out.println("\nItens encontrados:");
-                for (int i = 0; i < inimigo.getInventario().size(); i++) {
-                    Itens item = inimigo.getInventario().get(i);
-                    System.out.println((i + 1) + " - " + item.getNome());
-                }
-
-                System.out.println("\nEscolha um item para pegar (0 para não pegar nada):");
-                int itemEscolhido = sc.nextInt();
-
-                if (itemEscolhido > 0 && itemEscolhido <= inimigo.getInventario().size()) {
-                    Itens itemPego = inimigo.getInventario().get(itemEscolhido - 1);
-                    personagem.adicionarItem(itemPego);
-                    TextoAnimado.escrever("Você pegou: " + itemPego.getNome());
-                }
-            } else {
-                TextoAnimado.escrever("Não encontrou nada útil no corpo.");
-            }
-        }
+        CombateController.vasculharCorpo(personagem, inimigo, escolha);
     }
 
     private void mostrarInformacoesVilao(Inimigos inimigo) throws InterruptedException {
