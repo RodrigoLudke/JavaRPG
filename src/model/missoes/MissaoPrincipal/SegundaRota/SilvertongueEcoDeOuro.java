@@ -105,17 +105,18 @@ public class SilvertongueEcoDeOuro extends Missoes {
         TextoAnimado.escrever("Dejesa usar o teste de sorte?");
         System.out.println("1 - Sim");
         System.out.println("2 - Não");
+        Silvertongue silvertongue = new Silvertongue();
         int sorte = sc.nextInt();
         if (sorte == 1) {
             boolean sucesso = TesteSorte.testarSorte(personagem);
             if (sucesso) {
                 TextoAnimado.escrever("Teste de sorte bem-sucedido!");
-                TesteSorte.aplicarSorteNoCombate(personagem, new Silvertongue(), sucesso);
+                TesteSorte.aplicarSorteNoCombate(personagem, silvertongue, sucesso);
             } else {
                 TextoAnimado.escrever("Teste de sorte falhou!");
             }
         }
-        Silvertongue silvertongue = new Silvertongue();
+
 
         System.out.println("Gerando um número aleatório...");
         TextoAnimadoLongo.escrever("...");

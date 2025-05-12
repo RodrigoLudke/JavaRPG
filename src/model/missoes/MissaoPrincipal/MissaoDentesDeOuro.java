@@ -121,18 +121,18 @@ public class MissaoDentesDeOuro extends Missoes {
         TextoAnimado.escrever("Dejesa usar o teste de sorte?");
         System.out.println("1 - Sim");
         System.out.println("2 - Não");
+        ChromeJaw inimigoChromeJaw = new ChromeJaw();
         int sorte = sc.nextInt();
         if (sorte == 1) {
             boolean sucesso = TesteSorte.testarSorte(personagem);
             if (sucesso) {
                 TextoAnimado.escrever("Teste de sorte bem-sucedido!");
-                TesteSorte.aplicarSorteNoCombate(personagem, new ChromeJaw(), true);
+                TesteSorte.aplicarSorteNoCombate(personagem, inimigoChromeJaw, true);
             } else {
                 TextoAnimado.escrever("Teste de sorte falhou!");
             }
         }
         TextoAnimado.escrever("Combate iniciado!");
-        ChromeJaw inimigoChromeJaw = new ChromeJaw();
         mostrarInformacoesVilao(inimigoChromeJaw);
         System.out.println("Gerando um número aleatório...");
         TextoAnimadoLongo.escrever("...");
